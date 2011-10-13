@@ -1,11 +1,14 @@
 module ApplicationHelper
   def site_id
     if @site == 'index'
-      @group
+      if not @group
+        'startseite'
+      else
+        @group
+      end
     else
       if @site == 'treffen' || @site == 'feste'
-        'veranstaltungen'
-      else 
+        'veranstaltungen' 
         @site
       end
     end

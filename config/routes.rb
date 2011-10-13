@@ -1,5 +1,6 @@
 Hek::Application.routes.draw do
   match ':group(/:site)' => 'generic#show'
+  match '' => 'generic#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

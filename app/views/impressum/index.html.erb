@@ -1,0 +1,30 @@
+<% provide :title, 'Impressum' %>
+<h2>Impressum</h2>
+<h3>Anschrift</h3>
+<ol>
+  <li>Hermann-Ehlers-Kolleg</li>
+  <li>Willy-Andreas-Allee 1</li>
+  <li>76131 Karlsruhe</li>
+</ol>
+<h3>Heimleitung</h3>
+<ol>
+  <li>Manfred Zilly</li>
+  <li>Hermann-Ehlers-Kolleg</li>
+  <li>Willy-Andreas-Allee 1</li>
+  <li>76131 Karlsruhe</li>
+</ol>
+<dl>
+  <dt>Telefon</dt>
+  <dd>0721 / 8695 - 1611</dd>
+  <dt>E-Mail</dt>
+  <dd><% mail_to 'heimleiter@hek.uni-karlsruhe.de', 'heimleiter@hek.uni-karlsruhe.de'.reverse, :encoding => 'hex' %>
+</dl>
+<h3>Webmaster</h3>
+<dl>
+  <dt>E-Mail</dt>
+  <dd><% mail_to 'hekweb@hek.uni-karlsruhe.de', 'hekweb@hek.uni-karlsruhe.de'.reverse, :encoding => 'hex' %>
+</dl>
+<h3>Haftungshinweis</h3>
+<p>
+  Die Informationen auf dieser Website wurden mit größter Sorgfalt zusammengestellt. Trotzdem können wir nicht für ihre vollständige Aktualität, Korrektheit und Vollständigkeit garantieren. Deshalb lehnen wir jede Haftung für mögliche Fehler, Ungenauigkeiten sowie die Inhalte von externen Links ab.
+</p>

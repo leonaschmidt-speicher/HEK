@@ -1,0 +1,131 @@
+<% provide :title, 'Kontakt' %>
+<article id="heimleiter2" itemscope itemtype="http://schema.org/Person">
+  <div class="karte">
+    <img src="/images/kontakt/briefmarke-heimleiter.png" alt="Briefmarke mit Herr Zilly" itemprop="image" />
+    <h2 itemprop="jobTitle"><a href="/organisation/heimleiter" itemprop="url">Heimleiter</a></h2>
+    <h3 style="display: none" itemprop="name">Manfred Zilly</h3>
+    <ol itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <li itemprop="name">Manfred Zilly</li>
+      <li itemprop="streetAddress">Willy-Andreas-Allee 1</li>
+      <li>
+        <span itemprop="postalCode">76131</span>
+        <span itemprop="addressLocality">Karlsruhe</span>
+      </li>
+    </ol>
+    <div class="postit">
+      <dl>
+        <dt>Sprechstunden</dt>
+        <dd>Di, 15:00 - 16:00 Uhr</dd>
+        <dd>Do, 18:00 - 19:00 Uhr</dd>
+        <dt>Telefon</dt>
+        <dd itemprop="telephone">0721 / 8695 - 1611</dd>
+        <dt>E-Mail</dt>
+        <dd><%= mail_to 'heimleiter@hek.uni-karlsruhe.de', 'heimleiter@hek.uni-karlsruhe.de'.reverse, :encode => 'hex', :itemprop => 'email' %></dd>
+      </dl>
+      <img class="background" src="/images/postit.png" alt="Postit" />
+    </div>
+  </div>
+  <h3>Wann wende ich mich an den Heimleiter?</h3>
+  <p>
+    An den Heimleiter kannst du dich wenden, wenn du Fragen rund um die Bewerbung hast oder Ausziehen möchtest. Außerdem hat er immer ein offenes Ohr, falls es im Wohnheim Probleme gibt.
+  </p>
+</article>
+<article id="hausmeister2" itemscope itemtype="http://schema.org/Person">
+  <div class="karte">
+    <img src="/images/kontakt/briefmarke-hausmeister-er.png" alt="Briefmarke mit Herr Knöppel" itemprop="image" />
+    <img src="/images/kontakt/briefmarke-hausmeister-sie.png" alt="Briefmarke mit Frau Knöppel" itemprop="image" />
+    <h2 itemprop="jobTitle"><a href="/organisation/hausmeister" itemprop="url">Hausmeister</a></h2>
+    <h3 style="display: none" itemprop="name">Familie Knöppel</h3>
+    <ol itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <li itemprop="name">Familie Knöppel</li>
+      <li itemprop="streetAddress">Willy-Andreas-Allee 1</li>
+      <li>
+        <span itemprop="postalCode">76131</span>
+        <span itemprop="addressLocality">Karlsruhe</span>
+      </li>
+    </ol>
+    <div class="postit">
+      <dl>
+        <dt>Sprechstunden</dt>
+        <dd>Mo - Sa, 8:00 - 12:00 Uhr</dd>
+        <dd>Mo, Di <abbr title="und">&amp;</abbr> Do, Fr, 14:30 - 18:00 Uhr</dd>
+        <dt>Telefon</dt>
+        <dd itemprop="telephone">0721 / 8695 - 1022</dd>
+        <dt>E-Mail</dt>
+        <dd><%= mail_to 'hausmeister@hek.uni-karlsruhe.de', 'hausmeister@hek.uni-karlsruhe.de'.reverse, :encode => 'hex', :itemprop => 'email' %></dd>
+      </dl>
+      <img class="background" src="/images/postit.png" alt="Postit" />
+    </div>
+  </div>
+  <h3>Wann wende ich mich an die Hausmeister?</h3>
+  <p>
+    Um eine Ein- oder Auszugstermin zu abzusprechen sind die Hausmeister deine Ansprechpartner. Bei ihnen kannst du auch Pakete abholen, die für die angekommen sind. Außerdem kümmern sich sich darum, wenn in deinem Zimmer oder auf deinem Stockwerk etwas kaputt ist.
+  </p>
+</article>
+<article id="heimsprecher" itemscope itemtype="http://schema.org/Person">
+  <div class="karte">
+    <img src="/images/kontakt/briefmarke-heimsprecher-er.png" alt="Briefmarke mit Benedikt" itemprop="image" />
+    <img src="/images/kontakt/briefmarke-heimsprecher-sie.png" alt="Briefmarke mit Jelena" itemprop="image" />
+    <h2 itemprop="jobTitle"><a href="/organisation/heimselbstverwaltung#heimsprecher" itemprop="url">Heimsprecher</a></h2>
+    <ol itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <li>Heimsprecher</li>
+      <li itemprop="streetAddress">Willy-Andreas-Allee 1</li>
+      <li>
+        <span itemprop="postalCode">76131</span>
+        <span itemprop="addressLocality">Karlsruhe</span>
+      </li>
+    </ol>
+    <div id="sie" class="postit">
+      <dl>
+        <dt>Name (Zimmer)</dt>
+        <dd itemprop="name">Jelena (417)</dd>
+        <dt>Telefon</dt>
+        <dd itemprop="telephone">0721 / 8695 - 1417</dd>
+        <dt>E-Mail</dt>
+        <dd><%= mail_to 'heimsprecher@hek.uni-karlsruhe.de', 'heimleiter@hek.uni-karlsruhe.de'.reverse, :encode => 'hex', :itemprop => 'email' %></dd>
+      </dl>
+      <img class="background" src="/images/postit.png" alt="Postit" />
+    </div>
+    <div id="er" class="postit">
+      <dl>
+        <dt>Name (Zimmer)</dt>
+        <dd itemprop="name">Benedikt (009)</dd>
+        <dt>Telefon</dt>
+        <dd itemprop="telephone">0721 / 8695 - 1009</dd>
+        <dt>E-Mail</dt>
+        <dd><%= mail_to 'heimsprecher@hek.uni-karlsruhe.de', 'heimleiter@hek.uni-karlsruhe.de'.reverse, :encode => 'hex', :itemprop => 'email' %></dd>
+      </dl>
+      <img class="background" src="/images/postit.png" alt="Postit" />
+    </div>
+  </div>
+  <h3>Wann wende ich mich an die Heimsprecher?</h3>
+  <p>
+    Für alle Fragen und Probleme zum studentischen Leben im HEK stehen dir die Heimsprecher zur Verfügung. Bei ihnen kannst du dich auch für eine Veranstaltung der Heimselbstverwaltung entschuldigen. Auch wenn du jemanden kennst, der gerne ins HEK einziehen würde oder sonstige Fragen zum Leben im Wohnheim hast bist du bei ihnen an der richtigen Adresse.
+  </p>
+</article>
+<article id="anreise">
+  <h2>Anreise</h2>
+  <div id="map"></div>
+  <ol>
+    <li>Hermann-Ehlers-Kolleg</li>
+    <li>Willy-Andreas-Allee 1</li>
+    <li>
+      <span>76131</span>
+      <span>Karlsruhe</span>
+    </li>
+  </ol>
+  <section>
+    <h3>Öffentliche Verkehrsmittel</h3>
+    <ul>
+      <li>nächste S-Bahn-Station: Europaplatz (Kaiserstraße)</li>
+      <li>nächste Bushaltestelle: Linkenheimer Tor</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Auto</h3>
+    <ul>
+      <li>von Norden: A5 Ausfahrt Karlsruhe-Durlach, Richtung Karlsruhe</li>
+      <li>von Süden: A5 Ausfahrt Karlsruhe-Süd, Richtung Karlsruhe/Landau(Pfalz)</li>
+    </ul>
+  </section>
+</article>
