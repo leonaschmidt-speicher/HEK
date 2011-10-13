@@ -1,23 +1,11 @@
+# encoding: utf-8
 module ApplicationHelper
   def site_id
-    if @site == 'index'
-      if not @group
-        'startseite'
-      else
-        @group
-      end
-    else
-      if @site == 'treffen' || @site == 'feste'
-        'veranstaltungen'
-      else 
-        @site
-      end
-    end
+    (@site || @group || 'startseite').sub /treffen|feste/, 'veranstaltungen'
   end
 
-  #def page_title= title <-- why can't I use this method name and then page_title = 'asdf' in the view?
-  def page_title title
-    #provide :title, title + ' ♣ ' <-- gives a syntax error only when using this special character
-    provide :title, title + ' KREUZ '
+  def site_title
+    # Alternativ könnte man den Titel auch in de.yml unter config/locales setzen.
+    (@site || @group).titleize + ' ♣ ' unless @group.blank?
   end
 end
