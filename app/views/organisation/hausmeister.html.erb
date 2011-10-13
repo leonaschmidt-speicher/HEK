@@ -1,0 +1,34 @@
+<% provide :title, 'Hausmeister' %>
+<article id="knoeppels">
+  <img src="/images/hausmeister/martina-und-guenther-knoeppel.jpg" alt="Martina und Günther Knöppel" />
+  <div class="postit">
+    <dl>
+      <dt>Sprechstunden</dt>
+      <dd>Mo - Sa, 8:00 - 12:00 Uhr</dd>
+      <dd>Mo, Di <abbr title="und">&amp;</abbr> Do, Fr, 14:30 - 18:00 Uhr</dd>
+      <dt>Telefon</dt>
+      <dd>0721 / 8695 - 1022</dd>
+      <dt>E-Mail</dt>
+        <dd><%= mail_to 'hausmeister@hek.uni-karlsruhe.de', 'hausmeister@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+    </dl>
+    <img class="background" src="/images/postit.png" alt="Postit" />
+  </div>
+  <p>
+    Unser Hausmeisterehepaar Martina und Günther Knöppel hält das HEK zusammen. Während Frau Knöppel Herrn Zilly einiges an Schreibarbeit abnimmt, Ein- und Auszüge koordiniert und durchführt, kümmert sich ihr Mann um kleinere und größere Reparaturen im Haus und übernimmt die Renovierung der Zimmer bei einem Bewohnerwechsel.
+  </p>
+  <p>
+    Außerdem nehmen Knöppels Pakete für die Bewohner an und sortieren die Post. Nebenbei beaufsichtigen sie unser <a href="#charlie">Sicherheitspersonal</a>.
+  </p>
+  <p>
+    Die beiden sind seit 2003 im HEK und seither nicht mehr wegzudenken. Sie haben zwei Töchter und drei Enkelkinder.
+  </p>
+  <p id="charlie">
+    Unser Haus- und Hofhund Charlie ist für den Wachschutz zuständig &#8212; zumindest dann, wenn er nicht gerade damit beschäftigt ist, sein Lieblings-Kuscheltier zu zerkauen. Ansonsten trifft man ihn auch häufig im Eingangsbereich, wo er darauf wartet, ausgiebig gekrault zu werden.
+  </p>
+</article>
+<article id="opp">
+  <img style="display: none" src="/images/hausmeister/frau-opp.jpg" alt="Frau Opp" />
+  <p>
+    Seit 2001 ist Frau Opp die gute Seele im Haus. Als unsere Reinigungskraft sorgt sie für Sauberkeit in den sanitären Anlagen und Küchen, doch natürlich müssen auch die Bewohner selbst mit Hand anlegen &ndash; einmal im Semester wird die sauberste Etage öffentlich gekürt. Außerdem verschönert sie jedem auch mit ihrem herzlichen „Guten Morgen!“ den Tag.
+  </p>
+</article>
