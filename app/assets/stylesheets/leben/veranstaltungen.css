@@ -1,0 +1,100 @@
+#veranstaltungen article {
+  float: left;
+  width: 319px;
+  margin-top: 2.4em;
+  border-right: 1px solid #ccc;
+}
+#veranstaltungen article a:hover {
+  color: #fff;
+  background-color: #333;
+}
+#veranstaltungen #parkplatzfest, #veranstaltungen #weck {
+  border-right: none;
+}
+#veranstaltungen #bar, #veranstaltungen #sport, #veranstaltungen #weck {
+  height: 48em;
+}
+#veranstaltungen .logo {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 9px;
+}
+#veranstaltungen big {
+  display: block;
+  font-size: 4.8em;
+  line-height: 1em;
+  height: 1em;
+  text-align: center;
+}
+#veranstaltungen sup {
+  position: relative;
+  top: -0.28em;
+  font-size: 0.667em;
+  border-bottom: 2px solid;
+}
+#veranstaltungen small {
+  display: block;
+  font-size: 1.2em;
+  text-align: center;
+}
+#veranstaltungen article div {
+  height: 33.6em;
+}
+*+html #veranstaltungen article div {
+  height: 36em;
+}
+#veranstaltungen p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#veranstaltungen #main ul {
+  list-style: none;
+  overflow: hidden;
+}
+#veranstaltungen #main ul li {
+  display: block;
+  float: left;
+  margin: 0 10px;
+  width: 86px;
+  text-align: center;
+}
+#veranstaltungen #main ul li.middle {
+  margin: 0 11px;
+}
+#veranstaltungen #main ul li.right {
+  margin-right: 9px;
+}
+#veranstaltungen #main ul img, #veranstaltungen #main ul a {
+  display: block;
+  width: 86px;
+  height: 57px;
+}
+#veranstaltungen #main ul a {
+  font-size: 1.6em;
+}
+#veranstaltungen #main ul .more {
+  height: 52px;
+  padding-top: 5px;
+}
+#veranstaltungen #main ul small {
+  font-size: 1em;
+}
+#veranstaltungen .swap-view {
+  display: block;
+  width: 300px;
+  height: 192px;
+  margin: 2em 1em;
+  overflow: hidden;
+}
+#veranstaltungen .swap-view ol {
+  margin: 0;
+  width: 1500px;
+  list-style: none;
+}
+#veranstaltungen .swap-view li {
+  float: left;
+}
+#veranstaltungen .swap-view img {
+  display: block;
+  width: 300px;
+}

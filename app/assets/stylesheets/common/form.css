@@ -1,0 +1,156 @@
+fieldset {
+  margin: 2.4em 0;
+}
+form .text {
+  width: 62em;
+  margin: 0 10px;
+  margin-bottom: 1.2em;
+}
+form p, form ul, form ol.errors {
+  margin: 1.2em 0;
+  margin-bottom: 0;
+}
+form p {
+  font-size: 1em;
+}
+form .text p {
+  margin-top: 0.75em;
+  font-size: 1.6em;
+  line-height: 1.5em;
+}
+form .file a {
+  float: left;
+  display: block;
+  height: 1.5em;
+  margin: 0 10px;
+  font-size: 1.6em;
+  border-bottom: none;
+}
+form .file .img {
+  height: auto;
+  font-size: 1em;
+}
+form .file img {
+  display: block;
+  height: 4.8em;
+}
+form .file input {
+  display: block;
+  overflow: hidden;
+}
+form ul {
+  list-style: none;
+  overflow: hidden;
+}
+form .text ul {
+  padding-left: 2em;
+  list-style: disc outside;
+}
+form ol.errors {
+  margin-left: 3.2em;
+}
+form ul li {
+  float: left;
+}
+form .text ul li {
+  float: none;
+  font-size: 1.6em;
+}
+form ol.errors li, form .text p.errors {
+  font-size: 1.6em;
+  color: #c00;
+}
+label, input, select, textarea, form span {
+  margin: 0 10px;
+  padding: 0;
+  font-size: 1.6em;
+}
+#map legend, #map label, #map input, #map select, #map textarea {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: small;
+}
+#map input {
+  margin-right: 0.5em;
+}
+input[disabled] {
+  color: #aaa;
+}
+legend {
+  display: block;
+  padding: 0 10px;
+  padding-bottom: 12px;
+  font-size: 1.8em;
+}
+label {
+  display: block;
+}
+legend label {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+}
+.radio label[for] {
+  display: inline;
+  margin-left: 0;
+}
+form .errors label {
+  margin: 0;
+  font-size: 1em;
+}
+label em {
+  padding-left: 0.25em;
+  color: #c00;
+}
+input, textarea {
+  line-height: 1em;
+}
+input.error, textarea.error {
+  background-color: #fee;
+}
+form span {
+  display: block;
+  font-size: 1.2em;
+  color: #aaa;
+}
+form nav {
+  margin: 2.4em 0;
+  padding-top: 2.4em;
+  border-top: 1px solid #ccc;
+}
+form nav a {
+  padding: 0 10px;
+  font-size: 1.6em;
+}
+form nav a:hover {
+  text-decoration: underline;
+}
+@-moz-document url-prefix() {
+  legend {
+    padding-bottom: 0;
+  }
+  label {
+    padding-top: 12px;
+  }
+  p label, li label {
+    padding: 0;
+  }
+  #mitteilungen {
+    margin-top: 12px;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
+  legend {
+    padding-bottom: 0;
+  }
+  label {
+    padding-top: 12px;
+  }
+  p label, li label {
+    padding: 0;
+  }
+  #mitteilungen {
+    margin-top: 12px;
+  }
+}

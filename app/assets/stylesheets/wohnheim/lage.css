@@ -1,0 +1,12 @@
+#lage #map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+#lage #map div[dir] {
+  font-size: 1em;
+  line-height: 1.5em;
+}

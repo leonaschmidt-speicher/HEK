@@ -1,0 +1,143 @@
+#geschichte {
+  height: 100%;
+}
+#geschichte #main {
+  position: relative;
+  width: 16632px;
+  min-height: 648px;
+  height: 100%;
+}
+#geschichte #zeitstrahl {
+  position: absolute;
+  width: 100%;
+  height: 48px;
+  bottom: 19.2em;
+  background: url(/images/geschichte/zeitstrahl.png) left center repeat-x;
+}
+#geschichte article {
+  position: absolute;
+  bottom: 7.2em;
+  width: 320px;
+}
+#geschichte p {
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+#geschichte img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 4.8em;
+  height: 120px;
+}
+#geschichte img[src=""] {
+  width: 180px;
+  background-color: #222;
+}
+#geschichte aside nav {
+  position: fixed;
+  left: 0;
+  bottom: 2.4em;
+  width: 100%;
+  text-align: center;
+  z-index: 50;
+}
+#geschichte aside nav a {
+  display: inline-block;
+  font-size: 2.4em;
+  width: 15px;
+  margin-left: 5px;
+  background: url(/images/geschichte/pfeile.png) right center no-repeat;
+  text-indent: -9999px;
+  *text-indent: 0;
+  *font-size: 0;
+}
+#geschichte aside nav a:first-child {
+  margin-left: 0;
+  margin-right: 5px;
+  background-position: left center;
+}
+#geschichte #jahr-1960 {
+  left: 320px;
+}
+#geschichte #jahr-1963 {
+  left: 1120px; /* 1280px */
+  width: 640px;
+}
+#geschichte #jahr-1963 p {
+  float: left;
+  width: 300px;
+}
+#geschichte #jahr-1966 {
+  left: 2240px;
+}
+#geschichte #jahr-1967 {
+  left: 2560px;
+}
+#geschichte #jahr-1968 {
+  left: 2880px;
+}
+#geschichte #jahr-1971 {
+  left: 3840px;
+}
+#geschichte #jahr-1973 {
+  left: 4320px; /* 4480px */
+  width: 640px;
+}
+#geschichte #jahr-1973 p {
+  float: left;
+  width: 300px;
+}
+#geschichte #jahr-1983 {
+  left: 7680px;
+}
+#geschichte #jahr-1984 {
+  left: 8000px;
+  width: 640px;
+}
+#geschichte #jahr-1984 p {
+  float: left;
+  width: 300px;
+}
+#geschichte #jahr-1984 h2, #geschichte #jahr-1984 h3 {
+  clear: left;
+  width: 300px;
+  margin: 0 10px;
+  white-space: nowrap;
+}
+#geschichte #jahr-1984 img {
+  margin-left: 111px;
+}
+#geschichte #jahr-1987 {
+  left: 8960px;
+}
+#geschichte #jahr-1991 {
+  left: 10240px;
+}
+#geschichte #jahr-1997 {
+  left: 12160px;
+  width: 480px;
+}
+#geschichte #jahr-2001 {
+  left: 13440px;
+}
+#geschichte #jahr-2003 {
+  left: 13920px; /* 14080px */
+  width: 640px;
+}
+#geschichte #jahr-2003 p {
+  float: left;
+  width: 300px;
+}
+#geschichte #jahr-2005 {
+  left: 14720px;
+}
+#geschichte #jahr-2008 {
+  left: 15680px;
+}
+#geschichte #jahr-2009 {
+  left: 16000px;
+}
+#geschichte #jahr-2010 {
+  left: 16320px;
+}

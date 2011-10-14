@@ -1,0 +1,67 @@
+#tutoriate #main p {
+  margin: 1.5em 10px;
+}
+#tutoriate article nav {
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+*+html #tutoriate article nav {
+  padding-bottom: 24px;
+}
+#tutoriate article nav a {
+  float: left;
+  width: 137px;
+  margin-bottom: 2.4em;
+}
+#tutoriate article nav a:hover {
+  text-decoration: underline;
+}
+#tutoriate article nav img {
+  display: block;
+  margin: 0 auto;
+  width: 117px;
+  height: 72px;
+}
+#tutoriate article nav figcaption {
+  font-size: 1.6em;
+  text-align: center;
+  white-space: nowrap;
+}
+#tutoriate section {
+  padding-top: 2.4em;
+  padding-bottom: 2.3em;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+#tutoriate .last {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+#tutoriate section figure {
+  float: left;
+}
+#tutoriate section img {
+  display: block;
+  margin: 0 10px;
+  margin-bottom: 3.3em;
+  width: 220px;
+  height: 135px;
+}
+#tutoriate #main section p {
+  margin-top: 0;
+  margin-left: 250px;
+  width: 380px;
+}
+#tutoriate section .postit {
+  margin-top: 0;
+}
+#tutoriate .back-to-top {
+  clear: both;
+  display: block;
+  margin: 0 10px;
+  font-size: 1.6em;
+  text-align: right;
+}
+#tutoriate .back-to-top:hover {
+  text-decoration: underline;
+}

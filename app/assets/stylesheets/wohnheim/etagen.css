@@ -1,0 +1,17 @@
+#etagen article p {
+  margin: 1.5em 10px;
+}
+*+html #etagen .postit {
+  margin-top: 24px;
+}
+#etagen article figure {
+  /*position: relative;
+  display: block;
+  width: 940px;*/
+  width: 940px;
+  margin: 2.4em auto;
+  /*overflow: hidden;*/
+}
+#etagen figure ol {
+  display: none;
+}

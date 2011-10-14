@@ -1,0 +1,39 @@
+#impressum #main h2 {
+  margin: 1em 0;
+}
+#impressum #main h3 {
+  margin: 1.333333em 0;
+}
+#impressum #main ol {
+  margin: 0 1em;
+  list-style: none;
+  text-align: center;
+}
+#impressum #main li {
+  font-size: 1.6em;
+}
+#impressum #main dl {
+  margin: 2.4em 1em;
+  text-align: center;
+}
+#impressum #main dt {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+#impressum #main dd {
+  font-size: 1.6em;
+}
+#impressum #main dd a {
+  border-bottom: 1px solid;
+}
+#impressum #main dd a:hover {
+  color: #fff;
+  background-color: #444;
+}
+#impressum p {
+  width: 620px;
+  margin: 1.5em auto;
+  margin-bottom: 0;
+  text-align: center;
+}

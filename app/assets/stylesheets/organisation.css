@@ -1,0 +1,90 @@
+#organisation #main p {
+  margin: 1.5em 10px;
+}
+#organisation article {
+  margin-top: 4.8em;
+  text-align: center;
+  overflow: hidden;
+}
+#organisation #kuratorium {
+  background: url(/images/organisation/geschweifte-klammer-kuratorium.png) 667px 1px no-repeat;
+}
+#organisation #konvent {
+  background: url(/images/organisation/geschweifte-klammer-konvent.png) 667px top no-repeat;
+}
+#organisation #etagen-und-heimversammlung {
+  background: url(/images/organisation/geschweifte-klammer-etagen-und-heimversammlung.png) 667px 1.2em no-repeat;
+}
+#organisation article a {
+  float: left;
+  display: block;
+  overflow: hidden;
+}
+#organisation #konvent a {
+  width: 640px;
+}
+#organisation article a:hover * {
+  text-decoration: underline;
+}
+#organisation article h2 {
+  width: 640px;
+}
+#organisation article small {
+  display: block;
+  font-size: 1.2em;
+}
+#organisation section {
+  float: left;
+  width: 320px;
+  margin-top: 2.4em;
+}
+#organisation #etagen-und-heimversammlung section {
+  margin-top: 0;
+  padding: 1.2em 0;
+}
+#organisation section h2 {
+  width: auto;
+}
+#organisation .people {
+  float: left;
+  width: 140px;
+  margin: 2.4em 1em; margin-bottom: 0;
+}
+#organisation #konvent .people, #organisation #etagen-und-heimversammlung .people {
+  width: 300px;
+}
+#organisation .people div, #organisation .people li {
+  display: block;
+  font-size: 1.6em;
+}
+#organisation .people ul {
+  list-style: none;
+  margin-left: 0;
+}
+#organisation .people img {
+  display: block;
+  height: 7.2em;
+  margin: 0 auto;
+}
+#organisation #etagenbewohner img {
+  width: 218px;
+}
+#organisation #heimbewohner img {
+  width: 244px;
+}
+#organisation aside {
+  float: left;
+  padding-left: 90px;
+  width: 220px;
+  font-size: 1.6em;
+  text-align: left;
+}
+#organisation #kuratorium aside {
+  margin-top: 4.5em;
+}
+#organisation #konvent aside {
+  margin-top: 2.25em;
+}
+#organisation #etagen-und-heimversammlung aside {
+  margin-top: 0;
+}

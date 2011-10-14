@@ -1,0 +1,109 @@
+#gemeinschaftsraeume header, #lage header, #geschichte header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+}
+#gemeinschaftsraeume header, #lage header {
+  height: 2.4em;
+  padding-bottom: 0;
+  overflow: hidden;
+  /*   -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;*/
+}
+#gemeinschaftsraeume header:hover, #lage header:hover {
+  height: 14.4em;
+}
+#gemeinschaftsraeume header nav, #lage header nav {
+  border-bottom: none;
+}
+#gemeinschaftsraeume footer, #lage footer, #geschichte footer {
+  display: none;
+}
+#show-navigation {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0.25em;
+  width: 100%;
+  font-size: 1.2em;
+  color: #aaa;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 10;
+/*    -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;*/
+}
+header:hover #show-navigation {
+  color: #fff;
+}
+
+/*#gemeinschaftsraeume #main {
+  width: 1600%;
+}*/
+#gemeinschaftsraeume article {
+  float: left;
+  position: relative;
+  /*width: 6.25%;*/
+}
+#gemeinschaftsraeume h2 {
+  display: none;
+}
+#gemeinschaftsraeume img {
+  display: block;
+  width: 100%;
+}
+#gemeinschaftsraeume article aside {
+  position: absolute;
+  top: 4.8em;
+  left: 0;
+  width: 320px;
+  padding: 0 2.4em;
+  color: #ddd;
+  background-color: #222;
+  font-size: 10px;
+}
+#gemeinschaftsraeume .postit {
+  float: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  margin-top: 4.8em;
+}
+#gemeinschaftsraeume .postit dl {
+  position: relative;
+  z-index: 1;
+}
+#gemeinschaftsraeume .postit .background {
+  z-index: 0;
+}
+#gemeinschaftsraeume aside nav {
+  position: fixed;
+  bottom: 0.8em;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+#gemeinschaftsraeume aside nav a {
+  display: inline-block;
+  font-size: 1.6em;
+  margin-right: 1em;
+  padding: 0 0.25em;
+  color: #ddd;
+  background-color: #222;
+}
+#gemeinschaftsraeume aside nav a.current, #gemeinschaftsraeume aside nav a:hover {
+  color: #222;
+  background-color: #ddd;
+}
+#gemeinschaftsraeume aside nav div {
+  display: inline-block;
+  margin-bottom: 1.6em;
+}

@@ -4,4 +4,9 @@ class GenericController < ApplicationController
     @site = params[:site]
     render "#{@group}/#{@site || 'index'}"
   end
+
+  # ZenPhoto benötigt Navigation.
+  def navigation
+    render :partial => 'layouts/navigation'
+  end
 end

@@ -1,0 +1,28 @@
+#startseite #main {
+  overflow: hidden;
+}
+#startseite #main .container {
+  overflow: visible;
+}
+#startseite article {
+  clear: both;
+  margin: 2.4em 0;
+}
+#startseite section {
+  float: left;
+  width: 300px;
+  margin: 0 1em;
+}
+#startseite section a:hover h2, #startseite section a:hover p {
+  text-decoration: underline;
+}
+#startseite section h2 {
+  white-space: nowrap;
+}
+#startseite section h2 img {
+  display: block;
+  margin: 0 auto;
+}
+#startseite section p {
+  text-align: center;
+}

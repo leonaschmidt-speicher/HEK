@@ -1,0 +1,45 @@
+#hermann-ehlers #container {
+  width: auto;
+}
+#hermann-ehlers header, #hermann-ehlers article, #hermann-ehlers #nachlass div {
+  width: 960px;
+  margin: 0 auto;
+}
+#hermann-ehlers footer {
+  background-image: url(/images/footer-black.jpg);
+}
+#hermann-ehlers #nachlass {
+  width: auto;
+  color: #ddd;
+  background: #222 url(/images/hermann-ehlers/nachlass.png) repeat-x top;
+  overflow: hidden;
+}
+#hermann-ehlers section {
+  margin: 2.4em 0;
+  overflow: hidden;
+}
+#hermann-ehlers h2, #hermann-ehlers p, #hermann-ehlers aside {
+  display: block;
+  float: left;
+  width: 300px;
+  margin: 0 10px;
+}
+#hermann-ehlers h2, #hermann-ehlers aside {
+  text-align: center;
+  font-size: 3.6em;
+  line-height: 1.333em;
+}
+#hermann-ehlers small {
+  display: block;
+  font-size: 0.444em;
+  line-height: 0.5em;
+  margin-top: 1em;
+}
+#hermann-ehlers article img {
+  display: block;
+  margin: 2.4em auto;
+}
+#hermann-ehlers section img {
+  display: block;
+  margin: 0 auto;
+}

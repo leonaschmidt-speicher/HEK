@@ -1,0 +1,44 @@
+footer {
+  height: 276px;
+  padding-top: 2.4em;
+  background: url(/images/footer.jpg) repeat-x center top;
+}
+footer #logo {
+  float: left;
+  display: block;
+  margin-top: 2.4em;
+  font-size: 1em;
+}
+footer #logo img {
+  display: block;
+}
+footer nav, footer #anschrift {
+  float: left;
+  margin: 2.4em 170px;
+  margin-bottom: 0;
+  width: 300px;
+  text-align: center;
+}
+footer nav {
+  margin-top: 4.2em;
+}
+footer nav a {
+  margin: 0 0.625em;
+  font-weight: bold;
+}
+footer #anschrift {
+  padding-top: 2.3em;
+  border-top: 1px solid #ccc;
+}
+footer ol {
+  margin: 0;
+  margin-bottom: 2.4em;
+  list-style: none;
+}
+footer li, footer a {
+  color: #fff;
+  font-size: 1.6em;
+}
+footer a:hover {
+  text-decoration: underline;
+}

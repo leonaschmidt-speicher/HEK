@@ -12,7 +12,7 @@
         <li itemprop="streetAddress">Willy-Andreas-Allee 1</li>
         <li><span itemprop="postalCode">76131</span> <span itemprop="addressLocality">Karlsruhe</span></li>
       </ol>
-      <a href="mailto:%6c%65%69%74%75%6e%67%40%68%65%6b%2e%75%6e%69%2d%6b%61%72%6c%73%72%75%68%65%2e%64%65" itemprop="email">ed&#46;ehurslrak-inu&#46;keh&#64;gnutiel</a>
+      <%= mail_to 'leitung@hek.uni-karlsruhe.de', 'leitung@hek.uni-karlsruhe.de'.reverse, :encode => 'hex', :itemprop => 'email' %>
     </div>
   </div>
 </footer>

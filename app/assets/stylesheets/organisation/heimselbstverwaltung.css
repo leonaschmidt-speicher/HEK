@@ -1,0 +1,42 @@
+#heimselbstverwaltung p {
+  margin: 1.5em 10px;
+}
+#heimselbstverwaltung figure {
+  text-align: center;
+}
+#heimselbstverwaltung figcaption {
+  font-size: 1.2em;
+}
+#heimselbstverwaltung article img {
+  display: block;
+  margin: 0 auto;
+}
+#heimselbstverwaltung #etage2, #heimselbstverwaltung #heim {
+  float: left;
+  width: 480px;
+}
+#heimselbstverwaltung #etagenversammlung {
+  margin-bottom: 4.8em;
+}
+#heimselbstverwaltung #etagensprecher, #heimselbstverwaltung #heimsprecher, #heimselbstverwaltung #kuratorium {
+  clear: both;
+  padding-top: 9.6em;
+  background: url(/images/heimselbstverwaltung/schmale-spitze-klammer.png) center top no-repeat;
+  zoom: 1;
+}
+#heimselbstverwaltung #konvent {
+  clear: both;
+  padding-top: 16.8em;
+  background: url(/images/heimselbstverwaltung/weite-spitze-klammer.png) center top no-repeat;
+  zoom: 1;
+}
+#heimselbstverwaltung #konvent p, #heimselbstverwaltung #kuratorium p {
+  margin: 1.5em auto;
+  width: 460px;
+}
+#heimselbstverwaltung #verein {
+  clear: both;
+  padding-top: 19.2em;
+  background: url(/images/heimselbstverwaltung/geschweifte-klammer.png) center top no-repeat;
+  zoom: 1;
+}

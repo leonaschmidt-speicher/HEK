@@ -1,0 +1,177 @@
+#kontakt #main h2, #kontakt #main h3 {
+  text-align: left;
+}
+#kontakt #main p {
+  width: 300px;
+  margin: 1.5em 10px;
+}
+#kontakt article {
+  clear: both;
+  height: 432px;
+  overflow: hidden;
+}
+#kontakt #heimsprecher {
+  height: 480px;
+  overflow: visible;
+}
+#kontakt article .karte {
+  position: relative;
+  margin: 2.4em 40px 2.4em 10px;
+  padding: 4.8em;
+  padding-left: 6em;
+  width: 482px;
+  height: 297px;
+  background: url(/images/kontakt/karte.jpg) top left no-repeat;
+}
+#kontakt #heimleiter2 .karte, #kontakt #heimsprecher .karte {
+  float: left;
+}
+#kontakt #heimleiter2 .karte {
+     -moz-transform: rotate(-3deg);
+       -o-transform: rotate(-3deg);
+  -webkit-transform: rotate(-3deg);
+      -ms-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+             filter: progid:DXImageTransform.Microsoft.Matrix(
+                     M11=0.9986295347545738, M12=0.05233595624294383, M21=-0.05233595624294383, M22=0.9986295347545738, sizingMethod='auto expand');
+               zoom: 1;
+}
+#kontakt #hausmeister2 .karte {
+  float: right;
+     -moz-transform: rotate(2deg);
+       -o-transform: rotate(2deg);
+  -webkit-transform: rotate(2deg);
+      -ms-transform: rotate(2deg);
+          transform: rotate(2deg);
+             filter: progid:DXImageTransform.Microsoft.Matrix(
+                     M11=0.9993908270190958, M12=-0.03489949670250097, M21=0.03489949670250097, M22=0.9993908270190958, sizingMethod='auto expand');
+               zoom: 1;
+}
+#kontakt #heimsprecher .karte {
+     -moz-transform: rotate(1deg);
+       -o-transform: rotate(1deg);
+  -webkit-transform: rotate(1deg);
+      -ms-transform: rotate(1deg);
+          transform: rotate(1deg);
+             /*filter: progid:DXImageTransform.Microsoft.Matrix(
+                     M11=0.9998476951563913, M12=-0.01745240643728351, M21=0.01745240643728351, M22=0.9998476951563913, sizingMethod='auto expand');*/
+               zoom: 1;
+}
+#kontakt .karte img {
+  display: block;
+  float: right;
+  margin-right: 10px;
+}
+#kontakt .karte h2 a {
+ display: block;
+  width: 233px;
+  height: 35px;
+  text-indent: -9999px;
+}
+#kontakt #heimleiter2 h2 a {
+  background: url(/images/kontakt/stempel-heimleiter.png) top left no-repeat;
+}
+#kontakt #hausmeister2 h2 a {
+  background: url(/images/kontakt/stempel-hausmeister.png) top left no-repeat;
+}
+#kontakt #heimsprecher h2 a {
+  background: url(/images/kontakt/stempel-heimsprecher.png) top left no-repeat;
+}
+#kontakt #heimleiter2 h3, #kontakt #hausmeister2 h3, #kontakt #heimsprecher h3 {
+  float: left;
+  margin: 1.5em 10px;
+  margin-bottom: 0;
+  width: 300px;
+  font-size: 1.6em;
+  font-style: italic;
+}
+*+html #kontakt #heimleiter2 h3, *+html #kontakt #hausmeister2 h3, *+html #kontakt #heimsprecher h3 {
+  width: 280px;
+}
+#kontakt .karte ol {
+  position: absolute;
+  bottom: 16.8em;
+  margin: 0;
+  list-style: none;
+  font-family: DomesticMannersRegular, Georgia, Times, 'Times New Roman', serif;
+}
+#kontakt .karte li {
+  font-size: 2em;
+}
+#kontakt #heimleiter2 p, #kontakt #hausmeister2 p, #kontakt #heimsprecher p {
+  width: 300px;
+  float: left;
+}
+*+html #kontakt #heimleiter2 p, *+html #kontakt #hausmeister2 p, *+html #kontakt #heimsprecher p {
+  width: 280px;
+}
+#kontakt .postit {
+  float: none;
+  position: absolute;
+  top: 180px;
+  left: 300px;
+  margin: 0;
+  z-index: 1;
+}
+#kontakt #sie {
+  top: 300px;
+  left: 240px;
+}
+#kontakt #er {
+  top: 312px;
+  left: 400px;
+  z-index: 2;
+}
+*+html #kontakt #sie {
+  top: 328px;
+}
+*+html #kontakt #er {
+  top: 340px;
+}
+#kontakt #anreise {
+  padding-top: 2.4em;
+  border-top: 1px solid #ccc;
+  height: auto;
+}
+#kontakt #anreise section {
+  width: 460px;
+  margin: 2.4em 10px;
+}
+#kontakt #anreise ol {
+  list-style: none;
+  margin: 2.4em 10px;
+}
+#kontakt #anreise ul {
+  list-style: none;
+  margin-top: 0;
+}
+#kontakt #anreise li {
+  font-size: 1.6em;
+}
+#kontakt #anreise h2 {
+  margin: 0 10px;
+}
+#kontakt #anreise h3 {
+  font-size: 1.6em;
+  font-style: italic;
+}
+#kontakt #anreise p {
+  margin: 0;
+}
+#kontakt #anreise a {
+  font-size: 1.6em;
+}
+#kontakt #anreise #map a {
+  font-size: 11px;
+}
+#kontakt #anreise #map {
+  float: right;
+  width: 460px;
+  height: 312px;
+  margin: 0 10px;
+  margin-top: 2.4em;
+}
+*+html #kontakt #anreise #map {
+  height: 288px;
+  z-index: -2;
+}

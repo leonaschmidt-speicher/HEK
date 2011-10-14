@@ -1,0 +1,40 @@
+#hausmeister #main {
+  overflow: hidden;
+}
+#hausmeister #main .container {
+  overflow: visible;
+}
+#heimleiter #aufgaben img, #hausmeister #main img {
+  display: block;
+  margin: 0 10px;
+}
+#heimleiter #aufgaben img, #hausmeister #knoeppels img {
+  float: left;
+}
+*+html #heimleiter #aufgaben img, *+html #hausmeister #knoeppels img {
+  margin-top: 24px;
+}
+#hausmeister #knoeppels img {
+  margin-left: -42px;
+}
+#heimleiter #person img, #hausmeister #opp img {
+  float: right;
+}
+#heimleiter #person img {
+  display: block;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+#hausmeister #opp img {
+  height: 216px;
+}
+#heimleiter #main p, #hausmeister #main p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#heimleiter #aufgaben p, #hausmeister #knoeppels p {
+  margin-left: 330px;
+}
+*+html #heimleiter .postit, *+html #hausmeister .postit {
+  margin-top: 24px;
+}

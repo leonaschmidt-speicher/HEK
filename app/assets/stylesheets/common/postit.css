@@ -1,0 +1,61 @@
+.postits {
+  float: right;
+}
+.postit {
+  position: relative;
+  float: right;
+  width: 252px;
+  margin: 0 10px 2.4em 20px;
+  padding: 2.4em;
+  z-index: 999;
+}
+.postits .postit {
+  float: none;
+}
+*+html .postit {
+  background-color: #F4F363;
+}
+.postit dt {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #BEA336;
+}
+.postit dd {
+  font-size: 1.6em;
+  white-space: nowrap;
+}
+#bewohnerzimmer .postit, #bewerbung .postit, #tutoriate .postit {
+  margin-top: 2.4em;
+}
+#bewerbung .postit dd {
+  white-space: normal;
+}
+.postit a {
+  border-bottom: 1px solid #444;
+}
+.postit a:hover {
+  color: #fff;
+  background-color: #444;
+}
+.postit ol {
+  margin: 0 !important;
+  list-style: decimal outside !important;
+  overflow: visible !important;
+}
+.postit li {
+  float: none !important;
+  margin: 0 0 0 1.5em !important;
+}
+.postit .background {
+  float: none !important;
+  position: absolute !important;
+  left: -0.8em !important;/*-2.4em;*/
+  top: 0 !important;/*-2.4em;*/
+  width: 105% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  z-index: -1;
+}
+*+html .postit .background {
+  display: none !important;
+}
