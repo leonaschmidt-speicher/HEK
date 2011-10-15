@@ -2,7 +2,7 @@ class GenericController < ApplicationController
   def show
     @group = params[:group]
     @site = params[:site]
-    render "#{@group}/#{@site || 'index'}"
+    render "#{@group || 'startseite'}/#{@site}"
   end
 
   # ZenPhoto benötigt Navigation.
