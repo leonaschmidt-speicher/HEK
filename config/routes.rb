@@ -1,4 +1,6 @@
 Hek::Application.routes.draw do
+  resources :applications
+
   match 'navigation' => 'generic#navigation'
   match ':group(/:site)' => 'generic#show'
   root :to => 'generic#show'
