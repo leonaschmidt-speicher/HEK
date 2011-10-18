@@ -1,8 +1,8 @@
 Hek::Application.routes.draw do
-  resources :applications
+  resources :bewerbungen
 
   match 'navigation' => 'generic#navigation'
-  match 'bewerbung'  => 'applications#show'
+  match 'bewerbung'  => 'bewerbungen#index'
   match ':group(/:site)' => 'generic#show'
   root :to => 'generic#show'
 

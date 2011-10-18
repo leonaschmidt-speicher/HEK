@@ -1,4 +1,5 @@
-class Application < ActiveRecord::Base
+class Bewerbung < ActiveRecord::Base
+  set_table_name "bewerbungen"
   has_attached_file :photo, {
     :styles => { :medium => "300x300>", :thumb => "100x100>" },
     :url => "/uploads/:hash.:extension",

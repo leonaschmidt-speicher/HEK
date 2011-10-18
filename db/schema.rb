@@ -13,10 +13,10 @@
 
 ActiveRecord::Schema.define(:version => 20111015094814) do
 
-  create_table 'applications', :force => true do |t|
+  create_table 'bewerbungen', :force => true do |t|
     t.string   'vorname'
     t.string   'nachname'
-    t.:date    'geburtsdatum'
+    t.date    'geburtsdatum'
     t.string   'staatsangehoerigkeit'
     t.string   'familienstand'
     t.string   'religion'

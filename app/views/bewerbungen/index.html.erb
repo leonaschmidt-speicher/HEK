@@ -1,0 +1,22 @@
+<% provide :javascript, '...' %>
+<h1>Listing Bewerbungen</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @bewerbungen.each do |bewerbung| %>
+  <tr>
+    <td><%= bewerbung.vorname %></td>
+    <td><%= link_to 'Show', bewerbung %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bewerbung', bewerbung_path %>
+
+<% #<?php if ($page_id == 'bewerbung' && !empty($errors)) { ?><script>window.location.hash = "#<?php if ($errors['persoenliches']) echo 'persoenliches'; else if ($errors['organisatorisches']) echo 'organisatorisches'; else echo 'motivation'; ?>"</script><?php } ?> %>
