@@ -11,60 +11,58 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111015094814) do
+ActiveRecord::Schema.define(:version => 20111018152742) do
 
-  create_table 'bewerbungen', :force => true do |t|
-    t.string   'vorname'
-    t.string   'nachname'
-    t.date    'geburtsdatum'
-    t.string   'staatsangehoerigkeit'
-    t.string   'familienstand'
-    t.string   'religion'
-    t.string   'strasse_und_nummer'
-    t.integer  'plz'
-    t.string   'ort'
-    t.string   'land'
-    t.string   'e_mail'
-    t.string   'mobiltelefon'
-    t.string   'festnetztelefon'
-    t.string   'hochschule'
-    t.string   'hauptfach'
-    t.string   'anzahl_abgeschlossener_fachsemester'
-    t.string   'studienende'
-    t.string   'angestrebter_abschluss'
-    t.string   'firma'
-    t.string   'firma_plz'
-    t.string   'firma_ort'
-    t.boolean  'waehrend_der_praxisphasen_im_hek'
-    t.date     'fruehestens'
-    t.date     'wunsch'
-    t.date     'spaetestens'
-    t.integer  'geplante_wohndauer'
-    t.date     'komme_vorbei_am'
-    t.date     'sprechstunde_im_monat'
-    t.string   'vorstellungsgespraech_nicht_moeglich'
-    t.text     'mitteilungen'
-    t.text     'informationen'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
-
-    t.string   'photo_file_name'
-    t.string   'photo_content_type'
-    t.integer  'photo_file_size'
-
-    t.string   'cv_file_name'
-    t.string   'cv_content_type'
-    t.integer  'cv_file_size'
+  create_table "bewerbungen", :force => true do |t|
+    t.string   "vorname"
+    t.string   "nachname"
+    t.date     "geburtsdatum"
+    t.string   "staatsangehoerigkeit"
+    t.string   "familienstand"
+    t.string   "religion"
+    t.string   "strasse_und_nummer"
+    t.integer  "plz"
+    t.string   "ort"
+    t.string   "land"
+    t.string   "email"
+    t.string   "mobiltelefon"
+    t.string   "festnetztelefon"
+    t.string   "hochschule"
+    t.string   "hauptfach"
+    t.integer  "anzahl_abgeschlossener_fachsemester"
+    t.date     "studienende"
+    t.string   "angestrebter_abschluss"
+    t.string   "firma"
+    t.integer  "firma_plz"
+    t.string   "firma_ort"
+    t.boolean  "waehrend_der_praxisphasen_im_hek"
+    t.date     "fruehestens"
+    t.date     "wunsch"
+    t.date     "spaetestens"
+    t.integer  "geplante_wohndauer"
+    t.date     "komme_vorbei_am"
+    t.date     "sprechstunde_im_monat"
+    t.time     "vorstellungsgespraech_nicht_moeglich"
+    t.text     "mitteilungen"
+    t.text     "informationen"
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.string   "lebenslauf_file_name"
+    t.string   "lebenslauf_content_type"
+    t.integer  "lebenslauf_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table 'sessions', :force => true do |t|
-    t.string   'session_id', :null => false
-    t.text     'data'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index 'sessions', ['session_id'], :name => 'index_sessions_on_session_id'
-  add_index 'sessions', ['updated_at'], :name => 'index_sessions_on_updated_at'
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
 end
