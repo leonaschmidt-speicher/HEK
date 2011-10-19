@@ -6,6 +6,7 @@
  *= require common/reset
  *= require_self
  *= require_tree .
+ *= require bewerbung
 */
 
 @font-face {

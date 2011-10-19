@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018152742) do
+ActiveRecord::Schema.define(:version => 20111018215746) do
 
   create_table "bewerbungen", :force => true do |t|
     t.string   "vorname"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20111018152742) do
     t.integer  "lebenslauf_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "geschlecht"
   end
 
   create_table "sessions", :force => true do |t|

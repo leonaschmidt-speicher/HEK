@@ -1,2 +1,398 @@
 <% provide :javascript, '...' %>
-<?php if ($page_id == 'bewerbung' && !empty($errors)) { ?><script>window.location.hash = "#<?php if ($errors['persoenliches']) echo 'persoenliches'; else if ($errors['organisatorisches']) echo 'organisatorisches'; else echo 'motivation'; ?>"</script><?php } ?>
+<% #<?php if ($page_id == 'bewerbung' && !empty($errors)) { ?><script>window.location.hash = "#<?php if ($errors['persoenliches']) echo 'persoenliches'; else if ($errors['organisatorisches']) echo 'organisatorisches'; else echo 'motivation'; ?>"</script><?php } ?> %>
+
+<article>
+  <div id="swap-view">
+    <%= form_for(@bewerbung) do |f| %>
+      <section id="persoenliches">
+        <div class="postits">
+          <div class="postit">
+            <dl>
+              <dd>Für Oktober 2011 sind bereits alle Zimmer vergeben.</dd>
+            </dl>
+            <img class="background" src="/images/postit.png" alt="Postit" />
+          </div>
+          <div class="postit">
+            <dl>
+              <dt>Ablauf</dt>
+              <dd>
+                <ol>
+                  <li>Diese Bewerbung ausfüllen oder <a href="/documents/hek-bewerbung-formular.pdf">das Formular als PDF herunterladen</a> und per Post schicken</li>
+                  <li>Wenn möglich zum Vorstellungsgespräch vorbei kommen</li>
+                  <li>Auf Antwort vom Heimleiter warten &#8212; bei Zusage wird ein Mietvertrag geschickt, bei einer Absage können wir leider nicht jeden informieren</li>
+                  <li>Mietvertrag zurückschicken</li>
+                  <li>Einzugstermin mit Hausmeistern klären</li>
+                  <li>Viel Spaß im HEK haben!</li>
+                </ol>
+              </dd>
+            </dl>
+            <img class="background" src="/images/postit.png" alt="Postit" />
+          </div>
+          <div class="postit">
+            <dl>
+              <dt>Tipp</dt>
+              <dd>Da hier immer viele Leute aus- und einziehen erhöhst du deine Chancen ein Zimmer zu bekommen, wenn du dich mindestens 2 bis 3 Monate vorher bei uns bewirbst. Aber es werden auch ab und zu kurzfristig Zimmer frei.</dd>
+            </dl>
+            <img class="background" src="/images/postit.png" alt="Postit" />
+          </div>
+        </div>
+        <%= render :partial => '/bewerbung_steps' %>
+        <fieldset>
+          <legend><label for="bewerbung_vorname">Persönliche Angaben</label></legend>
+          <ol class="errors">
+            <li>fehlerliste der sektion Persönliche Angaben</li>
+          </ol>
+          <ul>
+            <li>
+              <%= f.label :vorname %>
+              <%= f.text_field :vorname %>
+<!-- autofocus here on first visit -->
+            </li>
+            <li>
+              <%= f.label :nachname %>
+              <%= f.text_field :nachname %>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <%= f.label :geburtsdatum %>
+              <%= date_select 'bewerbung', 'geburtsdatum', :default => 19.years.ago %>
+            </li>
+            <li>
+<!-- a nationality list would be nice for later sorting -->
+              <%= f.label :staatsangehoerigkeit %>
+              <%= f.text_field :geburtsdatum %>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <%= f.label :geschlecht %>
+              <%= f.select(:geschlecht, options_for_select(['', 'männlich', 'weiblich'])) %>
+            <li>
+              <%= f.label :familienstand %>
+              <%= f.select(:familienstand, options_for_select(['', 'ledig', 'verheiratet'])) %>
+            </li>
+          </ul>
+          <p>
+              <%= f.label :religion %>
+              <%= f.text_field :religion %>
+          </p>
+          <p class="file">
+<!-- display/link to uploaded photo here -->
+            <%= f.label :foto %>
+            <%= f.file_field :foto %>
+          </p>
+          <p class="file">
+<!-- link to uploaded lebenslauf here -->
+            <%= f.label :lebenslauf %>
+            <%= f.file_field :lebenslauf %>
+          </p>
+        </fieldset>
+        <fieldset>
+          <legend><label for="bewerbung_strasse_und_nummer">Anschrift der Eltern</label></legend>
+          <ol class="errors">
+            <li>Fehlerliste für Anschrift der Eltern</li>
+          </ol>
+          <p>
+              <%= f.label :strasse_und_nummer %>
+              <%= f.text_field :strasse_und_nummer %>
+          </p>
+          <ul>
+            <li>
+              <%= f.label :plz %>
+              <%= f.text_field :plz %>
+            </li>
+            <li>
+              <%= f.label :ort %>
+              <%= f.text_field :ort %>
+            </li>
+          </ul>
+          <p>
+<!-- a country list would be nice for later sorting -->
+            <%= f.label :land %>
+            <%= f.text_field :land %>
+          </p>
+        </fieldset>
+        <fieldset>
+          <legend><label for="bewerbung_email">Weitere Kontaktinformationen</label></legend>
+          <ol class="errors">
+            <li>email error</li>
+          </ol>
+          <p>
+             <%= f.label :email %>
+            <%= f.email_field :email %>
+          </p>
+          <ul>
+            <li>
+              <%= f.label :mobiltelefon %>
+              <%= f.text_field :mobiltelefon %>
+            </li>
+            <li>
+              <%= f.label :festnetztelefon %>
+              <%= f.text_field :festnetztelefon %>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset>
+          <legend><label for="bewerbung_hochschule">Angaben zum Studium</label></legend>
+          <ul>
+            <li>
+<!-- style attribute in select field: style="width: 11.75em" -->
+              <%= f.label :hochschule %>
+              <%= f.select :hochschule, options_for_select([['Karlsruher Institut für Technologie (Uni)', 'KIT'],
+                                                           ['Hochschule Karlsruhe (FH)', 'FH'],
+                                                           ['Pädagogische Hochschule (PH)', 'PH'],
+                                                           ['Duale Hochschule (BA)', 'BA'],
+                                                           ['Akademie der Bildenden Künste (AkdBK)', 'AkdBK'],
+                                                           ['Hochschule für Gestaltung (HfG)', 'HfG'],
+                                                           ['Hochschule für Musik (HfM)', 'HfM'],
+                                                           ['Karlshochschule Karlsruhe', 'Karlshochschule'],
+                                                           'Andere']) %>
+            </li>
+            <li>
+<!-- label read "(Haupt-)Fach" -->
+              <%= f.label :hauptfach %>
+              <%= f.text_field :hauptfach %>
+            </li>
+          </ul>
+          <p>
+            <%= f.label :anzahl_abgeschlossener_fachsemester %>
+            <%= f.text_field :anzahl_abgeschlossener_fachsemester %>
+          </p>
+          <ul>
+            <li>
+<!-- default does not work yet -->
+              <%= f.label :studienende %>
+              <%= f.date_select :studienende, :discard_day => true, :default => 3.years.from_now, :include_blank => true %>
+            </li>
+            <li>
+              <%= f.label :angestrebter_abschluss %>
+              <%= f.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer']) %>
+            </li>
+          </ul>
+          <div id="berufsakademie">
+            <p>
+              <%= f.label :firma %>
+              <%= f.text_field :firma %>
+            </p>
+            <ul>
+              <li>
+                <%= f.label :firma_plz %>
+                <%= f.text_field :firma_plz %>
+              </li>
+              <li>
+                <%= f.label :firma_ort %>
+                <%= f.text_field :firma_ort %>
+              </li>
+            </ul>
+            <p class="radio">
+              <label>Während der Praxisphasen im HEK?</label>
+                <%= f.radio_button :waehrend_der_praxisphasen_im_hek, 'unbekannt' %>
+                <%= f.label :waehrend_der_praxisphasen_im_hek_unbekannt, 'Vielleicht' %>
+                <%= f.radio_button :waehrend_der_praxisphasen_im_hek, 'ja' %>
+                <%= f.label :waehrend_der_praxisphasen_im_hek_ja, 'Ja' %>
+                <%= f.radio_button :waehrend_der_praxisphasen_im_hek, 'nein' %>
+                <%= f.label :waehrend_der_praxisphasen_im_hek_nein, 'Nein' %>
+            </p>
+          </div>
+        </fieldset>
+        <nav>
+          <a href="#organisatorisches">Weiter zu Organisatorisches &raquo;</a>
+        </nav>
+      </section>
+
+      <section id="organisatorisches">
+        <%= render :partial => '/bewerbung_steps' %>
+        <fieldset>
+          <legend><label for="bewerbung_fruehestens">Angaben zum Einzug</label></legend>
+          <label for="bewerbung_fruehestens">Mietbeginn (jeweils der Monatserste)</label>
+          <ol class="errors">
+            <li><label for="bewerbung_wunsch">fehler: kA für wunsch</label></li>
+          </ol>
+          <ul>
+            <li>
+              <%= f.label :fruehestens %>
+              <%= date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
+            </li>
+            <li>
+              <%= f.label :wunsch %>
+              <%= date_select :wunsch, :default => 3.months.from_now%>
+            </li>
+            <li>
+              <%= f.label :spaetestens %>
+              <%= f.date_select :spaetestens, :default => 4.months.from_now, :include_blank => true %>
+            </li>
+          </ul>
+          <p>
+            <%= f.label :geplante_wohndauer %>
+            <%= f.text_field :geplante_wohndauer %>
+            <span>in Monaten (z.B. 36)</span>
+          </p>
+        </fieldset>
+        <fieldset>
+          <legend><label for="komme-vorbei-am">Persönliche oder telefonische Vorstellung</label></legend>
+          <p>
+            <li>
+              <%= f.label :komme_vorbei_am %>
+              <%= f.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
+            </li>
+          </p>
+          <p>
+              <%= f.label :wunsch %>
+              <%= f.date_select :wunsch, :discard_day => true, :default => 3.months.from_now%>
+          </p>
+          <p>
+              <%= f.label :vorstellungsgespraech_nicht_moeglich %>
+              <%= f.time_select :vorstellungsgespraech_nicht_moeglich %>
+          </p>
+        </fieldset>
+        <fieldset>
+            <legend><%= f.label :mitteilungen %></legend>
+            <%= f.text_area :mitteilungen %>
+<!-- rows was 6 cols was 48 -->
+        </fieldset>
+        <nav>
+          <a href="#persoenliches">&laquo; Zurück zu Persönliches</a>
+          <a href="#motivation">Weiter zu Motivation &raquo;</a>
+        </nav>
+      </section>
+      <section id="motivation">
+        <%= render :partial => '/bewerbung_steps' %>
+        <fieldset>
+          <legend><%= f.label :informationen %></legend>
+          <ol class="errors">
+            <li><label for="informationen">fehler: informationen nicht ausgefüllt</label></li>
+          </ol>
+          <div class="text">
+            <p>
+              Wir möchten uns ein Bild von Dir und Deiner Lebenssituation verschaffen. Schreibe einen kurzen und zusammenhängenden Text über Dich selbst. Wie Du diesen Punkt bearbeitest ist Dir überlassen; die folgenden Fragen sollen als Anregung und Hilfestellung verstanden werden.
+            </p>
+            <ul>
+              <li>Hast Du schon in einem Wohnheim gewohnt? Falls ja, wo und welche Erfahrungen hast Du gemacht?</li>
+              <li>Warum möchtest Du in einem Wohnheim, speziell dem Hermann-Ehlers-Kolleg, wohnen?</li>
+              <li>Kannst Du Dir vorstellen, Dich aktiv in eine Lebensgemeinschaft mit 21 Mitbewohnern auf einer Etage einzubringen? Wann ja, wie?</li>
+              <li>Wie sieht Deine aktuelle Lebenssituation aus? Wie beschreibst Du Deine familiäre Situation, wie finanzierst Du Dein Studium?</li>
+              <li>Wenn Du Dich bisher in einer Gemeinschaft engagiert hast: Was hast Du dort gemacht? Was sind Deine Erfahrungen? (Vereine, Kirchengemeinde, Schule, ...)</li>
+              <li>Welche Interessen und Hobbys hast Du? Wie verbringst Du Deine Freizeit?</li>
+              <li>Gibt es weitere Dinge, die wir über Dich wissen sollten?</li>
+            </ul>
+          </div>
+          <%= f.text_area :informationen %>
+<!-- rows was 30 cols was 86 -->
+        </fieldset>
+        <nav>
+          <a href="#organisatorisches">&laquo; Zurück zu Organisatorisches</a>
+          <input type="submit" name="bestaetigung" value="Weiter zu Bestätigung &raquo;" />
+        </nav>
+      </section>
+    </form>
+    <form action="/bewerbung#ablauf" method="post" accept-charset="utf-8">
+      <section id="bestaetigung">
+        <%= render :partial => '/bewerbung_steps' %>
+        <div class="text">
+        <?php if (!empty($errors)) { ?>
+          <p class="errors">
+            Manche benötigten Angaben fehlen oder sind fehlerhaft. Bitte korrigiere diese.
+          </p>
+        <?php } else { ?>
+          <p>
+            Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
+          </p>
+<!-- display foto -->
+<!--
+          <dl>
+            <dt>Persönliche Daten</dt>
+            <dd><?php echo $data['vorname'] ?> <?php echo $data['nachname'] ?></dd>
+            <dd><?php echo $data['geburtsdatum'] ?></dd>
+          <?php if (!empty($data['lebenslauf-pfad'])) { ?>
+            <dd><a href="/<?php echo $data['lebenslauf-pfad'] ?>" target="_blank"><?php echo $data['lebenslauf-name'] ?></a></dd>
+          <?php } ?>
+            <dt>Kontakt</dt>
+            <dd>
+              <?php echo $data['strasse-und-nummer'] ?><br />
+              <?php echo $data['plz'] ?> <?php echo $data['ort'] ?><br />
+              <?php echo $data['land'] ?>
+            </dd>
+            <dt>E-Mail-Adresse</dt>
+            <dd><?php echo $data['e-mail'] ?></dd>
+            <dt>Telefonnummer</dt>
+            <dd>
+            <?php if (!empty($data['festnetztelefon']) || !empty($data['mobiltelefon'])) { ?>
+              <?php echo (!empty($data['festnetztelefon']) ? $data['festnetztelefon'] : $data['mobiltelefon']) ?>
+            <?php } else { ?>
+              Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest.
+            <?php } ?>
+            </dd>
+          <?php if (!empty($data['anzahl-abgeschlossener-fachsemester']) || !empty($data['hauptfach'])) { ?>
+            <dt>Studium</dt>
+            <dd>
+            <?php if (intval($data['anzahl-abgeschlossener-fachsemester']) > 0) { ?>
+              Bei deinem Einzug wirst du das <?php echo $data['anzahl-abgeschlossener-fachsemester'] ?>. Fachsemester <?php if (!empty($data['hauptfach'])) { ?>im Fach <?php echo $data['hauptfach'] ?><?php } ?> abgeschlossen haben.
+            <?php } else { ?>
+              Du ziehst zu Beginn deines Studiums <?php if (!empty($data['hauptfach'])) { ?>im Fach <?php echo $data['hauptfach'] ?><?php } ?> ein.
+            <?php } ?>
+            </dd>
+          <?php } ?>
+            <dt>Einzug</dt>
+            <dd>
+              Du möchtest am liebsten am <?php echo $data['wunsch'] ?> einziehen<?php if (!empty($data['fruehestens'])) { ?>, frühestens jedoch zum <?php echo $data['fruehestens'] ?><?php } ?><?php if (!empty($data['spaetestens'])) { ?>, spätestens zum <?php echo $data['spaetestens'] ?><?php } ?>.
+            </dd>
+            <dt>Über dich</dt>
+            <dd id="about"><?php echo $data['informationen'] ?></dd>
+          </dl>
+        <?php } ?>
+-->
+        </div>
+        <nav>
+          <a href="#motivation">&laquo; Zurück zu Motivation</a>
+          <input type="submit" name="ablauf" value="Bestätigen &raquo;"<?php if (!empty($errors)) echo 'disabled="disabled"' ?> />
+        </nav>
+      </section>
+    <% end %>
+    <section id="ablauf">
+      <ol class="steps">
+        <li class="previous">
+          <h2>Persönliches</h2>
+          <small>Wie heiße ich?</small>
+        </li>
+        <li class="previous">
+          <big>Organisatorisches</big>
+          <small>Wann ziehe ich ein?</small>
+        </li>
+        <li class="previous">
+          <big>Motivation</big>
+          <small>Warum mich?</small>
+        </li>
+        <li class="previous">
+          <big>Bestätigung</big>
+          <small>Alles korrekt?</small>
+        </li>
+        <li class="current">
+          <big>Ablauf</big>
+          <small>Was jetzt?</small>
+        </li>
+      </ol>
+    <?php if (!empty($errors['message'])) { ?>
+      <p class="errors"><?php echo $errors['message'] ?></p>
+    <?php } ?>
+      <p>
+        Und was passiert jetzt?
+      </p>
+      <p>
+        Du bekommst eine E-Mail-Bestätigung über deine Bewerbung von uns zugeschickt.
+      </p>
+      <p>
+        Wir würden uns freuen, wenn du bald noch zu einem Kennenlerngespräch bei uns vorbeikommst. Such dir einen Termin zu den Sprechzeiten des <a href="/organisation/heimleiter" target="_blank">Heimleiters</a> aus und stell dich vor. Falls du nicht vorbei kommen kannst, kann es sein, dass wir dich anrufen um dich ein bisschen besser kennenzulernen.
+      </p>
+      <p>
+        Dann musst du noch auf eine Antwort vom Heimleiter warten &#8212; bei Zusage wird ein Mietvertrag geschickt, bei einer Absage können wir leider nicht jeden informieren.
+      </p>
+      <p>
+        Wir freuen uns, wenn du uns zusagst und den Mietvertrag unterschrieben zurückschickst.
+      </p>
+      <p>
+        Dann musst du nur noch deinen Einzugstermin mit <a href="/organisation/hausmeister" target="_blank">Frau Knöppel</a> klären und kannst mit uns ganz viel Spaß im HEK haben!
+      </p>
+    </section>
+  </div>
+</article>

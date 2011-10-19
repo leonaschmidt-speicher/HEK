@@ -14,16 +14,19 @@ class BewerbungenController < ApplicationController
   end
 
   def new
+    @group = 'bewerbung'
     @bewerbung = Bewerbung.new
+    render '/bewerbung'
   end
 
   def create
     @bewerbung = Bewerbung.new(params[:bewerbung])
 
-    if @Bewerbung.save
+    if @bewerbung.save
       redirect_to @bewerbung, notice: 'Bewerbung wurde erfolgreich erstellt.'
     else
-      render action: "new" 
+      @group = 'bewerbung'
+      render '/bewerbung' 
     end
   end
 end
