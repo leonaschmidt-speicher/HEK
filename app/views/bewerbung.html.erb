@@ -8,12 +8,6 @@
         <div class="postits">
           <div class="postit">
             <dl>
-              <dd>Für Oktober 2011 sind bereits alle Zimmer vergeben.</dd>
-            </dl>
-            <img class="background" src="/images/postit.png" alt="Postit" />
-          </div>
-          <div class="postit">
-            <dl>
               <dt>Ablauf</dt>
               <dd>
                 <ol>
@@ -38,9 +32,11 @@
         </div>
         <%= render :partial => '/bewerbung_steps' %>
         <fieldset>
-          <legend><label for="bewerbung_vorname">Persönliche Angaben</label></legend>
+          <legend><%= f.label :vorname, 'Persönliche Angaben' %></legend>
+<%= f.error_messages %>
           <ol class="errors">
             <li>fehlerliste der sektion Persönliche Angaben</li>
+            <li>
           </ol>
           <ul>
             <li>
@@ -78,18 +74,18 @@
               <%= f.text_field :religion %>
           </p>
           <p class="file">
-<!-- display/link to uploaded photo here -->
+<!-- display/link to already uploaded photo here -->
             <%= f.label :foto %>
             <%= f.file_field :foto %>
           </p>
           <p class="file">
-<!-- link to uploaded lebenslauf here -->
+<!-- link to already uploaded lebenslauf here -->
             <%= f.label :lebenslauf %>
             <%= f.file_field :lebenslauf %>
           </p>
         </fieldset>
         <fieldset>
-          <legend><label for="bewerbung_strasse_und_nummer">Anschrift der Eltern</label></legend>
+          <legend><%= f.label :strasse_und_nummer, "Anschrift der Eltern" %></legend>
           <ol class="errors">
             <li>Fehlerliste für Anschrift der Eltern</li>
           </ol>
@@ -114,7 +110,7 @@
           </p>
         </fieldset>
         <fieldset>
-          <legend><label for="bewerbung_email">Weitere Kontaktinformationen</label></legend>
+          <legend><%= f.label :email, "Weitere Kontaktinformationen" %></legend>
           <ol class="errors">
             <li>email error</li>
           </ol>
@@ -134,7 +130,7 @@
           </ul>
         </fieldset>
         <fieldset>
-          <legend><label for="bewerbung_hochschule">Angaben zum Studium</label></legend>
+          <legend><%= f.label :hochschule, 'Angaben zum Studium' %></label></legend>
           <ul>
             <li>
 <!-- style attribute in select field: style="width: 11.75em" -->
@@ -204,8 +200,8 @@
       <section id="organisatorisches">
         <%= render :partial => '/bewerbung_steps' %>
         <fieldset>
-          <legend><label for="bewerbung_fruehestens">Angaben zum Einzug</label></legend>
-          <label for="bewerbung_fruehestens">Mietbeginn (jeweils der Monatserste)</label>
+          <legend><%= f.label :fruehestens, 'Angaben zum Einzug' %></legend>
+          <%= f.label :fruehestens, 'Mietbeginn (jeweils der Monatserste)' %>
           <ol class="errors">
             <li><label for="bewerbung_wunsch">fehler: kA für wunsch</label></li>
           </ol>
@@ -230,25 +226,23 @@
           </p>
         </fieldset>
         <fieldset>
-          <legend><label for="komme-vorbei-am">Persönliche oder telefonische Vorstellung</label></legend>
+          <legend><%= f.label :komme_vorbei_am, 'Persönliche oder telefonische Vorstellung' %></legend>
           <p>
-            <li>
-              <%= f.label :komme_vorbei_am %>
-              <%= f.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
-            </li>
+            <%= f.label :komme_vorbei_am %>
+            <%= f.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
           </p>
           <p>
-              <%= f.label :wunsch %>
-              <%= f.date_select :wunsch, :discard_day => true, :default => 3.months.from_now%>
+            <%= f.label :wunsch %>
+            <%= f.date_select :wunsch, :discard_day => true, :default => 3.months.from_now%>
           </p>
           <p>
-              <%= f.label :vorstellungsgespraech_nicht_moeglich %>
-              <%= f.time_select :vorstellungsgespraech_nicht_moeglich %>
+            <%= f.label :vorstellungsgespraech_nicht_moeglich %>
+            <%= f.time_select :vorstellungsgespraech_nicht_moeglich %>
           </p>
         </fieldset>
         <fieldset>
-            <legend><%= f.label :mitteilungen %></legend>
-            <%= f.text_area :mitteilungen %>
+          <legend><%= f.label :organisatorische_mitteilungen %></legend>
+          <%= f.text_area :organisatorische_mitteilungen %>
 <!-- rows was 6 cols was 48 -->
         </fieldset>
         <nav>
@@ -256,6 +250,7 @@
           <a href="#motivation">Weiter zu Motivation &raquo;</a>
         </nav>
       </section>
+      
       <section id="motivation">
         <%= render :partial => '/bewerbung_steps' %>
         <fieldset>

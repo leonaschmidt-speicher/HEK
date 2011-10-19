@@ -234,3 +234,21 @@ de:
 
       full_messages:
         format: "%{attribute} %{message}"
+  helpers:
+    label:
+      bewerbung:
+        staatsangehoerigkeit: "Staatsangehörigkeit"
+        strasse_und_nummer: "Straße und Nr."
+        plz: "PLZ"
+        email: "E-Mail"
+        hauptfach: "(Haupt-)Fach"
+        anzahl_abgeschlossener_fachsemester: "Anzahl abgeschlossener Fachsemester zum Einzugstermin"
+        angestrebter_abschluss: "Angestrebter Abschluss"
+        fruehestens: "Frühestens"
+        spaetestens: "Spätestens"
+        geplante_wohndauer: "Geplante Wohndauer"
+        komme_vorbei_am: "Ich komme vorbei am"
+        sprechstunde_im_monat: "Ich kann auf Einladung in eine Sprechstunde kommen im Monat"
+        vorstellungsgespraech_nicht_moeglich: "Ich kann nicht zum Vorstellungsgespräch kommen aber ich stehe für ein telefonisches Gespräch bereit. Am besten bin ich erreichbar um"
+        organisatorische_mitteilungen: "Sonstige organisatorische Mitteilungen"
+        informationen: "Weitere Informationen"
