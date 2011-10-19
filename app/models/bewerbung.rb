@@ -22,6 +22,5 @@ class Bewerbung < ActiveRecord::Base
             :email,
             :wunsch,
             :informationen,
-        :presence => true;
-
+        :presence => true
 end
