@@ -106,7 +106,7 @@ label em {
 input, textarea {
   line-height: 1em;
 }
-input.error, textarea.error {
+div.field_with_errors input, div.field_with_errors textarea {
   background-color: #fee;
 }
 form span {

@@ -237,7 +237,6 @@ de:
   helpers:
     label:
       bewerbung:
-        staatsangehoerigkeit: "Staatsangehörigkeit"
         strasse_und_nummer: "Straße und Nr."
         plz: "PLZ"
         email: "E-Mail"

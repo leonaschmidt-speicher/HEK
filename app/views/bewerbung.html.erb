@@ -33,11 +33,7 @@
         <%= render :partial => '/bewerbung_steps' %>
         <fieldset>
           <legend><%= f.label :vorname, 'Persönliche Angaben' %></legend>
-<%= f.error_messages %>
-          <ol class="errors">
-            <li>fehlerliste der sektion Persönliche Angaben</li>
-            <li>
-          </ol>
+          <%= errors_for_methods f, Bewerbung::PERSOENLICHE_ANGABEN %>
           <ul>
             <li>
               <%= f.label :vorname %>
@@ -57,7 +53,7 @@
             <li>
 <!-- a nationality list would be nice for later sorting -->
               <%= f.label :staatsangehoerigkeit %>
-              <%= f.text_field :geburtsdatum %>
+              <%= f.text_field :staatsangehoerigkeit %>
             </li>
           </ul>
           <ul>
@@ -86,9 +82,7 @@
         </fieldset>
         <fieldset>
           <legend><%= f.label :strasse_und_nummer, "Anschrift der Eltern" %></legend>
-          <ol class="errors">
-            <li>Fehlerliste für Anschrift der Eltern</li>
-          </ol>
+          <%= errors_for_methods f, Bewerbung::ANSCHRIFT_DER_ELTERN %>
           <p>
               <%= f.label :strasse_und_nummer %>
               <%= f.text_field :strasse_und_nummer %>
@@ -111,9 +105,7 @@
         </fieldset>
         <fieldset>
           <legend><%= f.label :email, "Weitere Kontaktinformationen" %></legend>
-          <ol class="errors">
-            <li>email error</li>
-          </ol>
+          <%= errors_for_methods f, Bewerbung::WEITERE_KONTAKTINFORMATIONEN %>
           <p>
              <%= f.label :email %>
             <%= f.email_field :email %>
@@ -285,11 +277,11 @@
       <section id="bestaetigung">
         <%= render :partial => '/bewerbung_steps' %>
         <div class="text">
-        <?php if (!empty($errors)) { ?>
+          <% if f.error_messages != nil then %>
           <p class="errors">
             Manche benötigten Angaben fehlen oder sind fehlerhaft. Bitte korrigiere diese.
           </p>
-        <?php } else { ?>
+          <% end %>
           <p>
             Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
           </p>

@@ -23,7 +23,8 @@ class BewerbungenController < ApplicationController
     @bewerbung = Bewerbung.new(params[:bewerbung])
 
     if @bewerbung.save
-      redirect_to @bewerbung, notice: 'Bewerbung wurde erfolgreich erstellt.'
+      @group = 'bewerbung'
+      redirect_to '/bewerbung', notice: 'Bewerbung wurde erfolgreich erstellt.'
     else
       @group = 'bewerbung'
       render '/bewerbung' 
