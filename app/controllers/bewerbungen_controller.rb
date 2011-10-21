@@ -15,19 +15,24 @@ class BewerbungenController < ApplicationController
 
   def new
     @group = 'bewerbung'
+    #@bewerbung = session[:bewerbung] || Bewerbung.new
     @bewerbung = Bewerbung.new
-    render '/bewerbung'
   end
 
   def create
     @bewerbung = Bewerbung.new(params[:bewerbung])
 
-    if @bewerbung.save
+    if @bewerbung.valid?
+      #session[:bewerbung] = @bewerbung
+      #redirect_to :action => 'new', :anchor => 'bestaetigung'
       @group = 'bewerbung'
-      redirect_to '/bewerbung', notice: 'Bewerbung wurde erfolgreich erstellt.'
+      render 'new'
     else
+      #session[:bewerbung] = @bewerbung
+      #redirect_to :action => 'new', :anchor => 'bestaetigung'
+
       @group = 'bewerbung'
-      render '/bewerbung' 
+      render 'new'
     end
   end
 end

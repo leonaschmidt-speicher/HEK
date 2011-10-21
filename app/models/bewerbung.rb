@@ -2,6 +2,11 @@ class Bewerbung < ActiveRecord::Base
   PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto lebenslauf]
   ANSCHRIFT_DER_ELTERN = %w[strasse_und_nummer plz ort land]
   WEITERE_KONTAKTINFORMATIONEN = %w[email, mobiltelefon, festnetztelefon]
+  ANGABEN_ZUM_STUDIUM = %w[hochschule hauptfach anzahl_abgeschlossener_fachsemester studienende angestrebter_abschluss firma firma_plz firma_ort waehrend_der_praxisphasen_im_hek] 
+  ANGABEN_ZUM_EINZUG = %w[fruehestens wunsch spaetestens geplante_wohndauer]
+  VORSTELLUNG = %w[komme_vorbei_am sprechstunge_im_monat vorstellungsgespraech_nicht_moeglich]
+  ORGANISATORISCHE_MITTEILUNGEN = %w[organisatorische_mitteilungen]
+  INFORMATIONEN = %w[informationen]
   set_table_name "bewerbungen"
 
   # set up paperclip
@@ -35,9 +40,9 @@ class Bewerbung < ActiveRecord::Base
             :informationen,
         :presence => true
         
-  validates :plz,
-            :firma_plz,
-            :geplante_wohndauer,
-        :numericality => true
+  validates :plz, :numericality => {:greater_than => 0, :only_integer => true}
+  validates :firma_plz, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
+  validates :anzahl_abgeschlossener_fachsemester, :numericality => { :greater_or_equal_than => 0, :only_integer => true}, :allow_blank => true
+  validates :geplante_wohndauer, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
         
 end

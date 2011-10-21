@@ -30,7 +30,7 @@
             <img class="background" src="/images/postit.png" alt="Postit" />
           </div>
         </div>
-        <%= render :partial => '/bewerbung_steps' %>
+        <%= render :partial => 'bewerbungen/steps' %>
         <fieldset>
           <legend><%= f.label :vorname, 'Persönliche Angaben' %></legend>
           <%= errors_for_methods f, Bewerbung::PERSOENLICHE_ANGABEN %>
@@ -123,6 +123,7 @@
         </fieldset>
         <fieldset>
           <legend><%= f.label :hochschule, 'Angaben zum Studium' %></label></legend>
+          <%= errors_for_methods f, Bewerbung::ANGABEN_ZUM_STUDIUM %>
           <ul>
             <li>
 <!-- style attribute in select field: style="width: 11.75em" -->
@@ -138,7 +139,6 @@
                                                            'Andere']) %>
             </li>
             <li>
-<!-- label read "(Haupt-)Fach" -->
               <%= f.label :hauptfach %>
               <%= f.text_field :hauptfach %>
             </li>
@@ -190,13 +190,11 @@
       </section>
 
       <section id="organisatorisches">
-        <%= render :partial => '/bewerbung_steps' %>
+        <%= render :partial => 'bewerbungen/steps' %>
         <fieldset>
           <legend><%= f.label :fruehestens, 'Angaben zum Einzug' %></legend>
+          <%= errors_for_methods f, Bewerbung::ANGABEN_ZUM_EINZUG %>
           <%= f.label :fruehestens, 'Mietbeginn (jeweils der Monatserste)' %>
-          <ol class="errors">
-            <li><label for="bewerbung_wunsch">fehler: kA für wunsch</label></li>
-          </ol>
           <ul>
             <li>
               <%= f.label :fruehestens %>
@@ -219,6 +217,7 @@
         </fieldset>
         <fieldset>
           <legend><%= f.label :komme_vorbei_am, 'Persönliche oder telefonische Vorstellung' %></legend>
+          <%= errors_for_methods f, Bewerbung::VORSTELLUNG %>
           <p>
             <%= f.label :komme_vorbei_am %>
             <%= f.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
@@ -234,6 +233,7 @@
         </fieldset>
         <fieldset>
           <legend><%= f.label :organisatorische_mitteilungen %></legend>
+          <%= errors_for_methods f, Bewerbung::ORGANISATORISCHE_MITTEILUNGEN %>
           <%= f.text_area :organisatorische_mitteilungen %>
 <!-- rows was 6 cols was 48 -->
         </fieldset>
@@ -244,12 +244,10 @@
       </section>
       
       <section id="motivation">
-        <%= render :partial => '/bewerbung_steps' %>
+        <%= render :partial => 'bewerbungen/steps' %>
         <fieldset>
           <legend><%= f.label :informationen %></legend>
-          <ol class="errors">
-            <li><label for="informationen">fehler: informationen nicht ausgefüllt</label></li>
-          </ol>
+          <%= errors_for_methods f, Bewerbung::INFORMATIONEN %>
           <div class="text">
             <p>
               Wir möchten uns ein Bild von Dir und Deiner Lebenssituation verschaffen. Schreibe einen kurzen und zusammenhängenden Text über Dich selbst. Wie Du diesen Punkt bearbeitest ist Dir überlassen; die folgenden Fragen sollen als Anregung und Hilfestellung verstanden werden.
@@ -275,90 +273,67 @@
     </form>
     <form action="/bewerbung#ablauf" method="post" accept-charset="utf-8">
       <section id="bestaetigung">
-        <%= render :partial => '/bewerbung_steps' %>
+        <%= render :partial => 'bewerbungen/steps' %>
         <div class="text">
           <% if f.error_messages != nil then %>
           <p class="errors">
             Manche benötigten Angaben fehlen oder sind fehlerhaft. Bitte korrigiere diese.
           </p>
           <% end %>
+          <% unless @bewerbung.new_record? then %>
           <p>
             Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
           </p>
 <!-- display foto -->
-<!--
           <dl>
             <dt>Persönliche Daten</dt>
-            <dd><?php echo $data['vorname'] ?> <?php echo $data['nachname'] ?></dd>
-            <dd><?php echo $data['geburtsdatum'] ?></dd>
-          <?php if (!empty($data['lebenslauf-pfad'])) { ?>
-            <dd><a href="/<?php echo $data['lebenslauf-pfad'] ?>" target="_blank"><?php echo $data['lebenslauf-name'] ?></a></dd>
-          <?php } ?>
+            <dd><%= @bewerbung.vorname + " " + @bewerbung.nachname %></dd>
+            <dd><%= @bewerbung.geburtsdatum %></dd>
+          <% unless @bewerbung.lebenslauf then %>
+            <dd><a href="uploads/<%= @bewerbung.lebenslauf_file_name %>" target="_blank"><%= @bewerbung.lebenslauf_file_name %></a></dd>
+          <% end %>
             <dt>Kontakt</dt>
             <dd>
-              <?php echo $data['strasse-und-nummer'] ?><br />
-              <?php echo $data['plz'] ?> <?php echo $data['ort'] ?><br />
-              <?php echo $data['land'] ?>
+              <%= @bewerbung.strasse_und_nummer %><br />
+              <%= @bewerbung.plz.to_s + " " + @bewerbung.ort %><br />
+              <%= @bewerbung.land %><br />
             </dd>
             <dt>E-Mail-Adresse</dt>
-            <dd><?php echo $data['e-mail'] ?></dd>
+            <dd><%= @bewerbung.email %></dd>
             <dt>Telefonnummer</dt>
             <dd>
-            <?php if (!empty($data['festnetztelefon']) || !empty($data['mobiltelefon'])) { ?>
-              <?php echo (!empty($data['festnetztelefon']) ? $data['festnetztelefon'] : $data['mobiltelefon']) ?>
-            <?php } else { ?>
-              Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest.
-            <?php } ?>
+            <%= (@bewerbung.festnetztelefon unless @bewerbung.festnetztelefon.blank?) \
+                || (@bewerbung.mobiltelefon unless @bewerbung.mobiltelefon.blank?) \
+                || "Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest." 
+            %>
             </dd>
-          <?php if (!empty($data['anzahl-abgeschlossener-fachsemester']) || !empty($data['hauptfach'])) { ?>
+          <% unless @bewerbung.anzahl_abgeschlossener_fachsemester.blank? || @bewerbung.hauptfach.blank? then %>
             <dt>Studium</dt>
             <dd>
-            <?php if (intval($data['anzahl-abgeschlossener-fachsemester']) > 0) { ?>
-              Bei deinem Einzug wirst du das <?php echo $data['anzahl-abgeschlossener-fachsemester'] ?>. Fachsemester <?php if (!empty($data['hauptfach'])) { ?>im Fach <?php echo $data['hauptfach'] ?><?php } ?> abgeschlossen haben.
-            <?php } else { ?>
-              Du ziehst zu Beginn deines Studiums <?php if (!empty($data['hauptfach'])) { ?>im Fach <?php echo $data['hauptfach'] ?><?php } ?> ein.
-            <?php } ?>
+            <% if @bewerbung.anzahl_abgeschlossener_fachsemester > 0 then %>
+              Bei deinem Einzug wirst du das <%= @bewerbung.anzahl_abgeschlossener_fachsemester %>. Fachsemester <%= "im Fach #{@bewerbung.hauptfach}" unless @bewerbung.hauptfach.blank? %> abgeschlossen haben.
+            <% else %>
+              Du ziehst zu Beginn deines Studiums <%= "im Fach #{@bewerbung.hauptfach}" unless @bewerbung.hauptfach.blank? %> ein.
+            <% end %>
             </dd>
-          <?php } ?>
+          <% end %>
             <dt>Einzug</dt>
             <dd>
-              Du möchtest am liebsten am <?php echo $data['wunsch'] ?> einziehen<?php if (!empty($data['fruehestens'])) { ?>, frühestens jedoch zum <?php echo $data['fruehestens'] ?><?php } ?><?php if (!empty($data['spaetestens'])) { ?>, spätestens zum <?php echo $data['spaetestens'] ?><?php } ?>.
+              Du möchtest am liebsten am <%= @bewerbung.wunsch %> einziehen<%= ", frühestens jedoch zum #{@bewerbung.fruehestens}" unless @bewerbung.fruehestens.blank? %> <%= ", spätestens zum #{@bewerbung.spaetestens}" unless @bewerbung.spaetestens.blank? %>.
             </dd>
             <dt>Über dich</dt>
-            <dd id="about"><?php echo $data['informationen'] ?></dd>
+            <dd id="about"><%= @bewerbung.informationen %></dd>
           </dl>
-        <?php } ?>
--->
+        <% end %>
         </div>
         <nav>
           <a href="#motivation">&laquo; Zurück zu Motivation</a>
-          <input type="submit" name="ablauf" value="Bestätigen &raquo;"<?php if (!empty($errors)) echo 'disabled="disabled"' ?> />
+          <input type="submit" name="ablauf" value="Bestätigen &raquo;" <%= 'disabled="disabled"' unless f.error_messages.blank? %> />
         </nav>
       </section>
     <% end %>
     <section id="ablauf">
-      <ol class="steps">
-        <li class="previous">
-          <h2>Persönliches</h2>
-          <small>Wie heiße ich?</small>
-        </li>
-        <li class="previous">
-          <big>Organisatorisches</big>
-          <small>Wann ziehe ich ein?</small>
-        </li>
-        <li class="previous">
-          <big>Motivation</big>
-          <small>Warum mich?</small>
-        </li>
-        <li class="previous">
-          <big>Bestätigung</big>
-          <small>Alles korrekt?</small>
-        </li>
-        <li class="current">
-          <big>Ablauf</big>
-          <small>Was jetzt?</small>
-        </li>
-      </ol>
+  <%= render :partial => 'bewerbungen/steps' %>
     <?php if (!empty($errors['message'])) { ?>
       <p class="errors"><?php echo $errors['message'] ?></p>
     <?php } ?>

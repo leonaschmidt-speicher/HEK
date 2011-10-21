@@ -1,6 +1,6 @@
 module BewerbungenHelper
   def errors? methods
-    not methods.map do |method|
+    methods.map do |method|
       @bewerbung.errors[method]
     end.flatten.empty?
   end
@@ -16,5 +16,4 @@ module BewerbungenHelper
       html.html_safe
     end
   end
-
 end
