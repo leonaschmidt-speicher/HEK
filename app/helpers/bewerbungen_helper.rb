@@ -2,9 +2,9 @@ module BewerbungenHelper
   def errors? methods
     not methods.map do |method|
       @bewerbung.errors[method]
-    end.compact.empty?
+    end.flatten.empty?
   end
-  
+
   def errors_for_methods form, methods
     html = ''
     if errors? Bewerbung::PERSOENLICHE_ANGABEN
@@ -16,5 +16,5 @@ module BewerbungenHelper
       html.html_safe
     end
   end
-  
+
 end
