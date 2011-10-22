@@ -3,7 +3,7 @@
 
 <article>
   <div id="swap-view">
-    <%= form_for(@bewerbung) do |f| %>
+    <%= form_for(@bewerbung, :url => bewerbung_path) do |f| %>
       <section id="persoenliches">
         <div class="postits">
           <div class="postit">
@@ -269,13 +269,14 @@
           <a href="#organisatorisches">&laquo; Zurück zu Organisatorisches</a>
           <input type="submit" name="bestaetigung" value="Weiter zu Bestätigung &raquo;" />
         </nav>
-      </section>
-    </form>
-    <form action="/bewerbung#ablauf" method="post" accept-charset="utf-8">
+      </section>    
+    <% end %>
+    
+    <%= form_for(@bewerbung, :url => bewerbung_confirm_path, method: 'post', :html => { :class => "confirm_bewerbung", :id => "confirm_bewerbung" }) do |f| %>
       <section id="bestaetigung">
         <%= render :partial => 'bewerbungen/steps' %>
         <div class="text">
-          <% if f.error_messages != nil then %>
+          <% unless f.error_messages.blank? then %>
           <p class="errors">
             Manche benötigten Angaben fehlen oder sind fehlerhaft. Bitte korrigiere diese.
           </p>
@@ -289,7 +290,7 @@
             <dt>Persönliche Daten</dt>
             <dd><%= @bewerbung.vorname + " " + @bewerbung.nachname %></dd>
             <dd><%= @bewerbung.geburtsdatum %></dd>
-          <% unless @bewerbung.lebenslauf then %>
+          <% unless @bewerbung.lebenslauf.blank? then %>
             <dd><a href="uploads/<%= @bewerbung.lebenslauf_file_name %>" target="_blank"><%= @bewerbung.lebenslauf_file_name %></a></dd>
           <% end %>
             <dt>Kontakt</dt>
@@ -332,8 +333,9 @@
         </nav>
       </section>
     <% end %>
+    
     <section id="ablauf">
-  <%= render :partial => 'bewerbungen/steps' %>
+    <%= render :partial => 'bewerbungen/steps' %>
     <?php if (!empty($errors['message'])) { ?>
       <p class="errors"><?php echo $errors['message'] ?></p>
     <?php } ?>
