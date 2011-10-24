@@ -1,6 +1,8 @@
-<% provide :javascript do %>
+<% if @bewerbung.errors.any?
+     provide :javascript do %>
   <script>window.location.hash = "#<%= first_step_with_errors %>";</script>
-<% end %>
+<%   end
+   end %>
 
 
 <article>
