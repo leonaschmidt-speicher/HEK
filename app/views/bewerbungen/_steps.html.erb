@@ -1,18 +1,18 @@
 <ol class="steps">
-  <li class="previous">
-    <a class="errors" href="#persoenliches">
+  <li>
+    <a <%= 'class="errors"'.html_safe if step_has_errors? :persoenliches %>>
       <h2>Persönliches</h2>
       <small>Wie heiße ich?</small>
     </a>
   </li>
-  <li class="current">
-   <a href="#organisatorisches">
+  <li>
+   <a <%= 'class="errors"'.html_safe if step_has_errors? :organisatorisches %> href="#organisatorisches">
       <big>Organisatorisches</big>
       <small>Wann ziehe ich ein?</small>
     </a>
   </li>
   <li>
-    <a href="#motivation">
+    <a <%= 'class="errors"'.html_safe if step_has_errors? :informationen %> href="#motivation">
       <big>Motivation</big>
       <small>Warum mich?</small>
     </a>

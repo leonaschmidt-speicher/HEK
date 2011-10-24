@@ -3,7 +3,7 @@
 
 <article>
   <div id="swap-view">
-    <%= form_for(@bewerbung, :url => bewerbung_path) do |f| %>
+    <%= form_for(@bewerbung, :url => bewerbung_path) do |form| %>
       <section id="persoenliches">
         <div class="postits">
           <div class="postit">
@@ -30,105 +30,105 @@
             <img class="background" src="/images/postit.png" alt="Postit" />
           </div>
         </div>
-        <%= render :partial => 'bewerbungen/steps' %>
+        <%= render :partial => 'bewerbungen/steps'  %>
         <fieldset>
-          <legend><%= f.label :vorname, 'Persönliche Angaben' %></legend>
-          <%= errors_for_methods f, Bewerbung::PERSOENLICHE_ANGABEN %>
+          <legend><%= form.label :vorname, 'Persönliche Angaben' %></legend>
+          <%= errors_for_methods Bewerbung::PERSOENLICHE_ANGABEN %>
           <ul>
             <li>
-              <%= f.label :vorname %>
-              <%= f.text_field :vorname %>
+              <%= form.label :vorname %>
+              <%= form.text_field :vorname %>
 <!-- autofocus here on first visit -->
             </li>
             <li>
-              <%= f.label :nachname %>
-              <%= f.text_field :nachname %>
+              <%= form.label :nachname %>
+              <%= form.text_field :nachname %>
             </li>
           </ul>
           <ul>
             <li>
-              <%= f.label :geburtsdatum %>
+              <%= form.label :geburtsdatum %>
               <%= date_select 'bewerbung', 'geburtsdatum', :default => 19.years.ago %>
             </li>
             <li>
 <!-- a nationality list would be nice for later sorting -->
-              <%= f.label :staatsangehoerigkeit %>
-              <%= f.text_field :staatsangehoerigkeit %>
+              <%= form.label :staatsangehoerigkeit %>
+              <%= form.text_field :staatsangehoerigkeit %>
             </li>
           </ul>
           <ul>
             <li>
-              <%= f.label :geschlecht %>
-              <%= f.select(:geschlecht, options_for_select(['', 'männlich', 'weiblich'])) %>
+              <%= form.label :geschlecht %>
+              <%= form.select(:geschlecht, options_for_select(['', 'männlich', 'weiblich'])) %>
             <li>
-              <%= f.label :familienstand %>
-              <%= f.select(:familienstand, options_for_select(['', 'ledig', 'verheiratet'])) %>
+              <%= form.label :familienstand %>
+              <%= form.select(:familienstand, options_for_select(['', 'ledig', 'verheiratet'])) %>
             </li>
           </ul>
           <p>
-              <%= f.label :religion %>
-              <%= f.text_field :religion %>
+              <%= form.label :religion %>
+              <%= form.text_field :religion %>
           </p>
           <p class="file">
 <!-- display/link to already uploaded photo here -->
-            <%= f.label :foto %>
-            <%= f.file_field :foto %>
+            <%= form.label :foto %>
+            <%= form.file_field :foto %>
           </p>
           <p class="file">
 <!-- link to already uploaded lebenslauf here -->
-            <%= f.label :lebenslauf %>
-            <%= f.file_field :lebenslauf %>
+            <%= form.label :lebenslauf %>
+            <%= form.file_field :lebenslauf %>
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= f.label :strasse_und_nummer, "Anschrift der Eltern" %></legend>
-          <%= errors_for_methods f, Bewerbung::ANSCHRIFT_DER_ELTERN %>
+          <legend><%= form.label :strasse_und_nummer, "Anschrift der Eltern" %></legend>
+          <%= errors_for_methods Bewerbung::ANSCHRIFT_DER_ELTERN %>
           <p>
-              <%= f.label :strasse_und_nummer %>
-              <%= f.text_field :strasse_und_nummer %>
+              <%= form.label :strasse_und_nummer %>
+              <%= form.text_field :strasse_und_nummer %>
           </p>
           <ul>
             <li>
-              <%= f.label :plz %>
-              <%= f.text_field :plz %>
+              <%= form.label :plz %>
+              <%= form.text_field :plz %>
             </li>
             <li>
-              <%= f.label :ort %>
-              <%= f.text_field :ort %>
+              <%= form.label :ort %>
+              <%= form.text_field :ort %>
             </li>
           </ul>
           <p>
 <!-- a country list would be nice for later sorting -->
-            <%= f.label :land %>
-            <%= f.text_field :land %>
+            <%= form.label :land %>
+            <%= form.text_field :land %>
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= f.label :email, "Weitere Kontaktinformationen" %></legend>
-          <%= errors_for_methods f, Bewerbung::WEITERE_KONTAKTINFORMATIONEN %>
+          <legend><%= form.label :email, "Weitere Kontaktinformationen" %></legend>
+          <%= errors_for_methods Bewerbung::WEITERE_KONTAKTINFORMATIONEN %>
           <p>
-             <%= f.label :email %>
-            <%= f.email_field :email %>
+             <%= form.label :email %>
+            <%= form.email_field :email %>
           </p>
           <ul>
             <li>
-              <%= f.label :mobiltelefon %>
-              <%= f.text_field :mobiltelefon %>
+              <%= form.label :mobiltelefon %>
+              <%= form.text_field :mobiltelefon %>
             </li>
             <li>
-              <%= f.label :festnetztelefon %>
-              <%= f.text_field :festnetztelefon %>
+              <%= form.label :festnetztelefon %>
+              <%= form.text_field :festnetztelefon %>
             </li>
           </ul>
         </fieldset>
         <fieldset>
-          <legend><%= f.label :hochschule, 'Angaben zum Studium' %></label></legend>
-          <%= errors_for_methods f, Bewerbung::ANGABEN_ZUM_STUDIUM %>
+          <legend><%= form.label :hochschule, 'Angaben zum Studium' %></label></legend>
+          <%= errors_for_methods Bewerbung::ANGABEN_ZUM_STUDIUM %>
           <ul>
             <li>
 <!-- style attribute in select field: style="width: 11.75em" -->
-              <%= f.label :hochschule %>
-              <%= f.select :hochschule, options_for_select([['Karlsruher Institut für Technologie (Uni)', 'KIT'],
+              <%= form.label :hochschule %>
+              <%= form.select :hochschule, options_for_select([['Karlsruher Institut für Technologie (Uni)', 'KIT'],
                                                            ['Hochschule Karlsruhe (FH)', 'FH'],
                                                            ['Pädagogische Hochschule (PH)', 'PH'],
                                                            ['Duale Hochschule (BA)', 'BA'],
@@ -139,48 +139,48 @@
                                                            'Andere']) %>
             </li>
             <li>
-              <%= f.label :hauptfach %>
-              <%= f.text_field :hauptfach %>
+              <%= form.label :hauptfach %>
+              <%= form.text_field :hauptfach %>
             </li>
           </ul>
           <p>
-            <%= f.label :anzahl_abgeschlossener_fachsemester %>
-            <%= f.text_field :anzahl_abgeschlossener_fachsemester %>
+            <%= form.label :anzahl_abgeschlossener_fachsemester %>
+            <%= form.text_field :anzahl_abgeschlossener_fachsemester %>
           </p>
           <ul>
             <li>
 <!-- default does not work yet -->
-              <%= f.label :studienende %>
-              <%= f.date_select :studienende, :discard_day => true, :default => 3.years.from_now, :include_blank => true %>
+              <%= form.label :studienende %>
+              <%= form.date_select :studienende, :discard_day => true, :default => 3.years.from_now, :include_blank => true %>
             </li>
             <li>
-              <%= f.label :angestrebter_abschluss %>
-              <%= f.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer']) %>
+              <%= form.label :angestrebter_abschluss %>
+              <%= form.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer']) %>
             </li>
           </ul>
           <div id="berufsakademie">
             <p>
-              <%= f.label :firma %>
-              <%= f.text_field :firma %>
+              <%= form.label :firma %>
+              <%= form.text_field :firma %>
             </p>
             <ul>
               <li>
-                <%= f.label :firma_plz %>
-                <%= f.text_field :firma_plz %>
+                <%= form.label :firma_plz %>
+                <%= form.text_field :firma_plz %>
               </li>
               <li>
-                <%= f.label :firma_ort %>
-                <%= f.text_field :firma_ort %>
+                <%= form.label :firma_ort %>
+                <%= form.text_field :firma_ort %>
               </li>
             </ul>
             <p class="radio">
               <label>Während der Praxisphasen im HEK?</label>
-                <%= f.radio_button :waehrend_der_praxisphasen_im_hek, 'unbekannt' %>
-                <%= f.label :waehrend_der_praxisphasen_im_hek_unbekannt, 'Vielleicht' %>
-                <%= f.radio_button :waehrend_der_praxisphasen_im_hek, 'ja' %>
-                <%= f.label :waehrend_der_praxisphasen_im_hek_ja, 'Ja' %>
-                <%= f.radio_button :waehrend_der_praxisphasen_im_hek, 'nein' %>
-                <%= f.label :waehrend_der_praxisphasen_im_hek_nein, 'Nein' %>
+                <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'unbekannt' %>
+                <%= form.label :waehrend_der_praxisphasen_im_hek_unbekannt, 'Vielleicht' %>
+                <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'ja' %>
+                <%= form.label :waehrend_der_praxisphasen_im_hek_ja, 'Ja' %>
+                <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'nein' %>
+                <%= form.label :waehrend_der_praxisphasen_im_hek_nein, 'Nein' %>
             </p>
           </div>
         </fieldset>
@@ -192,49 +192,49 @@
       <section id="organisatorisches">
         <%= render :partial => 'bewerbungen/steps' %>
         <fieldset>
-          <legend><%= f.label :fruehestens, 'Angaben zum Einzug' %></legend>
-          <%= errors_for_methods f, Bewerbung::ANGABEN_ZUM_EINZUG %>
-          <%= f.label :fruehestens, 'Mietbeginn (jeweils der Monatserste)' %>
+          <legend><%= form.label :fruehestens, 'Angaben zum Einzug' %></legend>
+          <%= errors_for_methods Bewerbung::ANGABEN_ZUM_EINZUG %>
+          <%= form.label :fruehestens, 'Mietbeginn (jeweils der Monatserste)' %>
           <ul>
             <li>
-              <%= f.label :fruehestens %>
+              <%= form.label :fruehestens %>
               <%= date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
             </li>
             <li>
-              <%= f.label :wunsch %>
+              <%= form.label :wunsch %>
               <%= date_select :wunsch, :default => 3.months.from_now%>
             </li>
             <li>
-              <%= f.label :spaetestens %>
-              <%= f.date_select :spaetestens, :default => 4.months.from_now, :include_blank => true %>
+              <%= form.label :spaetestens %>
+              <%= form.date_select :spaetestens, :default => 4.months.from_now, :include_blank => true %>
             </li>
           </ul>
           <p>
-            <%= f.label :geplante_wohndauer %>
-            <%= f.text_field :geplante_wohndauer %>
+            <%= form.label :geplante_wohndauer %>
+            <%= form.text_field :geplante_wohndauer %>
             <span>in Monaten (z.B. 36)</span>
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= f.label :komme_vorbei_am, 'Persönliche oder telefonische Vorstellung' %></legend>
-          <%= errors_for_methods f, Bewerbung::VORSTELLUNG %>
+          <legend><%= form.label :komme_vorbei_am, 'Persönliche oder telefonische Vorstellung' %></legend>
+          <%= errors_for_methods Bewerbung::VORSTELLUNG %>
           <p>
-            <%= f.label :komme_vorbei_am %>
-            <%= f.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
+            <%= form.label :komme_vorbei_am %>
+            <%= form.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
           </p>
           <p>
-            <%= f.label :wunsch %>
-            <%= f.date_select :wunsch, :discard_day => true, :default => 3.months.from_now%>
+            <%= form.label :wunsch %>
+            <%= form.date_select :wunsch, :discard_day => true, :default => 3.months.from_now%>
           </p>
           <p>
-            <%= f.label :vorstellungsgespraech_nicht_moeglich %>
-            <%= f.time_select :vorstellungsgespraech_nicht_moeglich %>
+            <%= form.label :vorstellungsgespraech_nicht_moeglich %>
+            <%= form.time_select :vorstellungsgespraech_nicht_moeglich %>
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= f.label :organisatorische_mitteilungen %></legend>
-          <%= errors_for_methods f, Bewerbung::ORGANISATORISCHE_MITTEILUNGEN %>
-          <%= f.text_area :organisatorische_mitteilungen %>
+          <legend><%= form.label :organisatorische_mitteilungen %></legend>
+          <%= errors_for_methods Bewerbung::ORGANISATORISCHE_MITTEILUNGEN %>
+          <%= form.text_area :organisatorische_mitteilungen %>
 <!-- rows was 6 cols was 48 -->
         </fieldset>
         <nav>
@@ -246,8 +246,8 @@
       <section id="motivation">
         <%= render :partial => 'bewerbungen/steps' %>
         <fieldset>
-          <legend><%= f.label :informationen %></legend>
-          <%= errors_for_methods f, Bewerbung::INFORMATIONEN %>
+          <legend><%= form.label :informationen %></legend>
+          <%= errors_for_methods Bewerbung::INFORMATIONEN %>
           <div class="text">
             <p>
               Wir möchten uns ein Bild von Dir und Deiner Lebenssituation verschaffen. Schreibe einen kurzen und zusammenhängenden Text über Dich selbst. Wie Du diesen Punkt bearbeitest ist Dir überlassen; die folgenden Fragen sollen als Anregung und Hilfestellung verstanden werden.
@@ -262,7 +262,7 @@
               <li>Gibt es weitere Dinge, die wir über Dich wissen sollten?</li>
             </ul>
           </div>
-          <%= f.text_area :informationen %>
+          <%= form.text_area :informationen %>
 <!-- rows was 30 cols was 86 -->
         </fieldset>
         <nav>
@@ -272,7 +272,7 @@
       </section>    
     <% end %>
     
-    <%= form_for(@bewerbung, :url => bewerbung_confirm_path, method: 'post', :html => { :class => "confirm_bewerbung", :id => "confirm_bewerbung" }) do |f| %>
+    <%= form_for(@bewerbung, :url => bewerbung_confirm_path, method: 'post', :html => { :class => "confirm_bewerbung", :id => "confirm_bewerbung" }) do |form| %>
       <section id="bestaetigung">
         <%= render :partial => 'bewerbungen/steps' %>
         <div class="text">
