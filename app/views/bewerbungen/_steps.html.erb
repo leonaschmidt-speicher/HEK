@@ -1,6 +1,6 @@
 <ol class="steps">
-  <li>
-    <a <%= 'class="errors"'.html_safe if step_has_errors? :persoenliches %>>
+  <li class="current">
+    <a <%= 'class="errors"'.html_safe if step_has_errors? :persoenliches %> href="#persoenliches">
       <h2>Persönliches</h2>
       <small>Wie heiße ich?</small>
     </a>

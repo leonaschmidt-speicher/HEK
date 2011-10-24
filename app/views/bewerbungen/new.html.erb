@@ -1,5 +1,7 @@
-<% provide :javascript, '...' %>
-<% #<?php if ($page_id == 'bewerbung' && !empty($errors)) { ?><script>window.location.hash = "#<?php if ($errors['persoenliches']) echo 'persoenliches'; else if ($errors['organisatorisches']) echo 'organisatorisches'; else echo 'motivation'; ?>"</script><?php } ?> %>
+<% provide :javascript do %>
+  <script>window.location.hash = "#<%= first_step_with_errors %>";</script>
+<% end %>
+
 
 <article>
   <div id="swap-view">

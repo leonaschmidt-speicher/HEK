@@ -35,4 +35,15 @@ module BewerbungenHelper
     
     has_error
   end
+  
+  def first_step_with_errors
+    if step_has_errors? :persoenliches
+      'persoenliches'
+    elsif step_has_errors? :organisatorisches
+      'organisatorisches'
+    else
+      'motivation'
+    end
+  end
+      
 end
