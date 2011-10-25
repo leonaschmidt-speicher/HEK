@@ -34,7 +34,7 @@
             <img class="background" src="/images/postit.png" alt="Postit" />
           </div>
         </div>
-        <%= render :partial => 'bewerbungen/steps'  %>
+        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :persoenliches}  %>
         <fieldset>
           <legend><%= form.label :vorname, 'Persönliche Angaben' %></legend>
           <%= errors_for_methods Bewerbung::PERSOENLICHE_ANGABEN %>
@@ -194,7 +194,7 @@
       </section>
 
       <section id="organisatorisches">
-        <%= render :partial => 'bewerbungen/steps' %>
+        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :organisatorisches} %>
         <fieldset>
           <legend><%= form.label :fruehestens, 'Angaben zum Einzug' %></legend>
           <%= errors_for_methods Bewerbung::ANGABEN_ZUM_EINZUG %>
@@ -248,7 +248,7 @@
       </section>
       
       <section id="motivation">
-        <%= render :partial => 'bewerbungen/steps' %>
+        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :informationen} %>
         <fieldset>
           <legend><%= form.label :informationen %></legend>
           <%= errors_for_methods Bewerbung::INFORMATIONEN %>
@@ -278,7 +278,7 @@
     
     <%= form_for(@bewerbung, :url => bewerbung_confirm_path, method: 'post', :html => { :class => "confirm_bewerbung", :id => "confirm_bewerbung" }) do |form| %>
       <section id="bestaetigung">
-        <%= render :partial => 'bewerbungen/steps' %>
+        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :bestaetigung} %>
         <div class="text">
           <% if @bewerbung.errors.any? %>
           <p class="errors">
@@ -342,7 +342,7 @@
     <% end %>
     
     <section id="ablauf">
-    <%= render :partial => 'bewerbungen/steps' %>
+    <%= render :partial => 'bewerbungen/steps', :locals => { :current => :ablauf} %>
 <% # missing error handling but for which errors %>
       <p>
         Und was passiert jetzt?
