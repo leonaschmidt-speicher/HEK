@@ -1,9 +1,6 @@
-<% if @bewerbung.errors.any?
-     provide :javascript do %>
+<% provide :javascript do %>
   <script>window.location.hash = "#<%= first_step_with_errors %>";</script>
-<%   end
-   end %>
-
+<% end if @bewerbung.errors.any? %>
 
 <article>
   <div id="swap-view">
@@ -84,7 +81,7 @@
           <p class="file">
             <%= form.label :lebenslauf %>
             <%= form.file_field :lebenslauf %>
-            <%= hidden_field 'already_attached_cv', nil, :value => File.basename(@bewerbung.lebenslauf.url) if @bewerbung.lebenslauf.file? %> 
+            <%= hidden_field 'already_attached_cv', nil, :value => File.basename(@bewerbung.lebenslauf.url) if @bewerbung.lebenslauf.file? %>
           </p>
         </fieldset>
         <fieldset>
@@ -246,7 +243,7 @@
           <a href="#motivation">Weiter zu Motivation &raquo;</a>
         </nav>
       </section>
-      
+
       <section id="motivation">
         <%= render :partial => 'bewerbungen/steps', :locals => { :current => :informationen} %>
         <fieldset>
@@ -272,9 +269,9 @@
           <a href="#organisatorisches">&laquo; Zurück zu Organisatorisches</a>
           <input type="submit" name="bestaetigung" value="Weiter zu Bestätigung &raquo;" />
         </nav>
-      </section>    
+      </section>
     <% end %>
-    
+
     <%= form_for(@bewerbung, :url => bewerbung_confirm_path, method: 'post', :html => { :class => "confirm_bewerbung", :id => "confirm_bewerbung" }) do |form| %>
       <section id="bestaetigung">
         <%= render :partial => 'bewerbungen/steps', :locals => { :current => :bestaetigung} %>
@@ -310,7 +307,7 @@
             <dd>
             <%= (@bewerbung.festnetztelefon unless @bewerbung.festnetztelefon.blank?) \
                 || (@bewerbung.mobiltelefon unless @bewerbung.mobiltelefon.blank?) \
-                || "Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest." 
+                || "Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest."
             %>
             </dd>
           <% unless @bewerbung.anzahl_abgeschlossener_fachsemester.blank? || @bewerbung.hauptfach.blank? %>
@@ -338,9 +335,9 @@
         </nav>
       </section>
     <% end %>
-    
+
     <section id="ablauf">
-    <%= render :partial => 'bewerbungen/steps', :locals => { :current => :ablauf} %>
+    <%= render :partial => 'bewerbungen/steps', :locals => { :current => :ablauf } %>
 <% # missing error handling but for which errors %>
       <p>
         Und was passiert jetzt?
