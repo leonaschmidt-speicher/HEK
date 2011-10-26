@@ -74,7 +74,9 @@
               <%= form.text_field :religion %>
           </p>
           <p class="file">
-<!-- display/link to already uploaded photo here -->
+            <% if @bewerbung.foto.file? %>
+              <a href="<%= @bewerbung.foto %>" target="_blank" class="img"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+            <% end %>
             <%= form.label :foto %>
             <%= form.file_field :foto %>
           </p>
@@ -289,16 +291,15 @@
           <p>
             Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
           </p>
-<!-- display foto -->
+        <% if @bewerbung.foto.file? %>
+          <a href="<%= @bewerbung.foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+        <% end %>
           <dl>
             <dt>Persönliche Daten</dt>
             <dd><%= @bewerbung.vorname + " " + @bewerbung.nachname %></dd>
             <dd><%= @bewerbung.geburtsdatum %></dd>
           <% unless @bewerbung.lebenslauf.blank? %>
-            <dd><a href="<%= @bewerbung.lebenslauf %>" target="_blank"><%= @bewerbung.lebenslauf.original_filename %></a></dd>
-          <% end %>
-          <% unless @bewerbung.foto.blank? %>
-            <dd><a href="<%= @bewerbung.foto %>" target="_blank"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+            <dd><a href="<%= @bewerbung.lebenslauf %>" target="_blank">Lebenslauf: <%= @bewerbung.lebenslauf.original_filename %></a></dd>
           <% end %>
             <dt>Kontakt</dt>
             <dd>
