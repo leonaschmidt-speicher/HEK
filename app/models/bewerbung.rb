@@ -11,7 +11,7 @@ class Bewerbung < ActiveRecord::Base
 
   # set up paperclip
   has_attached_file :foto, {
-    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+    :styles => { :medium => "300x300#", :thumb => "100x100#" },
     :url => "/uploads/:hash.:extension",
     :hash_secret => "712be566717dae4560fd7cfcf8214369",
     :hash_data => ":class/:attachment/:id/:style"

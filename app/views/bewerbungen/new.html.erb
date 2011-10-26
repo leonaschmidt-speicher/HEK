@@ -63,10 +63,10 @@
           <ul>
             <li>
               <%= form.label :geschlecht %>
-              <%= form.select(:geschlecht, options_for_select(['', 'männlich', 'weiblich'])) %>
+              <%= form.select(:geschlecht, options_for_select(['', 'männlich', 'weiblich']), :size => 1, :style => "width: 11.75em") %>
             <li>
               <%= form.label :familienstand %>
-              <%= form.select(:familienstand, options_for_select(['', 'ledig', 'verheiratet'])) %>
+              <%= form.select(:familienstand, options_for_select(['', 'ledig', 'verheiratet']), :size => 1, :style => "width: 11.75em") %>
             </li>
           </ul>
           <p>
@@ -81,7 +81,6 @@
             <%= form.file_field :foto %>
           </p>
           <p class="file">
-<!-- link to already uploaded lebenslauf here -->
             <%= form.label :lebenslauf %>
             <%= form.file_field :lebenslauf %>
           </p>
@@ -132,7 +131,6 @@
           <%= errors_for_methods Bewerbung::ANGABEN_ZUM_STUDIUM %>
           <ul>
             <li>
-<!-- style attribute in select field: style="width: 11.75em" -->
               <%= form.label :hochschule %>
               <%= form.select :hochschule, options_for_select([['Karlsruher Institut für Technologie (Uni)', 'KIT'],
                                                            ['Hochschule Karlsruhe (FH)', 'FH'],
@@ -142,7 +140,7 @@
                                                            ['Hochschule für Gestaltung (HfG)', 'HfG'],
                                                            ['Hochschule für Musik (HfM)', 'HfM'],
                                                            ['Karlshochschule Karlsruhe', 'Karlshochschule'],
-                                                           'Andere'])%>
+                                                           'Andere']), :size => 1, :style => "width: 11.75em" %>
             </li>
             <li>
               <%= form.label :hauptfach %>
@@ -155,13 +153,12 @@
           </p>
           <ul>
             <li>
-<!-- default does not work yet -->
               <%= form.label :studienende %>
               <%= form.date_select :studienende, :discard_day => true, :default => 3.years.from_now, :include_blank => true %>
             </li>
             <li>
               <%= form.label :angestrebter_abschluss %>
-              <%= form.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer']) %>
+              <%= form.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer']), :size => 1, :style => "width: 11.75em" %>
             </li>
           </ul>
           <div id="berufsakademie">
