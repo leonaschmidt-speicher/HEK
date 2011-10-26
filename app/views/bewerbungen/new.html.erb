@@ -76,7 +76,7 @@
           <p class="file">
             <% if @bewerbung.foto.file? %>
               <a href="<%= @bewerbung.foto %>" target="_blank" class="img"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
-              <%= hidden_field 'already_attached_file', nil, :value => @bewerbung.foto.url %>
+              <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.foto.url) %>
             <% end %>
             <%= form.label :foto %>
             <%= form.file_field :foto %>
@@ -84,6 +84,7 @@
           <p class="file">
             <%= form.label :lebenslauf %>
             <%= form.file_field :lebenslauf %>
+            <%= hidden_field 'already_attached_cv', nil, :value => File.basename(@bewerbung.lebenslauf.url) if @bewerbung.lebenslauf.file? %> 
           </p>
         </fieldset>
         <fieldset>
@@ -288,7 +289,7 @@
             Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
           </p>
         <% if @bewerbung.foto.file? %>
-          <a href="<%= @bewerbung.foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+          <a href="<%= @bewerbung.foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.foto.url(:medium), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
         <% end %>
           <dl>
             <dt>Persönliche Daten</dt>

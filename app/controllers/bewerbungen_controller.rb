@@ -20,7 +20,25 @@ class BewerbungenController < ApplicationController
 
   def create
     @bewerbung = Bewerbung.new(params[:bewerbung])
-
+    
+    if not @bewerbung.foto.file? and not params[:already_attached_foto].blank?
+      # preserve previousely uploaded foto
+      begin
+        @bewerbung.foto = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_foto].first)}");
+      rescue
+        @bewerbung.foto = nil
+      end
+    end
+    
+    if not @bewerbung.lebenslauf.file? and not params[:already_attached_cv].blank?
+      # preserve previousely uploaded cv
+      begin
+        @bewerbung.lebenslauf = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_cv].first)}");
+      rescue
+        @bewerbung.lebenslauf.nil
+      end
+    end
+    
     if @bewerbung.save
       session[:bewerbung_id] = @bewerbung.id
       redirect_to :action => 'new', :anchor => 'bestaetigung'
@@ -43,6 +61,17 @@ class BewerbungenController < ApplicationController
     else
       redirect_to :action => 'new'
     end
-    
+  end
+  
+  private
+  def sanitize_filename(filename)
+    filename.strip.tap do |name|
+      # NOTE: File.basename doesn't work right with Windows paths on Unix
+      # get only the filename, not the whole path
+      name.sub! /\A.*(\\|\/)/, ''
+      # Finally, replace all non alphanumeric, underscore
+      # or periods with underscore
+      name.gsub! /[^\w\.\-]/, '_'
+    end
   end
 end
