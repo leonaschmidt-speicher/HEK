@@ -290,6 +290,8 @@
           </p>
         <% if @bewerbung.foto.file? %>
           <a href="<%= @bewerbung.foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.foto.url(:medium), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+        <% else %>
+          <%= image_tag '/images/missing.png', :alt => "Du hast kein Foto hochgeladen.", :class => 'foto' %>
         <% end %>
           <dl>
             <dt>Persönliche Daten</dt>
