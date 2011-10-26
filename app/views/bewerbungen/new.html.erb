@@ -76,6 +76,7 @@
           <p class="file">
             <% if @bewerbung.foto.file? %>
               <a href="<%= @bewerbung.foto %>" target="_blank" class="img"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+              <%= hidden_field 'already_attached_file', nil, :value => @bewerbung.foto.url %>
             <% end %>
             <%= form.label :foto %>
             <%= form.file_field :foto %>
@@ -205,7 +206,7 @@
             </li>
             <li>
               <%= form.label :wunsch %>
-              <%= date_select :wunsch, :default => 3.months.from_now%>
+              <%= form.date_select :wunsch, :default => 3.months.from_now%>
             </li>
             <li>
               <%= form.label :spaetestens %>
