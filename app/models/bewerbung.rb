@@ -1,5 +1,5 @@
 class Bewerbung < ActiveRecord::Base
-  PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto lebenslauf]
+  PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto foto_content_type foto_file_size lebenslauf lebenslauf_content_type lebenslauf_file_size]
   ANSCHRIFT_DER_ELTERN = %w[strasse_und_nummer plz ort land]
   WEITERE_KONTAKTINFORMATIONEN = %w[email, mobiltelefon, festnetztelefon]
   ANGABEN_ZUM_STUDIUM = %w[hochschule hauptfach anzahl_abgeschlossener_fachsemester studienende angestrebter_abschluss firma firma_plz firma_ort waehrend_der_praxisphasen_im_hek]
