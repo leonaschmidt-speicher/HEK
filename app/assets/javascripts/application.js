@@ -177,7 +177,7 @@ $(document).ready(function() {
         }).anchorAnimate();
       });
     });
-    $("#hochschule").change(function() {
+    $("#bewerbung_hochschule").change(function() {
       if ($(this).val() == "BA") {
         $("#berufsakademie").slideDown(300);
       }
