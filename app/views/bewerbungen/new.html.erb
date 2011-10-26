@@ -41,12 +41,12 @@
           <ul>
             <li>
               <%= form.label :vorname %>
-              <%= form.text_field :vorname %>
+              <%= form.text_field :vorname, :size => 24 %>
 <!-- autofocus here on first visit -->
             </li>
             <li>
               <%= form.label :nachname %>
-              <%= form.text_field :nachname %>
+              <%= form.text_field :nachname, :size => 24 %>
             </li>
           </ul>
           <ul>
@@ -57,7 +57,7 @@
             <li>
 <!-- a nationality list would be nice for later sorting -->
               <%= form.label :staatsangehoerigkeit %>
-              <%= form.text_field :staatsangehoerigkeit %>
+              <%= form.text_field :staatsangehoerigkeit, :size => 24 %>
             </li>
           </ul>
           <ul>
@@ -71,7 +71,7 @@
           </ul>
           <p>
               <%= form.label :religion %>
-              <%= form.text_field :religion %>
+              <%= form.text_field :religion, :size => 24 %>
           </p>
           <p class="file">
             <% if @bewerbung.foto.file? %>
@@ -91,22 +91,22 @@
           <%= errors_for_methods Bewerbung::ANSCHRIFT_DER_ELTERN %>
           <p>
               <%= form.label :strasse_und_nummer %>
-              <%= form.text_field :strasse_und_nummer %>
+              <%= form.text_field :strasse_und_nummer, :size => 35 %>
           </p>
           <ul>
             <li>
               <%= form.label :plz %>
-              <%= form.text_field :plz %>
+              <%= form.text_field :plz, :size => 5 %>
             </li>
             <li>
               <%= form.label :ort %>
-              <%= form.text_field :ort %>
+              <%= form.text_field :ort, :size => 24 %>
             </li>
           </ul>
           <p>
 <!-- a country list would be nice for later sorting -->
             <%= form.label :land %>
-            <%= form.text_field :land %>
+            <%= form.text_field :land, :size => 24 %>
           </p>
         </fieldset>
         <fieldset>
@@ -114,16 +114,16 @@
           <%= errors_for_methods Bewerbung::WEITERE_KONTAKTINFORMATIONEN %>
           <p>
              <%= form.label :email %>
-            <%= form.email_field :email %>
+            <%= form.email_field :email, :size => 24 %>
           </p>
           <ul>
             <li>
               <%= form.label :mobiltelefon %>
-              <%= form.text_field :mobiltelefon %>
+              <%= form.text_field :mobiltelefon, :size => 24 %>
             </li>
             <li>
               <%= form.label :festnetztelefon %>
-              <%= form.text_field :festnetztelefon %>
+              <%= form.text_field :festnetztelefon, :size => 24 %>
             </li>
           </ul>
         </fieldset>
@@ -142,16 +142,16 @@
                                                            ['Hochschule für Gestaltung (HfG)', 'HfG'],
                                                            ['Hochschule für Musik (HfM)', 'HfM'],
                                                            ['Karlshochschule Karlsruhe', 'Karlshochschule'],
-                                                           'Andere']) %>
+                                                           'Andere'])%>
             </li>
             <li>
               <%= form.label :hauptfach %>
-              <%= form.text_field :hauptfach %>
+              <%= form.text_field :hauptfach, :size => 24 %>
             </li>
           </ul>
           <p>
             <%= form.label :anzahl_abgeschlossener_fachsemester %>
-            <%= form.text_field :anzahl_abgeschlossener_fachsemester %>
+            <%= form.number_field :anzahl_abgeschlossener_fachsemester, :value => 0, :step => 1, :min => 0, :size => 24 %>
           </p>
           <ul>
             <li>
@@ -167,16 +167,16 @@
           <div id="berufsakademie">
             <p>
               <%= form.label :firma %>
-              <%= form.text_field :firma %>
+              <%= form.text_field :firma, :size => 35 %>
             </p>
             <ul>
               <li>
                 <%= form.label :firma_plz %>
-                <%= form.text_field :firma_plz %>
+                <%= form.text_field :firma_plz, :size => 5 %>
               </li>
               <li>
                 <%= form.label :firma_ort %>
-                <%= form.text_field :firma_ort %>
+                <%= form.text_field :firma_ort, :size => 24 %>
               </li>
             </ul>
             <p class="radio">
@@ -217,7 +217,7 @@
           </ul>
           <p>
             <%= form.label :geplante_wohndauer %>
-            <%= form.text_field :geplante_wohndauer %>
+            <%= form.number_field :geplante_wohndauer, :size => 24, :step => 1, :min => 0, :size => 24 %>
             <span>in Monaten (z.B. 36)</span>
           </p>
         </fieldset>
@@ -229,19 +229,18 @@
             <%= form.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
           </p>
           <p>
-            <%= form.label :wunsch %>
-            <%= form.date_select :wunsch, :discard_day => true, :default => 3.months.from_now%>
+            <%= form.label :sprechstunde_im_monat %>
+            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :default => 3.months.from_now%>
           </p>
           <p>
             <%= form.label :vorstellungsgespraech_nicht_moeglich %>
-            <%= form.time_select :vorstellungsgespraech_nicht_moeglich %>
+            <%= form.time_select :vorstellungsgespraech_nicht_moeglich, :size => 24 %>
           </p>
         </fieldset>
         <fieldset>
           <legend><%= form.label :organisatorische_mitteilungen %></legend>
           <%= errors_for_methods Bewerbung::ORGANISATORISCHE_MITTEILUNGEN %>
-          <%= form.text_area :organisatorische_mitteilungen %>
-<!-- rows was 6 cols was 48 -->
+          <%= form.text_area :organisatorische_mitteilungen, :rows => 6, :cols => 48 %>
         </fieldset>
         <nav>
           <a href="#persoenliches">&laquo; Zurück zu Persönliches</a>
@@ -268,8 +267,7 @@
               <li>Gibt es weitere Dinge, die wir über Dich wissen sollten?</li>
             </ul>
           </div>
-          <%= form.text_area :informationen %>
-<!-- rows was 30 cols was 86 -->
+          <%= form.text_area :informationen, :rows => 30, :cols => 86 %>
         </fieldset>
         <nav>
           <a href="#organisatorisches">&laquo; Zurück zu Organisatorisches</a>
