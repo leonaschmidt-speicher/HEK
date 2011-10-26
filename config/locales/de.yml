@@ -243,6 +243,8 @@ de:
         hauptfach: "(Haupt-)Fach"
         anzahl_abgeschlossener_fachsemester: "Anzahl abgeschlossener Fachsemester zum Einzugstermin"
         angestrebter_abschluss: "Angestrebter Abschluss"
+        firma_plz: "PLZ"
+        firma_ort: "Ort"
         fruehestens: "Frühestens"
         spaetestens: "Spätestens"
         geplante_wohndauer: "Geplante Wohndauer"
