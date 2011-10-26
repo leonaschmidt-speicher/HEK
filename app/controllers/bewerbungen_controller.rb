@@ -35,7 +35,7 @@ class BewerbungenController < ApplicationController
       begin
         @bewerbung.lebenslauf = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_cv].first)}");
       rescue
-        @bewerbung.lebenslauf.nil
+        @bewerbung.lebenslauf = nil
       end
     end
     
