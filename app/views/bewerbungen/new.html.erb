@@ -294,8 +294,8 @@
             <dt>Persönliche Daten</dt>
             <dd><%= @bewerbung.vorname + " " + @bewerbung.nachname %></dd>
             <dd><%= @bewerbung.geburtsdatum %></dd>
-          <% unless @bewerbung.lebenslauf.blank? %>
-            <dd><a href="<%= @bewerbung.lebenslauf %>" target="_blank">Lebenslauf: <%= @bewerbung.lebenslauf.original_filename %></a></dd>
+          <% if @bewerbung.temp_lebenslauf.file? %>
+            <dd><a href="<%= @bewerbung.temp_lebenslauf %>" target="_blank">Lebenslauf: <%= @bewerbung.temp_lebenslauf.original_filename %></a></dd>
           <% end %>
             <dt>Kontakt</dt>
             <dd>
