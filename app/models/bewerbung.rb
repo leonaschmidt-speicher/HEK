@@ -1,7 +1,7 @@
 class Bewerbung < ActiveRecord::Base
   PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto foto_content_type foto_file_size lebenslauf lebenslauf_content_type lebenslauf_file_size]
   ANSCHRIFT_DER_ELTERN = %w[strasse_und_nummer plz ort land]
-  WEITERE_KONTAKTINFORMATIONEN = %w[email, mobiltelefon, festnetztelefon]
+  WEITERE_KONTAKTINFORMATIONEN = %w[email mobiltelefon festnetztelefon]
   ANGABEN_ZUM_STUDIUM = %w[hochschule hauptfach anzahl_abgeschlossener_fachsemester studienende angestrebter_abschluss firma firma_plz firma_ort waehrend_der_praxisphasen_im_hek]
   ANGABEN_ZUM_EINZUG = %w[fruehestens wunsch spaetestens geplante_wohndauer]
   VORSTELLUNG = %w[komme_vorbei_am sprechstunge_im_monat vorstellungsgespraech_nicht_moeglich]
@@ -10,19 +10,21 @@ class Bewerbung < ActiveRecord::Base
   set_table_name "bewerbungen"
 
   # set up paperclip
-  has_attached_file :foto, {
+  has_attached_file :temp_foto, {
     :styles => { :medium => "140x140>", :thumb => "100x100#" },
     :url => "/uploads/:hash.:extension",
     :hash_secret => "712be566717dae4560fd7cfcf8214369",
-    :hash_data => ":class/:attachment/:id/:style"
+    :hash_data => ":class/:attachment/:style",
+    :use_timestamp => false
   }
   validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
   validates_attachment_size :foto, :less_than => 4.megabytes
 
-  has_attached_file :lebenslauf, {
+  has_attached_file :temp_lebenslauf, {
     :url => "/uploads/:hash.:extension",
     :hash_secret => "6a3d3eebbf7356f1420e4359d3r",
-    :hash_data => ":class/:attachment/:id/:style"
+    :hash_data => ":class/:attachment/:style",
+    :use_timestamp => false
   }
   validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf',
                                                               'application/postscript',
@@ -31,6 +33,21 @@ class Bewerbung < ActiveRecord::Base
                                                               'application/vnd.oasis.opendocument.text']
   validates_attachment_size :lebenslauf, :less_than => 6.megabytes
 
+
+  has_attached_file :foto, {
+    :styles => { :medium => "140x140>", :thumb => "100x100#" },
+    :url => "/uploads/secure/:hash.:extension",
+    :hash_secret => "712be566717dae4560fd7cfcf8214369",
+    :hash_data => ":class/:attachment/:id/:style",
+    :use_timestamp => false
+  }
+  has_attached_file :lebenslauf, {
+    :url => "/uploads/secure/:hash.:extension",
+    :hash_secret => "6a3d3eebbf7356f1420e4359d3r",
+    :hash_data => ":class/:attachment/:id/:style",
+    :use_timestamp => false
+  }
+  
   validates :vorname,
             :nachname,
             :geburtsdatum,

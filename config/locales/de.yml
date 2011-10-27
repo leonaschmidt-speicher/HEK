@@ -237,6 +237,8 @@ de:
   helpers:
     label:
       bewerbung:
+        temp_foto: "Foto"
+        temp_lebenslauf: "Lebenslauf"
         strasse_und_nummer: "Straße und Nr."
         plz: "PLZ"
         email: "E-Mail"

@@ -71,17 +71,17 @@
               <%= form.text_field :religion, :size => 24 %>
           </p>
           <p class="file">
-            <% if @bewerbung.foto.file? %>
-              <a href="<%= @bewerbung.foto %>" target="_blank" class="img"><%= image_tag(@bewerbung.foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
-              <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.foto.url) %>
+            <% if @bewerbung.temp_foto.file? %>
+              <a href="<%= @bewerbung.temp_foto %>" target="_blank" class="img"><%= image_tag(@bewerbung.temp_foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}") %></a></dd>
+              <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.temp_foto.url()) %>
             <% end %>
-            <%= form.label :foto %>
-            <%= form.file_field :foto %>
+            <%= form.label :temp_foto %>
+            <%= form.file_field :temp_foto %>
           </p>
           <p class="file">
-            <%= form.label :lebenslauf %>
-            <%= form.file_field :lebenslauf %>
-            <%= hidden_field 'already_attached_cv', nil, :value => File.basename(@bewerbung.lebenslauf.url) if @bewerbung.lebenslauf.file? %>
+            <%= form.label :temp_lebenslauf %>
+            <%= form.file_field :temp_lebenslauf %>
+            <%= hidden_field 'already_attached_cv', nil, :value => File.basename(@bewerbung.temp_lebenslauf.url) if @bewerbung.temp_lebenslauf.file? %>
           </p>
         </fieldset>
         <fieldset>
@@ -285,8 +285,8 @@
           <p>
             Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
           </p>
-        <% if @bewerbung.foto.file? %>
-          <a href="<%= @bewerbung.foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.foto.url(:medium), :alt => "Dein Foto: #{@bewerbung.foto.original_filename}") %></a></dd>
+        <% if @bewerbung.temp_foto.file? %>
+          <a href="<%= @bewerbung.temp_foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.temp_foto.url(:medium), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}") %></a></dd>
         <% else %>
           <%= image_tag '/images/missing.png', :alt => "Du hast kein Foto hochgeladen.", :class => 'foto' %>
         <% end %>

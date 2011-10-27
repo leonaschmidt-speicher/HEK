@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111021232740) do
+ActiveRecord::Schema.define(:version => 20111026231237) do
 
   create_table "bewerbungen", :force => true do |t|
     t.string   "vorname"
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(:version => 20111021232740) do
     t.datetime "updated_at"
     t.string   "geschlecht"
     t.boolean  "bestaetigt",                           :default => false
+    t.string   "temp_foto_file_name"
+    t.string   "temp_foto_content_type"
+    t.string   "temp_lebenslauf_file_name"
+    t.string   "temp_lebenslauf_content_type"
+    t.integer  "temp_foto_file_size"
+    t.integer  "temp_lebenslauf_file_size"
   end
 
   create_table "sessions", :force => true do |t|

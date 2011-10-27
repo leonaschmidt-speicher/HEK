@@ -20,22 +20,22 @@ class BewerbungenController < ApplicationController
 
   def create
     @bewerbung = Bewerbung.new(params[:bewerbung])
-    
-    if not @bewerbung.foto.file? and not params[:already_attached_foto].blank?
+
+
+    if not @bewerbung.temp_foto.file? and not params[:already_attached_foto].blank?
       # preserve previousely uploaded foto
       begin
-        @bewerbung.foto = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_foto].first)}");
+        @bewerbung.temp_foto = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_foto].first)}");
       rescue
-        @bewerbung.foto = nil
+        @bewerbung.temp_foto = nil
       end
     end
-    
-    if not @bewerbung.lebenslauf.file? and not params[:already_attached_cv].blank?
+    if not @bewerbung.temp_lebenslauf.file? and not params[:already_attached_cv].blank?
       # preserve previousely uploaded cv
       begin
-        @bewerbung.lebenslauf = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_cv].first)}");
+        @bewerbung.temp_lebenslauf = File.open("#{Rails.root}/public/uploads/#{sanitize_filename(params[:already_attached_cv].first)}");
       rescue
-        @bewerbung.lebenslauf = nil
+        @bewerbung.temp_lebenslauf = nil
       end
     end
     
@@ -43,6 +43,8 @@ class BewerbungenController < ApplicationController
       session[:bewerbung_id] = @bewerbung.id
       redirect_to :action => 'new', :anchor => 'bestaetigung'
     else
+      # validation errors would prevent the uploaded files to be saved. save them manually
+      @bewerbung.save_attached_files
       @group = 'bewerbung'
       render 'new'
     end
@@ -51,6 +53,13 @@ class BewerbungenController < ApplicationController
   def confirm
     if bewerbung = (Bewerbung.find(session[:bewerbung_id]) unless session[:bewerbung_id].blank?)
       bewerbung.bestaetigt = true
+      
+      # move attachments to a secure place
+      bewerbung.foto = bewerbung.temp_foto
+      bewerbung.temp_foto.clear
+      bewerbung.lebenslauf = bewerbung.temp_lebenslauf
+      bewerbung.temp_lebenslauf.clear
+      
       bewerbung.save
       
       # prevent user from submitting his application twice but call him by his name.
