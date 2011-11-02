@@ -65,4 +65,11 @@ class Bewerbung < ActiveRecord::Base
   def alter
     ((Date.today.to_time - geburtsdatum.to_time) / 1.year).round
   end
+
+  def update_bewertung
+    transaction do
+      bewertung = bewertungen.empty? ? 0 : (bewertungen.sum(:wert) / bewertungen.count).round
+      update_attribute :bewertung, bewertung
+    end
+  end
 end
