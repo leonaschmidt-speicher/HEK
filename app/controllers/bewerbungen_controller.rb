@@ -3,8 +3,9 @@ class BewerbungenController < ApplicationController
 
   def index
     @group = 'bewerbung'
-    @sort_by = params[:sort_by] || 'created_at desc'
-    @bewerbungen = Bewerbung.order @sort_by
+    @sort_by = (params[:sort_by].blank? ? '' : "#{params[:sort_by]}, ") + 'created_at desc'
+    # zugesagt ist wirklich ein schlechter Name ...
+    @bewerbungen = Bewerbung.where(:zugesagt => [true, nil]).order @sort_by
     @bewerbungen = @bewerbungen.where :geschlecht => params[:geschlecht] unless params[:geschlecht].blank?
     @bewerbungen = @bewerbungen.where '(fruehestens <= :einzugsdatum and :einzugsdatum <= spaetestens) or wunsch = :einzugsdatum', :einzugsdatum => Time.zone.parse(params[:einzugsdatum]).strftime('%Y-%m-%d') unless params[:einzugsdatum].blank?
     @bewerbungen = @bewerbungen.where "#{'not' if params[:staatsangehoerigkeit] == 'nicht-deutsch'} staatsangehoerigkeit = 'deutsch'" unless params[:staatsangehoerigkeit].blank?
