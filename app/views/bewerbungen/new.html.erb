@@ -200,7 +200,7 @@
           <ul>
             <li>
               <%= form.label :fruehestens %>
-              <%= date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
+              <%= form.date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
             </li>
             <li>
               <%= form.label :wunsch %>
