@@ -139,6 +139,9 @@
 .ui-rating a {
   cursor: pointer;
 }
+.ui-rating a[title='0'] {
+  display: none;
+}
 .ui-rating-full  {
     background-position:left top;
 }

@@ -65,8 +65,8 @@
           <td style="display: none"><%= bewerbung.staatsangehoerigkeit %></td>
           <td>
             <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>">
-            <% 5.times do |j| %>
-              <option value="<%= j %>" <%= 'selected' if bewerbung.bewertung == j %>><%= j %></option>
+            <% 6.times do |j| %>
+              <option value="<%= j %>" <%= 'selected' if bewerbung.bewertung == j and not bewerbung.bewertungen.find_by_benutzer(@user).nil? %>><%= j %></option>
             <% end %>
             </select>
           </td>

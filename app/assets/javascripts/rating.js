@@ -103,8 +103,8 @@
         var select = $(evt.data.selectBox);
         methods.setValue(value, evt.data.container, evt.data.selectBox);
         $.post(select.attr('data-url'), {wert: value},
-          function(info) {
-            select.val(info);
+          function(result) {
+            methods.setValue(result['wert'], evt.data.container, evt.data.selectBox);
           },
           'json'
         );
