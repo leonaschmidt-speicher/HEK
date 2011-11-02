@@ -200,7 +200,7 @@
           <ul>
             <li>
               <%= form.label :fruehestens %>
-              <%= date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
+              <%= form.date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
             </li>
             <li>
               <%= form.label :wunsch %>
@@ -294,8 +294,8 @@
             <dt>Persönliche Daten</dt>
             <dd><%= @bewerbung.vorname + " " + @bewerbung.nachname %></dd>
             <dd><%= @bewerbung.geburtsdatum %></dd>
-          <% unless @bewerbung.lebenslauf.blank? %>
-            <dd><a href="<%= @bewerbung.lebenslauf %>" target="_blank">Lebenslauf: <%= @bewerbung.lebenslauf.original_filename %></a></dd>
+          <% if @bewerbung.temp_lebenslauf.file? %>
+            <dd><a href="<%= @bewerbung.temp_lebenslauf %>" target="_blank">Lebenslauf: <%= @bewerbung.temp_lebenslauf.original_filename %></a></dd>
           <% end %>
             <dt>Kontakt</dt>
             <dd>
@@ -333,7 +333,7 @@
         </div>
         <nav>
           <a href="#motivation">&laquo; Zurück zu Motivation</a>
-          <input type="submit" name="ablauf" value="Bestätigen &raquo;" <%= 'disabled="disabled"' if @bewerbung.errors.any? %> />
+          <%= form.submit :value => "Bestätigen &raquo;".html_safe, :disabled => ("disabled" if @bewerbung.errors.any?) %>
         </nav>
       </section>
     <% end %>
