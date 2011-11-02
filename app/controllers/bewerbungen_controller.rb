@@ -1,7 +1,14 @@
 class BewerbungenController < ApplicationController
+  before_filter :authenticate, :only => [:index, :show]
 
   def index
-    @bewerbungen = Bewerbung.all
+    @group = 'bewerbung'
+    @sort_by = params[:sort_by] || 'created_at desc'
+    @bewerbungen = Bewerbung.order @sort_by
+    @bewerbungen = @bewerbungen.where :geschlecht => params[:geschlecht] unless params[:geschlecht].blank?
+    @bewerbungen = @bewerbungen.where '(fruehestens <= :einzugsdatum and :einzugsdatum <= spaetestens) or wunsch = :einzugsdatum', :einzugsdatum => Time.zone.parse(params[:einzugsdatum]).strftime('%Y-%m-%d') unless params[:einzugsdatum].blank?
+    @bewerbungen = @bewerbungen.where "#{'not' if params[:staatsangehoerigkeit] == 'nicht-deutsch'} staatsangehoerigkeit = 'deutsch'" unless params[:staatsangehoerigkeit].blank?
+    @bewerbungen = @bewerbungen.where :zugesagt => params[:zugesagt] unless params[:zugesagt].blank?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,7 +45,7 @@ class BewerbungenController < ApplicationController
         @bewerbung.temp_lebenslauf = nil
       end
     end
-    
+
     if @bewerbung.save
       session[:bewerbung_id] = @bewerbung.id
       redirect_to :action => 'new', :anchor => 'bestaetigung'
@@ -49,30 +56,30 @@ class BewerbungenController < ApplicationController
       render 'new'
     end
   end
-  
+
   def confirm
     if bewerbung = (Bewerbung.find(session[:bewerbung_id]) unless session[:bewerbung_id].blank?)
       bewerbung.bestaetigt = true
-      
+
       # move attachments to a secure place
       bewerbung.foto = bewerbung.temp_foto
       bewerbung.temp_foto.clear
       bewerbung.lebenslauf = bewerbung.temp_lebenslauf
       bewerbung.temp_lebenslauf.clear
-      
+
       bewerbung.save
-      
+
       # prevent user from submitting his application twice but call him by his name.
       session[:bewerbung_id] = nil
       session[:name] = bewerbung.vorname + bewerbung.nachname
-      
+
       redirect_to :action => 'new', :anchor => 'ablauf'
     else
       redirect_to :action => 'new'
     end
   end
-  
-  private
+
+private
   def sanitize_filename(filename)
     filename.strip.tap do |name|
       # NOTE: File.basename doesn't work right with Windows paths on Unix

@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require slider
+//= require rating
 //= require_tree .
 
 $(document).ready(function() {
@@ -222,4 +223,5 @@ $(document).ready(function() {
       clearTimeout(timer);
     });
   }
+  $(".bewertung").rating({showCancel: false});
 });

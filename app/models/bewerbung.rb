@@ -7,9 +7,11 @@ class Bewerbung < ActiveRecord::Base
   VORSTELLUNG = %w[komme_vorbei_am sprechstunge_im_monat vorstellungsgespraech_nicht_moeglich]
   ORGANISATORISCHE_MITTEILUNGEN = %w[organisatorische_mitteilungen]
   INFORMATIONEN = %w[informationen]
-  set_table_name "bewerbungen"
 
-  # set up paperclip
+  set_table_name 'bewerbungen'
+
+  has_many :bewertungen, :dependent => :destroy
+
   has_attached_file :temp_foto, {
     :styles => { :medium => "140x140>", :thumb => "100x100#" },
     :url => "/uploads/:hash.:extension",
@@ -26,16 +28,11 @@ class Bewerbung < ActiveRecord::Base
     :hash_data => ":class/:attachment/:style",
     :use_timestamp => false
   }
-  validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf',
-                                                              'application/postscript',
-                                                              'application/rtf',
-                                                              'application/msword',
-                                                              'application/vnd.oasis.opendocument.text']
+  validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf', 'application/postscript', 'application/rtf', 'application/msword', 'application/vnd.oasis.opendocument.text']
   validates_attachment_size :lebenslauf, :less_than => 6.megabytes
 
-
   has_attached_file :foto, {
-    :styles => { :medium => "140x140>", :thumb => "100x100#" },
+    :styles => { :medium => "140x140>", :thumb => "48x48#" },
     :url => "/uploads/secure/:hash.:extension",
     :hash_secret => "712be566717dae4560fd7cfcf8214369",
     :hash_data => ":class/:attachment/:id/:style",
@@ -47,7 +44,7 @@ class Bewerbung < ActiveRecord::Base
     :hash_data => ":class/:attachment/:id/:style",
     :use_timestamp => false
   }
-  
+
   validates :vorname,
             :nachname,
             :geburtsdatum,
@@ -58,11 +55,14 @@ class Bewerbung < ActiveRecord::Base
             :email,
             :wunsch,
             :informationen,
-        :presence => true
+            :presence => true
 
   validates :plz, :numericality => {:greater_than => 0, :only_integer => true}
   validates :firma_plz, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
   validates :anzahl_abgeschlossener_fachsemester, :numericality => { :greater_or_equal_than => 0, :only_integer => true}, :allow_blank => true
   validates :geplante_wohndauer, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
 
+  def alter
+    ((Date.today.to_time - geburtsdatum.to_time) / 1.year).round
+  end
 end

@@ -1,14 +1,15 @@
 Hek::Application.routes.draw do
+  get '/bewerbung', :to => 'bewerbungen#new'
 
-  get '/bewerbung', :to => 'bewerbungen#new' 
-  
   post '/bewerbung', :to => 'bewerbungen#create'
   put '/bewerbung', :to => 'bewerbungen#create'
-  
-  post '/bewerbung/confirm', :to => 'bewerbungen#confirm' 
-  
-  resources :bewerbungen
-  
+
+  post '/bewerbung/confirm', :to => 'bewerbungen#confirm'
+
+  resources :bewerbungen do
+    resources :bewertungen
+  end
+
   match 'navigation' => 'generic#navigation'
   match ':group(/:site)' => 'generic#show'
   root :to => 'generic#show'

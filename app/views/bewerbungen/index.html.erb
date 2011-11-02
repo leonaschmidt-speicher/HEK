@@ -1,22 +1,82 @@
-<% provide :javascript, '...' %>
-<h1>Listing Bewerbungen</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-  </tr>
-
-<% @bewerbungen.each do |bewerbung| %>
-  <tr>
-    <td><%= bewerbung.vorname %></td>
-    <td><%= link_to 'Show', bewerbung %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Bewerbung', new_bewerbung_path %>
+<article>
+  <h2>Bewerbungen</h2>
+  <form action="<%= bewerbungen_path params %>" method="get" accept-charset="utf-8">
+    <input type="hidden" name="sort_by" value="<%= params[:sort_by] %>" />
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>m/w</th>
+          <th>Vorname</th>
+          <th><%= sortable_link_to 'Nachname', 'nachname' %></th>
+          <th>★</th>
+          <th><%= sortable_link_to 'Semester', 'anzahl_abgeschlossener_fachsemester' %></th>
+          <th>Frühestens</th>
+          <th><%= sortable_link_to 'Wunsch', 'wunsch' %></th>
+          <th>Spätestens</th>
+          <th style="display: none">Staatsangehörigkeit</th>
+          <th><%= sortable_link_to 'Bewertung', 'bewertung' %></th>
+          <th>Zugesagt</th>
+        </tr>
+        <tr id="filter">
+          <th></th>
+          <th>
+            <select name="geschlecht" onchange="this.form.submit()">
+            <% {'' => '', 'm' => 'maennlich', 'w' => 'weiblich'}.each do |name, value| %>
+              <option value="<%= value %>" <%= 'selected' if params[:geschlecht] == value %>><%= name %></option>
+            <% end %>
+            </select>
+          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th colspan="3">
+            <input type="date" name="einzugsdatum" value="<%= params[:einzugsdatum] %>" />
+          </th>
+          <th style="display: none">
+            <select name="staatsangehoerigkeit" onchange="this.form.submit()">
+            <% {'' => '', 'deutsch' => 'deutsch', 'nicht deutsch' => 'nicht-deutsch'}.each do |name, value| %>
+              <option value="<%= value %>" <%= 'selected' if params[:staatsangehoerigkeit] == value %>><%= name %></option>
+            <% end %>
+            </select>
+          </th>
+          <th></th>
+          <th>
+            <select name="zugesagt" onchange="this.form.submit()">
+              <option value=""></option>
+              <option value="t" <%= 'selected' if params[:zugesagt] == 't' %>>✓</option>
+            </select>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @bewerbungen.each_with_index do |bewerbung, i| %>
+        <tr>
+          <td><%= image_tag bewerbung.foto.url(:thumb), :class => 'thumb' %></td>
+          <td><%= bewerbung.geschlecht %></td>
+          <td><%= bewerbung.vorname %></td>
+          <td><%= bewerbung.nachname %></td>
+          <td><%= bewerbung.alter %></td>
+          <td><%= bewerbung.anzahl_abgeschlossener_fachsemester %></td>
+          <td><%=l bewerbung.fruehestens unless bewerbung.fruehestens.nil? %></td>
+          <td><%=l bewerbung.wunsch unless bewerbung.wunsch.nil? %></td>
+          <td><%=l bewerbung.spaetestens unless bewerbung.spaetestens.nil? %></td>
+          <td style="display: none"><%= bewerbung.staatsangehoerigkeit %></td>
+          <td>
+            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>">
+            <% 5.times do |j| %>
+              <option value="<%= j %>" <%= 'selected' if bewerbung.bewertung == j %>><%= j %></option>
+            <% end %>
+            </select>
+          </td>
+          <td><%= '✓' if bewerbung.zugesagt? %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </form>
+  <%= link_to 'New Bewerbung', new_bewerbung_path %>
+</article>
 
 <% #<?php if ($page_id == 'bewerbung' && !empty($errors)) { ?><script>window.location.hash = "#<?php if ($errors['persoenliches']) echo 'persoenliches'; else if ($errors['organisatorisches']) echo 'organisatorisches'; else echo 'motivation'; ?>"</script><?php } ?> %>

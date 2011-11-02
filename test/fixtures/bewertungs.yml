@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  benutzer: MyString
+  wert: 1
+  bewerbung_id: 1
+
+two:
+  benutzer: MyString
+  wert: 1
+  bewerbung_id: 1

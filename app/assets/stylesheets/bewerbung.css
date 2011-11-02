@@ -80,3 +80,80 @@
   width: 38.75em;
   margin: 1.5em 10px;
 }
+
+#bewerbung h2 {
+  margin: 1em 0;
+}
+#bewerbung table {
+  width: 940px;
+  margin: 2.4em auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+#bewerbung th {
+  font-size: 1.6em;
+  font-weight: normal;
+  color: #444;
+  padding: 10px 8px;
+  border-bottom: 2px solid #ccc;
+  white-space: nowrap;
+}
+#bewerbung th a {
+  color: #444;
+}
+#bewerbung th a:hover {
+  border-bottom: 1px solid;
+}
+#bewerbung td {
+  font-size: 1.6em;
+  border-bottom: 1px solid #ccc;
+  color: #444;
+  padding: 0.5em;
+  vertical-align: middle;
+}
+#bewerbung tbody tr:hover td {
+  color: #222;
+}
+#bewerbung .thumb {
+  width: 48px;
+  height: 48px;
+}
+#bewerbung #filter th {
+  font-size: 1em;
+}
+#bewerbung #filter select, #bewerbung #filter input {
+  width: 100%;
+  margin: 0;
+}
+
+.ui-rating .ui-rating-star, .ui-rating .ui-rating-cancel{
+    width:16px;
+    height:16px;
+    font-size:2px;
+    float:left;
+    text-decoration:none;
+    vertical-align:bottom;
+    background-image:url(/images/star.gif);
+    background-repeat:no-repeat;
+}
+.ui-rating a {
+  cursor: pointer;
+}
+.ui-rating-full  {
+    background-position:left top;
+}
+.ui-rating-half  {
+    background-position:left -16px;
+}
+.ui-rating-empty {
+    background-position:left -32px;
+}
+.ui-rating-cancel-empty {
+    background-position:left -64px;
+}
+.ui-rating-cancel-full {
+    background-position:left -80px;
+}
+.ui-rating-hover {
+    background-position:left -48px;
+}

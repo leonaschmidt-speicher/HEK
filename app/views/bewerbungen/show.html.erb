@@ -1,0 +1,58 @@
+<h2><%= @bewerbung.vorname %> <%= bewerbung.nachname %></h2>
+
+<h3>Einzugswunsch</h3>
+<dl>
+  <dt>Frühestens</dt>
+  <dd></dd>
+</dl>
+
+<h3>Kontakt</h3>
+<dl>
+  <dt></dt>
+  <dd></dd>
+</dl>
+
+=============================================================
+
+Bewerbung von  : {$data['vorname']} {$data['nachname']}
+
+----------------------- Einzugswunsch -----------------------
+
+Einzugswunsch  : {$data['wunsch']}; frühestens {$data['fruehestens']}; spätestens {$data['spaetestens']}
+
+-------------------------- Kontakt --------------------------
+
+E-Mail         : {$data['e-mail']}
+Anschrift      : {$data['strasse-und-nummer']}, {$data['plz']} {$data['ort']} - {$data['land']}
+Telefon/Handy  : {$data['festnetztelefon']}/{$data['mobiltelefon']}
+
+--------------------- Persönliche Daten ---------------------
+
+Geburtstag     : {$data['geburtsdatum']}
+Nationalität   : {$data['staatsangehoerigkeit']}
+Geschlecht     : {$data['geschlecht']}
+Familienstand  : {$data['familienstand']}
+Religion       : {$data['religion']}
+
+-------------------------- Studium --------------------------
+
+Studium        : {$data['hauptfach']}; {$data['hochschule']}
+Semester       : {$data['anzahl-abgeschlossener-fachsemester']} (abgeschl. Semester bei Einzug)
+Studienende    : {$data['studienende']}; {$data['angestrebter-abschluss']}
+
+Falls BA-Studium
+Betrieb        : {$data['firma']}, {$data['firma-plz']} {$data['firma-ort']}
+Im HEK während der Praxisphasen: {$data['waehrend-der-praxisphasen-im-hek']}
+
+------------------ Persönliche Vorstellung ------------------
+
+Ich komme vorbei am: {$data['komme-vorbei-am']}
+Komme auf Einladung in Sprechstunde im: {$data['sprechstunde-im-monat']}
+Telefonisch erreichbar um: {$data['vorstellungsgespraech-nicht-moeglich']}
+Weitere Mitteilungen: {$data['mitteilungen']}
+
+------------------------ Motivation -------------------------
+
+{$data['informationen']}
+
+=============================================================

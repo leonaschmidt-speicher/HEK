@@ -1,3 +1,4 @@
+# encoding: utf-8
 module BewerbungenHelper
   def errors? methods
     not methods.map do |method|
@@ -38,6 +39,21 @@ module BewerbungenHelper
       'organisatorisches'
     else
       'motivation'
+    end
+  end
+
+  def sortable_link_to name, attribute
+    if params[:sort_by].try :start_with?, attribute
+      name += params[:sort_by].end_with?(' desc') ? ' ▼' : ' ▲'
+    end
+    link_to name, bewerbungen_path(params.merge(:sort_by => sort_by(attribute)))
+  end
+
+  def sort_by attribute
+    if params[:sort_by] == "#{attribute} desc"
+      "#{attribute} asc"
+    else
+      "#{attribute} desc"
     end
   end
 end
