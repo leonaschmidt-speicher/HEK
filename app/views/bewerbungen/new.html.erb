@@ -4,7 +4,7 @@
 
 <article>
   <div id="swap-view">
-    <%= form_for(@bewerbung, :url => bewerbung_path) do |form| %>
+    <%= form_for @bewerbung, :url => bewerbung_path do |form| %>
       <section id="persoenliches">
         <div class="postits">
           <div class="postit">
@@ -60,10 +60,10 @@
           <ul>
             <li>
               <%= form.label :geschlecht %>
-              <%= form.select(:geschlecht, options_for_select(['', 'männlich', 'weiblich']), :size => 1, :style => "width: 11.75em") %>
+              <%= form.select :geschlecht, options_for_select(['', 'männlich', 'weiblich']), :size => 1, :style => 'width: 11.75em' %>
             <li>
               <%= form.label :familienstand %>
-              <%= form.select(:familienstand, options_for_select(['', 'ledig', 'verheiratet']), :size => 1, :style => "width: 11.75em") %>
+              <%= form.select :familienstand, options_for_select(['', 'ledig', 'verheiratet']), :size => 1, :style => 'width: 11.75em' %>
             </li>
           </ul>
           <p>
@@ -71,21 +71,21 @@
               <%= form.text_field :religion, :size => 24 %>
           </p>
           <p class="file">
-            <% if @bewerbung.temp_foto.file? %>
-              <a href="<%= @bewerbung.temp_foto %>" target="_blank" class="img"><%= image_tag(@bewerbung.temp_foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}") %></a></dd>
-              <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.temp_foto.url()) %>
-            <% end %>
+          <% if @bewerbung.temp_foto? %>
+            <%= link_to image_tag(@bewerbung.temp_foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}"), @bewerbung.temp_foto.to_s, :target => '_blank', :class => 'img' %>
+            <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.temp_foto.url()) %>
+          <% end %>
             <%= form.label :temp_foto %>
             <%= form.file_field :temp_foto %>
           </p>
           <p class="file">
             <%= form.label :temp_lebenslauf %>
             <%= form.file_field :temp_lebenslauf %>
-            <%= hidden_field 'already_attached_cv', nil, :value => File.basename(@bewerbung.temp_lebenslauf.url) if @bewerbung.temp_lebenslauf.file? %>
+            <%= hidden_field 'already_attached_lebenslauf', nil, :value => File.basename(@bewerbung.temp_lebenslauf.url) if @bewerbung.temp_lebenslauf? %>
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= form.label :strasse_und_nummer, "Anschrift der Eltern" %></legend>
+          <legend><%= form.label :strasse_und_nummer, 'Anschrift der Eltern' %></legend>
           <%= errors_for_methods Bewerbung::ANSCHRIFT_DER_ELTERN %>
           <p>
               <%= form.label :strasse_und_nummer %>
@@ -108,7 +108,7 @@
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= form.label :email, "Weitere Kontaktinformationen" %></legend>
+          <legend><%= form.label :email, 'Weitere Kontaktinformationen' %></legend>
           <%= errors_for_methods Bewerbung::WEITERE_KONTAKTINFORMATIONEN %>
           <p>
              <%= form.label :email %>
@@ -157,7 +157,7 @@
             </li>
             <li>
               <%= form.label :angestrebter_abschluss %>
-              <%= form.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer']), :size => 1, :style => "width: 11.75em" %>
+              <%= form.select :angestrebter_abschluss, options_for_select(%w[Bachelor Master Diplom Magister Staatsexamen Anderer]), :size => 1, :style => 'width: 11.75em' %>
             </li>
           </ul>
           <div id="berufsakademie">
@@ -177,12 +177,12 @@
             </ul>
             <p class="radio">
               <label>Während der Praxisphasen im HEK?</label>
-                <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'unbekannt' %>
-                <%= form.label :waehrend_der_praxisphasen_im_hek_unbekannt, 'Vielleicht' %>
-                <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'ja' %>
-                <%= form.label :waehrend_der_praxisphasen_im_hek_ja, 'Ja' %>
-                <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'nein' %>
-                <%= form.label :waehrend_der_praxisphasen_im_hek_nein, 'Nein' %>
+              <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'unbekannt' %>
+              <%= form.label :waehrend_der_praxisphasen_im_hek_unbekannt, 'Vielleicht' %>
+              <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'ja' %>
+              <%= form.label :waehrend_der_praxisphasen_im_hek_ja, 'Ja' %>
+              <%= form.radio_button :waehrend_der_praxisphasen_im_hek, 'nein' %>
+              <%= form.label :waehrend_der_praxisphasen_im_hek_nein, 'Nein' %>
             </p>
           </div>
         </fieldset>
@@ -190,7 +190,6 @@
           <a href="#organisatorisches">Weiter zu Organisatorisches &raquo;</a>
         </nav>
       </section>
-
       <section id="organisatorisches">
         <%= render :partial => 'bewerbungen/steps', :locals => { :current => :organisatorisches} %>
         <fieldset>
@@ -226,7 +225,7 @@
           </p>
           <p>
             <%= form.label :sprechstunde_im_monat %>
-            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :default => 3.months.from_now%>
+            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :default => 3.months.from_now %>
           </p>
           <p>
             <%= form.label :vorstellungsgespraech_nicht_moeglich %>
@@ -271,10 +270,9 @@
         </nav>
       </section>
     <% end %>
-
-    <%= form_for(@bewerbung, :url => bewerbung_confirm_path, method: 'post', :html => { :class => "confirm_bewerbung", :id => "confirm_bewerbung" }) do |form| %>
+    <%= form_for @bewerbung, :url => bewerbung_confirm_path, method: 'put', :html => { :class => 'confirm_bewerbung', :id => 'confirm_bewerbung' } do |form| %>
       <section id="bestaetigung">
-        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :bestaetigung} %>
+        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :bestaetigung } %>
         <div class="text">
           <% if @bewerbung.errors.any? %>
           <p class="errors">
@@ -285,22 +283,22 @@
           <p>
             Wir haben auf dieser Seite die wichtigsten Daten deiner Bewerbung, die auf jeden Fall stimmen sollten, zusammengefasst. Bitte kontrolliere ob alles stimmt und klicke dann auf "Bestätigen".
           </p>
-        <% if @bewerbung.temp_foto.file? %>
-          <a href="<%= @bewerbung.temp_foto %>" target="_blank" class="foto"><%= image_tag(@bewerbung.temp_foto.url(:medium), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}") %></a></dd>
+        <% if @bewerbung.temp_foto? %>
+          <%= link_to image_tag(@bewerbung.temp_foto.url(:medium), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}"), @bewerbung.temp_foto.to_s, :target => '_blank', :class => 'foto' %>
         <% else %>
-          <%= image_tag '/images/missing.png', :alt => "Du hast kein Foto hochgeladen.", :class => 'foto' %>
+          <%= image_tag '/images/missing.png', :alt => 'Du hast kein Foto hochgeladen.', :class => 'foto' %>
         <% end %>
           <dl>
             <dt>Persönliche Daten</dt>
-            <dd><%= @bewerbung.vorname + " " + @bewerbung.nachname %></dd>
+            <dd><%= @bewerbung.name %></dd>
             <dd><%= @bewerbung.geburtsdatum %></dd>
-          <% if @bewerbung.temp_lebenslauf.file? %>
-            <dd><a href="<%= @bewerbung.temp_lebenslauf %>" target="_blank">Lebenslauf: <%= @bewerbung.temp_lebenslauf.original_filename %></a></dd>
+          <% if @bewerbung.temp_lebenslauf? %>
+            <dd><%= link_to "Lebenslauf: #{@bewerbung.temp_lebenslauf.original_filename}", @bewerbung.temp_lebenslauf.to_s, :target => '_blank' %></dd>
           <% end %>
             <dt>Kontakt</dt>
             <dd>
               <%= @bewerbung.strasse_und_nummer %><br />
-              <%= @bewerbung.plz.to_s + " " + @bewerbung.ort %><br />
+              <%= @bewerbung.plz.to_s + ' ' + @bewerbung.ort %><br />
               <%= @bewerbung.land %><br />
             </dd>
             <dt>E-Mail-Adresse</dt>
@@ -309,7 +307,7 @@
             <dd>
             <%= (@bewerbung.festnetztelefon unless @bewerbung.festnetztelefon.blank?) \
                 || (@bewerbung.mobiltelefon unless @bewerbung.mobiltelefon.blank?) \
-                || "Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest."
+                || 'Du hast keine Telefonnummer angegeben. Das musst du auch nicht, aber es wäre für den weiteren Kontakt sehr nützlich. Überleg dir, ob du sie nicht angeben möchtest.'
             %>
             </dd>
           <% unless @bewerbung.anzahl_abgeschlossener_fachsemester.blank? || @bewerbung.hauptfach.blank? %>
@@ -333,11 +331,10 @@
         </div>
         <nav>
           <a href="#motivation">&laquo; Zurück zu Motivation</a>
-          <%= form.submit :value => "Bestätigen &raquo;".html_safe, :disabled => ("disabled" if @bewerbung.errors.any?) %>
+          <%= form.submit :value => 'Bestätigen &raquo;'.html_safe, :disabled => ('disabled' if @bewerbung.errors.any?) %>
         </nav>
       </section>
     <% end %>
-
     <section id="ablauf">
     <%= render :partial => 'bewerbungen/steps', :locals => { :current => :ablauf } %>
 <% # missing error handling but for which errors %>

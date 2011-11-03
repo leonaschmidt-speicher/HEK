@@ -10,6 +10,8 @@ class Bewerbung < ActiveRecord::Base
 
   set_table_name 'bewerbungen'
 
+  scope :nicht_abgesagt, where(:bestaetigt => true).where(:zugesagt => [true, nil])
+
   has_many :bewertungen, :dependent => :destroy
 
   has_attached_file :temp_foto, {
@@ -62,6 +64,10 @@ class Bewerbung < ActiveRecord::Base
   validates :anzahl_abgeschlossener_fachsemester, :numericality => { :greater_or_equal_than => 0, :only_integer => true}, :allow_blank => true
   validates :geplante_wohndauer, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
 
+  def name
+    "#{vorname} #{nachname}"
+  end
+
   def alter
     ((Date.today.to_time - geburtsdatum.to_time) / 1.year).round
   end
@@ -70,6 +76,27 @@ class Bewerbung < ActiveRecord::Base
     transaction do
       bewertung = bewertungen.empty? ? 0 : (bewertungen.sum(:wert) / bewertungen.count).round
       update_attribute :bewertung, bewertung
+    end
+  end
+
+  def recover attribute, path
+    if not send(attribute).file? and not path.blank?
+      File.open "#{Rails.root}/public/uploads/#{sanitize_filename(path.first)}" do |file|
+        send "#{attribute}=", file
+      end
+    end
+  end
+
+private
+  # Wundert mich, dass du sowas brauchst.
+  def sanitize_filename(filename)
+    filename.strip.tap do |name|
+      # NOTE: File.basename doesn't work right with Windows paths on Unix
+      # get only the filename, not the whole path
+      name.sub! /\A.*(\\|\/)/, ''
+      # Finally, replace all non alphanumeric, underscore
+      # or periods with underscore
+      name.gsub! /[^\w\.\-]/, '_'
     end
   end
 end

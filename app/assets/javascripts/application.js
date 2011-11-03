@@ -186,7 +186,7 @@ $(document).ready(function() {
         $("#berufsakademie").slideUp(300);
       }
     });
-    if ($("#hochschule").val() != "BA") {
+    if ($("#bewerbung_hochschule").val() != "BA") {
       $("#berufsakademie").hide();
     }
     /*$("a[href~=" + window.location.hash + "]").click();*/

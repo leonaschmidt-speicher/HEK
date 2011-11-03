@@ -1,10 +1,8 @@
 Hek::Application.routes.draw do
   get '/bewerbung', :to => 'bewerbungen#new'
-
   post '/bewerbung', :to => 'bewerbungen#create'
-  put '/bewerbung', :to => 'bewerbungen#create'
-
-  post '/bewerbung/confirm', :to => 'bewerbungen#confirm'
+  put '/bewerbung', :to => 'bewerbungen#update'
+  put '/bewerbung/confirm', :to => 'bewerbungen#confirm'
 
   resources :bewerbungen do
     resources :bewertungen
