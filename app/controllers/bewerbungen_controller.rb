@@ -11,7 +11,7 @@ class BewerbungenController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.rss { render :json => @bewerbungen }
+      format.atom
     end
   end
 

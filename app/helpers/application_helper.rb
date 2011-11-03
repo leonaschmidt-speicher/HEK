@@ -8,4 +8,12 @@ module ApplicationHelper
     # Alternativ könnte man den Titel auch in de.yml unter config/locales setzen.
     (@site || @group).titleize + ' ♣ ' unless @group.nil?
   end
+
+  def controller? *controllers
+    controllers.include? params[:controller].to_sym
+  end
+
+  def action? *actions
+    actions.include? params[:action].to_sym
+  end
 end

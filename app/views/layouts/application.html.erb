@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <%= stylesheet_link_tag 'application' %>
+    <%= auto_discovery_link_tag :atom, bewerbungen_path(:atom) if controller? :bewerbungen and action? :index, :show %>
     <%= csrf_meta_tags %>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

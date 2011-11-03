@@ -1,4 +1,5 @@
 Hek::Application.routes.draw do
+  get '/bewerbung.:id', :to => 'bewerbungen#show'
   get '/bewerbung', :to => 'bewerbungen#new'
   post '/bewerbung', :to => 'bewerbungen#create'
   put '/bewerbung', :to => 'bewerbungen#update'
