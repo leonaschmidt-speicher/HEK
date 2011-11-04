@@ -23,3 +23,12 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
+
+hekdb:
+  adapter: postgresql
+  #encoding: utf8
+  database: hekdb
+  username: hekdb-read
+  password: # ...
+  host: hekdb
+  pool: 5
