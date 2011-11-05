@@ -105,26 +105,37 @@
 #bewerbung th a:hover {
   border-bottom: 1px solid;
 }
-#bewerbung td {
-  font-size: 1.6em;
-  border-bottom: 1px solid #ccc;
-  color: #444;
-  padding: 0.5em;
-  vertical-align: middle;
-}
-#bewerbung tbody tr:hover td {
-  color: #222;
-}
-#bewerbung .thumb {
-  width: 48px;
-  height: 48px;
-}
 #bewerbung #filter th {
   font-size: 1em;
 }
 #bewerbung #filter select, #bewerbung #filter input {
   width: 100%;
   margin: 0;
+}
+#bewerbung td {
+  font-size: 1.6em;
+  border-bottom: 1px solid #ccc;
+  color: #444;
+  padding: 0.5em;
+  vertical-align: top;
+}
+#bewerbung tbody tr:hover td {
+  color: #222;
+}
+#bewerbung .thumb img {
+  display: block;
+}
+#bewerbung .thumb, #bewerbung .thumb img {
+  width: 48px;
+  height: 48px;
+}
+#bewerbung .motivation {
+  position: absolute;
+  left: 0;
+  margin-left: 74px;
+  margin-top: 24px;
+  border-bottom: none;
+  white-space: nowrap;
 }
 
 .ui-rating .ui-rating-star, .ui-rating .ui-rating-cancel{

@@ -53,7 +53,7 @@
       <tbody>
       <% @bewerbungen.each_with_index do |bewerbung, i| %>
         <tr>
-          <td><%= image_tag bewerbung.foto.url(:thumb), :class => 'thumb' %></td>
+          <td class="thumb"><%= image_tag bewerbung.foto.url(:thumb) %></td>
           <td><%= bewerbung.geschlecht[0] %></td>
           <td><%= bewerbung.vorname %></td>
           <td><%= bewerbung.nachname %></td>
@@ -71,6 +71,8 @@
             </select>
           </td>
           <td><%= '✓' if bewerbung.zugesagt? %></td>
+          <% # Um eine Folge 'm's unterzubringen wäre länge 57 genau richtig -- aber bei 'normalem' Text sind dies zu wenige Zeichen. %>
+          <td class="motivation"><%= truncate bewerbung.informationen, :length => 104, :separator => ' ' %></td>
         </tr>
       <% end %>
       </tbody>

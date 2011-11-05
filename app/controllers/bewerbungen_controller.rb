@@ -20,11 +20,11 @@ class BewerbungenController < ApplicationController
   end
 
   def new
-    @bewerbung = Bewerbung.find_or_initialize_by_id session[:bewerbung_id]
+    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id]
   end
 
   def create
-    @bewerbung = Bewerbung.find_or_initialize_by_id session[:bewerbung_id]
+    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id]
     @bewerbung.attributes = params[:bewerbung]
 
     @bewerbung.recover :temp_foto, params[:already_attached_foto]
@@ -43,26 +43,22 @@ class BewerbungenController < ApplicationController
   alias_method :update, :create
 
   def confirm
-    @bewerbung = Bewerbung.find session[:bewerbung_id]
-    unless @bewerbung.nil?
-      @bewerbung.bestaetigt = true
+    @bewerbung = Bewerbung.nicht_bestaetigt.find session[:bewerbung_id]
+    @bewerbung.bestaetigt = true
 
-      # move attachments to a secure place
-      @bewerbung.foto = @bewerbung.temp_foto
-      @bewerbung.temp_foto.clear
-      @bewerbung.lebenslauf = @bewerbung.temp_lebenslauf
-      @bewerbung.temp_lebenslauf.clear
+    # move attachments to a secure place
+    @bewerbung.foto = @bewerbung.temp_foto
+    @bewerbung.temp_foto.clear
+    @bewerbung.lebenslauf = @bewerbung.temp_lebenslauf
+    @bewerbung.temp_lebenslauf.clear
 
-      @bewerbung.save
+    @bewerbung.save
 
-      # prevent user from submitting his application twice but call him by his name.
-      session[:bewerbung_id] = nil
-      session[:name] = @bewerbung.name
+    # prevent user from submitting his application twice but call him by his name.
+    session[:bewerbung_id] = nil
+    session[:name] = @bewerbung.name
 
-      redirect_to :action => 'new', :anchor => 'ablauf'
-    else
-      redirect_to :action => 'new'
-    end
+    redirect_to :action => 'new', :anchor => 'ablauf'
   end
 
 private
