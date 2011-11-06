@@ -9,6 +9,6 @@ class BewertungenController < ApplicationController
     @bewerbung = Bewerbung.find params[:bewerbung_id]
     @bewerbung.update_bewertung
 
-    render :json => { :wert => @bewerbung.bewertung }
+    render :json => { :wert => params[:wert]}
   end
 end

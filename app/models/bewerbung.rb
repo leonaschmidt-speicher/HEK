@@ -75,7 +75,7 @@ class Bewerbung < ActiveRecord::Base
 
   def update_bewertung
     transaction do
-      bewertung = bewertungen.empty? ? 0 : (bewertungen.sum(:wert) / bewertungen.count).round
+      bewertung = bewertungen.empty? ? 0 : (bewertungen.sum(:wert) / bewertungen.count.to_f)
       update_attribute :bewertung, bewertung
     end
   end
@@ -86,6 +86,11 @@ class Bewerbung < ActiveRecord::Base
         send "#{attribute}=", file
       end
     end
+  end
+  
+  def einzelbewertung benutzer
+    b = self.bewertungen.where('benutzer = ?', benutzer).first
+    wert = b.blank? ? nil : b.wert
   end
 
 private

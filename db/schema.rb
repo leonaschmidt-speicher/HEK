@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101225651) do
+ActiveRecord::Schema.define(:version => 20111106005811) do
 
   create_table "bewerbungen", :force => true do |t|
     t.string   "vorname"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20111101225651) do
     t.integer  "temp_foto_file_size"
     t.integer  "temp_lebenslauf_file_size"
     t.boolean  "zugesagt"
-    t.integer  "bewertung"
+    t.decimal  "bewertung"
   end
 
   create_table "bewertungen", :force => true do |t|

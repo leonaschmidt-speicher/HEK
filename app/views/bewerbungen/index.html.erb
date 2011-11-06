@@ -41,9 +41,12 @@
             <% end %>
             </select>
           </th>
-          <th></th>
           <th>
-            <select name="zugesagt" onchange="this.form.submit()">
+            <input type="checkbox" class="bewertungen_zeigen" name="bewertungen_zeigen" value="t" <%= 'checked' if params[:bewertungen_zeigen] == 't' %> onclick="this.form.submit()" />
+            <label for="bewertung_zeigen">zeigen</label>
+          </th>
+          <th>
+            <select name="zugesagt" onchange="">
               <option value=""></option>
               <option value="t" <%= 'selected' if params[:zugesagt] == 't' %>>✓</option>
             </select>
@@ -54,7 +57,7 @@
       <% @bewerbungen.each_with_index do |bewerbung, i| %>
         <tr>
           <td class="thumb"><%= image_tag bewerbung.foto.url(:thumb) %></td>
-          <td><%= bewerbung.geschlecht[0] %></td>
+          <td><%= bewerbung.geschlecht %></td>
           <td><%= bewerbung.vorname %></td>
           <td><%= bewerbung.nachname %></td>
           <td><%= bewerbung.alter %></td>
@@ -64,11 +67,25 @@
           <td><%=l bewerbung.spaetestens unless bewerbung.spaetestens.nil? %></td>
           <td style="display: none"><%= bewerbung.staatsangehoerigkeit %></td>
           <td>
-            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>">
+        <% if params[:bewertungen_zeigen] == 't' %>
+            <ul class="bewertungen"<%= ' style="display: none;"'.html_safe unless params[:bewertungen_zeigen] == 't' %>>
+          <% ApplicationController::USERS.map{|u| u[0]}.each do |u| %>
+              <li class="bewertung-<%= (bewerbung.einzelbewertung u) || 'keine' %>" 
+                  title="<%= u %>: <%= (bewerbung.einzelbewertung u) || 'nicht bewertet' %>">
+              <% for i in [5, 4, 3, 2, 1] do %>
+                <div class="<%= ((i > bewerbung.einzelbewertung(u)) ? 'empty-bar' : 'bar') unless bewerbung.einzelbewertung(u).blank? %>"></div>
+              <% end %>
+              </li>
+          <% end %>
+              <li class="gesamtbewertung" style="height: <%= (bewerbung.bewertung*24/5).round %>px; top: -<%= (bewerbung.bewertung*24/5).round %>px" title="<%= bewerbung.bewertung %>"></li>
+            </ul>
+        <% else %>
+            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>"<%= ' style="display: none;"' if params[:bewertungen_zeigen] == 't' %>>
             <% 6.times do |j| %>
-              <option value="<%= j %>" <%= 'selected' if bewerbung.bewertung == j and bewerbung.bewertungen.exists?(:benutzer => @user) %>><%= j %></option>
+              <option value="<%= j %>" <%= 'selected' if bewerbung.einzelbewertung @user == j and bewerbung.bewertungen.exists?(:benutzer => @user) %>><%= j %></option>
             <% end %>
             </select>
+        <% end %>
           </td>
           <td><%= '✓' if bewerbung.zugesagt? %></td>
           <% # Um eine Folge 'm's unterzubringen wäre länge 57 genau richtig -- aber bei 'normalem' Text sind dies zu wenige Zeichen. %>
@@ -78,7 +95,4 @@
       </tbody>
     </table>
   </form>
-  <%= link_to 'New Bewerbung', new_bewerbung_path %>
 </article>
-
-<% #<?php if ($page_id == 'bewerbung' && !empty($errors)) { ?><script>window.location.hash = "#<?php if ($errors['persoenliches']) echo 'persoenliches'; else if ($errors['organisatorisches']) echo 'organisatorisches'; else echo 'motivation'; ?>"</script><?php } ?> %>
