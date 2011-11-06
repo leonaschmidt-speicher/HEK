@@ -42,8 +42,8 @@
             </select>
           </th>
           <th>
-            <input type="checkbox" class="bewertungen_zeigen" name="bewertungen_zeigen" value="t" <%= 'checked' if params[:bewertungen_zeigen] == 't' %> onclick="this.form.submit()" />
-            <label for="bewertung_zeigen">zeigen</label>
+            <input type="checkbox" id="bewertungen_zeigen" class="bewertungen_zeigen" name="bewertungen_zeigen" value="t" <%= 'checked' if params[:bewertungen_zeigen] == 't' %> onclick="this.form.submit()" />
+            <label for="bewertungen_zeigen">zeigen</label>
           </th>
           <th>
             <select name="zugesagt" onchange="">
@@ -69,8 +69,8 @@
           <td>
         <% if params[:bewertungen_zeigen] == 't' %>
             <ul class="bewertungen"<%= ' style="display: none;"'.html_safe unless params[:bewertungen_zeigen] == 't' %>>
-          <% ApplicationController::USERS.map{|u| u[0]}.each do |u| %>
-              <li class="bewertung-<%= (bewerbung.einzelbewertung u) || 'keine' %>" 
+          <% ApplicationController::USERS.map {|u| u[0]}.each do |u| %>
+              <li class="bewertung-<%= (bewerbung.einzelbewertung u) || 'keine' %>"
                   title="<%= u %>: <%= (bewerbung.einzelbewertung u) || 'nicht bewertet' %>">
               <% for i in [5, 4, 3, 2, 1] do %>
                 <div class="<%= ((i > bewerbung.einzelbewertung(u)) ? 'empty-bar' : 'bar') unless bewerbung.einzelbewertung(u).blank? %>"></div>
@@ -82,7 +82,7 @@
         <% else %>
             <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>"<%= ' style="display: none;"' if params[:bewertungen_zeigen] == 't' %>>
             <% 6.times do |j| %>
-              <option value="<%= j %>" <%= 'selected' if bewerbung.einzelbewertung @user == j and bewerbung.bewertungen.exists?(:benutzer => @user) %>><%= j %></option>
+              <option value="<%= j %>" <%= 'selected' if bewerbung.einzelbewertung(@user) == j and bewerbung.bewertungen.exists?(:benutzer => @user) %>><%= j %></option>
             <% end %>
             </select>
         <% end %>

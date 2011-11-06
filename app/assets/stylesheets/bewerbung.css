@@ -116,7 +116,8 @@
   display: inline
 }
 #bewerbung #filter input[type="checkbox"] {
-    vertical-align: middle;
+  width: auto;
+  vertical-align: middle;
 }
 #bewerbung td {
   font-size: 1.6em;
@@ -187,7 +188,7 @@
 .bewertung-1 .bar {
   background-color: #0000FF;
 }
-  
+
 /* rating stars */
 .ui-rating .ui-rating-star, .ui-rating .ui-rating-cancel{
     width:16px;
