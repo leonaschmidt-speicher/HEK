@@ -13,7 +13,12 @@ class Bewerbung < ActiveRecord::Base
   scope :nicht_abgesagt, where(:bestaetigt => true).where(:zugesagt => [true, nil])
   scope :nicht_bestaetigt, where(:bestaetigt => false)
 
-  has_many :bewertungen, :dependent => :destroy
+  has_many :bewertungen, :dependent => :destroy do
+    def for benutzer
+      @bewertung_for_benutzer ||= inject({}) { |hash, bewertung| hash[bewertung.benutzer] = bewertung.wert; hash }
+      @bewertung_for_benutzer[benutzer]
+    end
+  end
 
   has_attached_file :temp_foto, {
     :styles => { :medium => "140x140>", :thumb => "100x100#" },
@@ -60,10 +65,10 @@ class Bewerbung < ActiveRecord::Base
             :informationen,
             :presence => true
 
-  validates :plz, :numericality => {:greater_than => 0, :only_integer => true}
-  validates :firma_plz, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
-  validates :anzahl_abgeschlossener_fachsemester, :numericality => { :greater_or_equal_than => 0, :only_integer => true}, :allow_blank => true
-  validates :geplante_wohndauer, :numericality => { :greater_than => 0, :only_integer => true}, :allow_blank => true
+  validates :plz, :numericality => { :greater_than => 0, :only_integer => true }
+  validates :firma_plz, :numericality => { :greater_than => 0, :only_integer => true }, :allow_blank => true
+  validates :anzahl_abgeschlossener_fachsemester, :numericality => { :greater_or_equal_than => 0, :only_integer => true }, :allow_blank => true
+  validates :geplante_wohndauer, :numericality => { :greater_than => 0, :only_integer => true }, :allow_blank => true
 
   def name
     "#{vorname} #{nachname}"
@@ -86,11 +91,6 @@ class Bewerbung < ActiveRecord::Base
         send "#{attribute}=", file
       end
     end
-  end
-  
-  def einzelbewertung benutzer
-    b = self.bewertungen.where('benutzer = ?', benutzer).first
-    wert = b.blank? ? nil : b.wert
   end
 
 private

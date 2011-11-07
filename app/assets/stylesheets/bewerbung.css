@@ -146,47 +146,47 @@
 }
 
 /* rating bars */
-#bewerbung ul.bewertungen {
+#bewerbung .bewertungen {
+  position: relative;
   margin: 0px;
   height: 24px;
 }
-#bewerbung ul.bewertungen li {
+#bewerbung .bewertungen li {
+  float: left;
   display: block;
   width: 15px;
-  height: 24px;       /* 5 * 5px high bars = 25px, so the lowest bar */
-  overflow: hidden;   /* will be cropped by 1 px… doesn't matter */
-  padding-right: 1px;
-  float: left;
+  height: 24px;
+  margin-right: 1px;
+  overflow: hidden;
 }
-#bewerbung ul.bewertungen li div {
+#bewerbung .bewertungen li div {
   height: 4px;
   margin-top: 1px;
 }
-#bewerbung ul.bewertungen li div.bar {
-  background-color: auto;
+#bewerbung .bewertung-5 .bar {
+  background-color: #ff4000;
 }
-#bewerbung ul.bewertungen li.gesamtbewertung {
+#bewerbung .bewertung-4 .bar {
+  background-color: #ff8000;
+}
+#bewerbung .bewertung-3 .bar {
+  background-color: #ffbf00;
+}
+#bewerbung .bewertung-2 .bar {
+  background-color: #00a2ff;
+}
+#bewerbung .bewertung-1 .bar {
+  background-color: #00f;
+}
+#bewerbung .bewertungen .gesamtbewertung {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   display: block;
-  clear: left;
-  position: relative;
-  z-index: -1;
   width: 78px;
-  background-color: #DDDDDD;
-}
-.bewertung-5 .bar {
-  background-color: #FF4000;
-}
-.bewertung-4 .bar {
-  background-color: #FF8000;
-}
-.bewertung-3 .bar {
-  background-color: #FFBF00;
-}
-.bewertung-2 .bar {
-  background-color: #00A2FF;
-}
-.bewertung-1 .bar {
-  background-color: #0000FF;
+  border-top: 1px solid #ddd;
+  background-color: #eee;
+  z-index: -1;
 }
 
 /* rating stars */

@@ -42,11 +42,11 @@
             </select>
           </th>
           <th>
-            <input type="checkbox" id="bewertungen_zeigen" class="bewertungen_zeigen" name="bewertungen_zeigen" value="t" <%= 'checked' if params[:bewertungen_zeigen] == 't' %> onclick="this.form.submit()" />
-            <label for="bewertungen_zeigen">zeigen</label>
+            <input type="checkbox" id="bewertungen" name="bewertungen" value="alle" <%= 'checked' if params[:bewertungen] == 'alle' %> onclick="this.form.submit()" />
+            <label for="bewertungen">alle</label>
           </th>
           <th>
-            <select name="zugesagt" onchange="">
+            <select name="zugesagt" onchange="this.form.submit()">
               <option value=""></option>
               <option value="t" <%= 'selected' if params[:zugesagt] == 't' %>>✓</option>
             </select>
@@ -67,22 +67,22 @@
           <td><%=l bewerbung.spaetestens unless bewerbung.spaetestens.nil? %></td>
           <td style="display: none"><%= bewerbung.staatsangehoerigkeit %></td>
           <td>
-        <% if params[:bewertungen_zeigen] == 't' %>
-            <ul class="bewertungen"<%= ' style="display: none;"'.html_safe unless params[:bewertungen_zeigen] == 't' %>>
-          <% ApplicationController::USERS.map {|u| u[0]}.each do |u| %>
-              <li class="bewertung-<%= (bewerbung.einzelbewertung u) || 'keine' %>"
-                  title="<%= u %>: <%= (bewerbung.einzelbewertung u) || 'nicht bewertet' %>">
-              <% for i in [5, 4, 3, 2, 1] do %>
-                <div class="<%= ((i > bewerbung.einzelbewertung(u)) ? 'empty-bar' : 'bar') unless bewerbung.einzelbewertung(u).blank? %>"></div>
-              <% end %>
+        <% if params[:bewertungen] == 'alle' %>
+            <ul class="bewertungen" <%= 'style="display: none"'.html_safe unless params[:bewertungen] == 'alle' %>>
+          <% ApplicationController::USERS.each_key do |user| %>
+              <li class="bewertung-<%= bewerbung.bewertungen.for(user) || 'keine' %>"
+                  title="<%= user %>: <%= bewerbung.bewertungen.for(user) || 'nicht bewertet' %>">
+              <% 5.downto 1 do |i| %>
+                <div class="<%= bewerbung.bewertungen.for(user) < i ? 'empty-bar' : 'bar' %>"></div>
+              <% end unless bewerbung.bewertungen.for(user).nil? %>
               </li>
           <% end %>
-              <li class="gesamtbewertung" style="height: <%= (bewerbung.bewertung*24/5).round %>px; top: -<%= (bewerbung.bewertung*24/5).round %>px" title="<%= bewerbung.bewertung %>"></li>
+              <li class="gesamtbewertung" style="height: <%= (bewerbung.bewertung*24/5 - 1).round %>px" title="<%= bewerbung.bewertung %>"></li>
             </ul>
         <% else %>
-            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>"<%= ' style="display: none;"' if params[:bewertungen_zeigen] == 't' %>>
+            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>"<%= ' style="display: none"' if params[:bewertungen] == 'alle' %>>
             <% 6.times do |j| %>
-              <option value="<%= j %>" <%= 'selected' if bewerbung.einzelbewertung(@user) == j and bewerbung.bewertungen.exists?(:benutzer => @user) %>><%= j %></option>
+              <option value="<%= j %>" <%= 'selected' if bewerbung.bewertungen.for(@user) == j and not bewerbung.bewertungen.for(@user).blank? %>><%= j %></option>
             <% end %>
             </select>
         <% end %>
