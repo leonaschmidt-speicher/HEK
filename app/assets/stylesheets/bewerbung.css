@@ -129,20 +129,119 @@
 #bewerbung tbody tr:hover td {
   color: #222;
 }
-#bewerbung .thumb img {
+#bewerbung tbody .thumb img {
   display: block;
+  border: 1px solid #fff;
+  background-color: #ccc;
 }
-#bewerbung .thumb, #bewerbung .thumb img {
+#bewerbung tbody .thumb a:hover img {
+  border: 1px solid #444;
+}
+#bewerbung tbody .thumb, #bewerbung tbody .thumb img {
   width: 48px;
   height: 48px;
 }
-#bewerbung .motivation {
+#bewerbung tbody .motivation {
   position: absolute;
   left: 0;
   margin-left: 74px;
   margin-top: 24px;
   border-bottom: none;
   white-space: nowrap;
+}
+
+#bewerbung #detailed .postit {
+  width: 412px;
+}
+#bewerbung #detailed #foto {
+  position: absolute;
+  right: 24px;
+  border: 2px solid #222;
+}
+#bewerbung #detailed #foto img {
+  display: block;
+  width: 140px;
+  height: 140px;
+}
+#bewerbung #detailed #lebenslauf {
+  position: absolute;
+  right: 24px;
+  top: 192px;
+  width: 140px;
+  text-align: center;
+}
+#bewerbung #detailed header {
+  margin: 2.4em 1em;
+}
+#bewerbung #detailed header small {
+  font-size: 1.2em;
+}
+#bewerbung #detailed header h2 {
+  margin: 0;
+  text-align: left;
+}
+#bewerbung #detailed header big {
+  font-size: 1.6em;
+}
+#bewerbung #detailed dl {
+  margin: 2.4em 1em;
+}
+#bewerbung #detailed dt {
+  float: left;
+  clear: left;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-right: 0.5em;
+}
+#bewerbung #detailed dd {
+  font-size: 1.6em;
+}
+#bewerbung #detailed p {
+  margin: 24px 10px;
+}
+#bewerbung #detailed section {
+  float: none;
+}
+#bewerbung #detailed #studium, #bewerbung #detailed #vorstellung {
+  float: left;
+  width: 480px;
+}
+#bewerbung #detailed #motivation {
+  clear: both;
+  width: 960px;
+}
+#bewerbung #detailed #motivation p {
+  white-space: pre-wrap;
+}
+#bewerbung #detailed .zusagen {
+  float: left;
+}
+#bewerbung #detailed .zusagen input, #bewerbung #detailed .absagen input {
+  padding: 4px;
+  border: none;
+  color: #fff;
+  border: 1px solid transparent;
+}
+#bewerbung #detailed .zusagen input {
+  background-color: #3d9400;
+}
+#bewerbung #detailed .zusagen input:hover {
+  border: 1px solid #2d6200;
+}
+#bewerbung #detailed .absagen input {
+  background-color: #d14836;
+}
+#bewerbung #detailed .absagen input:hover {
+  border: 1px solid #b0281a;
+}
+#bewerbung #detailed .zurueck {
+  display: block;
+  margin: 24px 10px;
+  font-size: 1.6em;
+}
+#bewerbung #detailed .zurueck:hover {
+  text-decoration: underline;
 }
 
 /* rating bars */

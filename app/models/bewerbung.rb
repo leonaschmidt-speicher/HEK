@@ -78,6 +78,10 @@ class Bewerbung < ActiveRecord::Base
     ((Date.today.to_time - geburtsdatum.to_time) / 1.year).round
   end
 
+  def telefon?
+    festnetztelefon? or mobiltelefon?
+  end
+
   def update_bewertung
     transaction do
       bewertung = bewertungen.empty? ? 0 : (bewertungen.sum(:wert) / bewertungen.count.to_f)

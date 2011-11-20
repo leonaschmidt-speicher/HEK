@@ -16,8 +16,8 @@ class String
     titleize_without_umlauts.gsub /ae|oe|ue/ do |match|
       case match
         when /ae/ then 'ä'
-        when /oe/ then 'ü'
-        when /ue/ then 'ö'
+        when /oe/ then 'ö'
+        when /ue/ then 'ü'
       end
     end
   end

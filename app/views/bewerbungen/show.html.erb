@@ -1,58 +1,132 @@
-<h2><%= @bewerbung.name %></h2>
-
-<h3>Einzugswunsch</h3>
-<dl>
-  <dt>Frühestens</dt>
-  <dd></dd>
-</dl>
-
-<h3>Kontakt</h3>
-<dl>
-  <dt></dt>
-  <dd></dd>
-</dl>
-
-=============================================================
-
-Bewerbung von  : {$data['vorname']} {$data['nachname']}
-
------------------------ Einzugswunsch -----------------------
-
-Einzugswunsch  : {$data['wunsch']}; frühestens {$data['fruehestens']}; spätestens {$data['spaetestens']}
-
--------------------------- Kontakt --------------------------
-
-E-Mail         : {$data['e-mail']}
-Anschrift      : {$data['strasse-und-nummer']}, {$data['plz']} {$data['ort']} - {$data['land']}
-Telefon/Handy  : {$data['festnetztelefon']}/{$data['mobiltelefon']}
-
---------------------- Persönliche Daten ---------------------
-
-Geburtstag     : {$data['geburtsdatum']}
-Nationalität   : {$data['staatsangehoerigkeit']}
-Geschlecht     : {$data['geschlecht']}
-Familienstand  : {$data['familienstand']}
-Religion       : {$data['religion']}
-
--------------------------- Studium --------------------------
-
-Studium        : {$data['hauptfach']}; {$data['hochschule']}
-Semester       : {$data['anzahl-abgeschlossener-fachsemester']} (abgeschl. Semester bei Einzug)
-Studienende    : {$data['studienende']}; {$data['angestrebter-abschluss']}
-
-Falls BA-Studium
-Betrieb        : {$data['firma']}, {$data['firma-plz']} {$data['firma-ort']}
-Im HEK während der Praxisphasen: {$data['waehrend-der-praxisphasen-im-hek']}
-
------------------- Persönliche Vorstellung ------------------
-
-Ich komme vorbei am: {$data['komme-vorbei-am']}
-Komme auf Einladung in Sprechstunde im: {$data['sprechstunde-im-monat']}
-Telefonisch erreichbar um: {$data['vorstellungsgespraech-nicht-moeglich']}
-Weitere Mitteilungen: {$data['mitteilungen']}
-
------------------------- Motivation -------------------------
-
-{$data['informationen']}
-
-=============================================================
+<article id="detailed">
+  <div class="postit">
+    <dl>
+      <dd id="foto"><%= image_tag @bewerbung.foto.url(:medium), :alt => nil %></dd>
+    <% if @bewerbung.lebenslauf? %>
+      <dd id="lebenslauf"><%= link_to 'Lebenslauf', @bewerbung.lebenslauf.url %></dd>
+    <% end %>
+      <dt>E-Mail</dt>
+      <dd><%= mail_to @bewerbung.email, @bewerbung.email.reverse %></dd>
+      <dt>Anschrift</dt>
+      <dd><%= @bewerbung.strasse_und_nummer %></dd>
+      <dd><%= @bewerbung.plz %> <%= @bewerbung.ort %></dd>
+      <dd><%= @bewerbung.land %></dd>
+  <% if @bewerbung.telefon? %>
+      <dt>Telefon</dt>
+    <% if @bewerbung.festnetztelefon? %>
+      <dd><%= @bewerbung.festnetztelefon %> (festnetz)</dd>
+    <% end %>
+    <% if @bewerbung.mobiltelefon? %>
+      <dd><%= @bewerbung.mobiltelefon %> (mobil)</dd>
+    <% end %>
+  <% end %>
+    </dl>
+    <img class="background" src="/images/postit.png" alt="Postit" />
+  </div>
+  <header>
+    <small>Bewerbung von</small>
+    <h2><%= @bewerbung.name %></h2>
+    <big>zum Einzug am <%=l @bewerbung.wunsch %> für <%= @bewerbung.geplante_wohndauer %> Monate.</big>
+  </header>
+  <dl>
+<% if false %>
+    <dt>Wunsch</dt>
+    <dd><%=l @bewerbung.wunsch %></dd>
+<% end %>
+  <% if @bewerbung.fruehestens? and @bewerbung.fruehestens != @bewerbung.wunsch %>
+    <dt>Frühestens</dt>
+    <dd><%=l @bewerbung.fruehestens %></dd>
+  <% end %>
+  <% if @bewerbung.spaetestens? and @bewerbung.spaetestens != @bewerbung.wunsch %>
+    <dt>Spätestens</dt>
+    <dd><%=l @bewerbung.spaetestens %></dd>
+  <% end %>
+<% if false %>
+  <% if @bewerbung.geplante_wohndauer? %>
+    <dt>Wohndauer</dt>
+    <dd><%= @bewerbung.geplante_wohndauer %></dd>
+  <% end %>
+<% end %>
+  </dl>
+  <dl>
+  <% if @bewerbung.geschlecht? %>
+    <dt>Geschlecht</dt>
+    <dd><%= @bewerbung.geschlecht %></dd>
+  <% end %>
+  <% if @bewerbung.staatsangehoerigkeit? %>
+    <dt>Staatsangehörigkeit</dt>
+    <dd><%= @bewerbung.staatsangehoerigkeit %></dd>
+  <% end %>
+    <dt>Geburtsdatum (Alter)</dt>
+    <dd><%=l @bewerbung.geburtsdatum %> (<%= @bewerbung.alter %> Jahre)</dd>
+  <% if @bewerbung.familienstand? %>
+    <dt>Familienstand</dt>
+    <dd><%= @bewerbung.familienstand %></dd>
+  <% end %>
+  <% if @bewerbung.religion? %>
+    <dt>Religion</dt>
+    <dd><%= @bewerbung.religion %></dd>
+  <% end %>
+  </dl>
+  <section id="studium">
+    <h3>Studium</h3>
+    <dl>
+    <% if @bewerbung.hauptfach? %>
+      <dt>Hauptfach</dt>
+      <dd><%= @bewerbung.hauptfach %></dd>
+    <% end %>
+    <% if @bewerbung.hochschule? %>
+      <dt>Hochschule</dt>
+      <dd><%= @bewerbung.hochschule %></dd>
+    <% end %>
+    <% if @bewerbung.anzahl_abgeschlossener_fachsemester? %>
+      <dt>Semester</dt>
+      <dd><%= @bewerbung.anzahl_abgeschlossener_fachsemester %></dd>
+    <% end %>
+    <% if @bewerbung.studienende? %>
+      <dt>Studienende</dt>
+      <dd><%=l @bewerbung.studienende %></dd>
+    <% end %>
+    <% if @bewerbung.angestrebter_abschluss? %>
+      <dt>Abschluss</dt>
+      <dd><%= @bewerbung.angestrebter_abschluss %></dd>
+    <% end %>
+    </dl>
+  <% if @bewerbung.hochschule == 'BA' %>
+    <dl>
+      <dt>Firma</dt>
+      <dd><%= @bewerbung.firma %></dd>
+      <dd><%= @bewerbung.firma_plz %> <%= @bewerbung.firma_ort %></dd>
+      <dt>Während der Praxisphasen im HEK?</dt>
+      <dd><%= @bewerbung.waehrend_der_praxisphasen_im_hek %></dd>
+    </dl>
+  <% end %>
+  </section>
+  <section id="vorstellung">
+    <h3>Persönliche Vorstellung</h3>
+  <% if @bewerbung.komme_vorbei_am? %>
+    <p>Ich komme vorbei am <%=l @bewerbung.komme_vorbei_am %>.</p>
+  <% end %>
+  <% if @bewerbung.sprechstunde_im_monat? %>
+    <p>Ich kann auf Einladung in eine Sprechstunde kommen im <%=l @bewerbung.sprechstunde_im_monat, :format => '%B' %>.</p>
+  <% end %>
+  <% if @bewerbung.vorstellungsgespraech_nicht_moeglich? %>
+    <p>Ich kann nicht zum Vorstellungsgespräch kommen aber ich stehe für ein telefonisches Gespräch bereit. Am besten bin ich erreichbar um <%=l @bewerbung.vorstellungsgespraech_nicht_moeglich, :format => :time %> Uhr.</p>
+  <% end %>
+  <% if @bewerbung.organisatorische_mitteilungen? %>
+    <p><%= @bewerbung.organisatorische_mitteilungen %></p>
+  <% end %>
+  </section>
+  <section id="motivation">
+    <h3>Motivation</h3>
+    <p><%= @bewerbung.informationen %></p>
+  </section>
+  <section id="bewertungen">
+    <h3>Bewertungen</h3>
+    <%= render :partial => 'bewertungen', :locals => { :bewerbung => @bewerbung } %>
+    <p><%= @bewerbung.bewertung %></p>
+  </section>
+  <%= button_to 'wir haben zugesagt', zusagen_bewerbung_path(@bewerbung), :method => 'put', :form_class => 'zusagen' %>
+  <%= button_to 'er/sie hat abgesagt', absagen_bewerbung_path(@bewerbung), :method => 'put', :confirm => 'Hat er/sie wirklich abgesagt?', :form_class => 'absagen' %>
+  <%= link_to '« Zurück zur Übersicht', bewerbungen_path, :class => 'zurueck' %>
+</article>

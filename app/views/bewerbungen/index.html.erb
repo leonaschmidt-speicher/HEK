@@ -56,7 +56,7 @@
       <tbody>
       <% @bewerbungen.each_with_index do |bewerbung, i| %>
         <tr>
-          <td class="thumb"><%= image_tag bewerbung.foto.url(:thumb) %></td>
+          <td class="thumb"><%= link_to image_tag(bewerbung.foto.url(:thumb), :alt => nil), bewerbung %></td>
           <td><%= bewerbung.geschlecht %></td>
           <td><%= bewerbung.vorname %></td>
           <td><%= bewerbung.nachname %></td>
@@ -68,19 +68,9 @@
           <td style="display: none"><%= bewerbung.staatsangehoerigkeit %></td>
           <td>
         <% if params[:bewertungen] == 'alle' %>
-            <ul class="bewertungen" <%= 'style="display: none"'.html_safe unless params[:bewertungen] == 'alle' %>>
-          <% ApplicationController::USERS.each_key do |user| %>
-              <li class="bewertung-<%= bewerbung.bewertungen.for(user) || 'keine' %>"
-                  title="<%= user %>: <%= bewerbung.bewertungen.for(user) || 'nicht bewertet' %>">
-              <% 5.downto 1 do |i| %>
-                <div class="<%= bewerbung.bewertungen.for(user) < i ? 'empty-bar' : 'bar' %>"></div>
-              <% end unless bewerbung.bewertungen.for(user).nil? %>
-              </li>
-          <% end %>
-              <li class="gesamtbewertung" style="height: <%= (bewerbung.bewertung*24/5 - 1).round %>px" title="<%= bewerbung.bewertung %>"></li>
-            </ul>
+            <%= render :partial => 'bewertungen', :locals => { :bewerbung => bewerbung } %>
         <% else %>
-            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>"<%= ' style="display: none"' if params[:bewertungen] == 'alle' %>>
+            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>">
             <% 6.times do |j| %>
               <option value="<%= j %>" <%= 'selected' if bewerbung.bewertungen.for(@user) == j and not bewerbung.bewertungen.for(@user).blank? %>><%= j %></option>
             <% end %>

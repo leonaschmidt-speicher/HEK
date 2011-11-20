@@ -15,13 +15,19 @@
 *+html .postit {
   background-color: #F4F363;
 }
+.postit dl {
+  margin: 0 !important;
+}
 .postit dt {
-  font-size: 1.2em;
-  text-transform: uppercase;
-  color: #BEA336;
+  float: none !important;
+  clear: none !important;
+  font-size: 1.2em !important;
+  text-transform: uppercase !important;
+  color: #BEA336 !important;
+  margin: none !important;
 }
 .postit dd {
-  font-size: 1.6em;
+  font-size: 1.6em !important;
   white-space: nowrap;
 }
 #bewohnerzimmer .postit, #bewerbung .postit, #tutoriate .postit {

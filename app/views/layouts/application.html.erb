@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', :media => 'all' %>
     <%= auto_discovery_link_tag :atom, bewerbungen_path(:atom) if controller? :bewerbungen and action? :index, :show %>
     <%= csrf_meta_tags %>
     <!--[if lt IE 9]>

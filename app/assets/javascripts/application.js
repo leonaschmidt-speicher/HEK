@@ -5,6 +5,7 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery_ujs
 //= require slider
 //= require rating
 //= require_tree .

@@ -1,0 +1,11 @@
+<ul class="bewertungen">
+<% ApplicationController::USERS.each_key do |user| %>
+  <li class="bewertung-<%= bewerbung.bewertungen.for(user) || 'keine' %>"
+      title="<%= user %>: <%= bewerbung.bewertungen.for(user) || 'nicht bewertet' %>">
+  <% 5.downto 1 do |i| %>
+    <div class="<%= bewerbung.bewertungen.for(user) < i ? 'empty-bar' : 'bar' %>"></div>
+  <% end unless bewerbung.bewertungen.for(user).nil? %>
+  </li>
+<% end %>
+  <li class="gesamtbewertung" style="height: <%= (bewerbung.bewertung*24/5 - 1).round %>px" title="<%= bewerbung.bewertung %>"></li>
+</ul>

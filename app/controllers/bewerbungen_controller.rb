@@ -16,7 +16,7 @@ class BewerbungenController < ApplicationController
   end
 
   def show
-    @bewerbung = Bewerbung.find params[:id]
+    @bewerbung = Bewerbung.includes(:bewertungen).find params[:id]
   end
 
   def new
@@ -42,7 +42,7 @@ class BewerbungenController < ApplicationController
 
   alias_method :update, :create
 
-  def confirm
+  def bestaetigen
     @bewerbung = Bewerbung.nicht_bestaetigt.find session[:bewerbung_id]
     @bewerbung.bestaetigt = true
 
@@ -59,6 +59,20 @@ class BewerbungenController < ApplicationController
     session[:name] = @bewerbung.name
 
     redirect_to :action => 'new', :anchor => 'ablauf'
+  end
+
+  def zusagen
+    @bewerbung = Bewerbung.find params[:id]
+    @bewerbung.update_attribute :zugesagt, true
+
+    redirect_to :action => 'show'
+  end
+
+  def absagen
+    @bewerbung = Bewerbung.find params[:id]
+    @bewerbung.update_attribute :zugesagt, false
+
+    redirect_to :action => 'show'
   end
 
 private

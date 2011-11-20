@@ -132,14 +132,14 @@
             <li>
               <%= form.label :hochschule %>
               <%= form.select :hochschule, options_for_select([['Karlsruher Institut für Technologie (Uni)', 'KIT'],
-                                                           ['Hochschule Karlsruhe (FH)', 'FH'],
-                                                           ['Pädagogische Hochschule (PH)', 'PH'],
-                                                           ['Duale Hochschule (BA)', 'BA'],
-                                                           ['Akademie der Bildenden Künste (AkdBK)', 'AkdBK'],
-                                                           ['Hochschule für Gestaltung (HfG)', 'HfG'],
-                                                           ['Hochschule für Musik (HfM)', 'HfM'],
-                                                           ['Karlshochschule Karlsruhe', 'Karlshochschule'],
-                                                           'Andere']), :size => 1, :style => "width: 11.75em" %>
+                                                               ['Hochschule Karlsruhe (FH)', 'FH'],
+                                                               ['Pädagogische Hochschule (PH)', 'PH'],
+                                                               ['Duale Hochschule (BA)', 'BA'],
+                                                               ['Akademie der Bildenden Künste (AkdBK)', 'AkdBK'],
+                                                               ['Hochschule für Gestaltung (HfG)', 'HfG'],
+                                                               ['Hochschule für Musik (HfM)', 'HfM'],
+                                                               ['Karlshochschule Karlsruhe', 'Karlshochschule'],
+                                                               'Andere']), :size => 1, :style => "width: 11.75em" %>
             </li>
             <li>
               <%= form.label :hauptfach %>
@@ -225,11 +225,11 @@
           </p>
           <p>
             <%= form.label :sprechstunde_im_monat %>
-            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :default => 3.months.from_now %>
+            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :default => 3.months.from_now, :include_blank => true %>
           </p>
           <p>
             <%= form.label :vorstellungsgespraech_nicht_moeglich %>
-            <%= form.time_select :vorstellungsgespraech_nicht_moeglich, :size => 24 %>
+            <%= form.time_select :vorstellungsgespraech_nicht_moeglich, :size => 24, :include_blank => true %>
           </p>
         </fieldset>
         <fieldset>
@@ -270,7 +270,7 @@
         </nav>
       </section>
     <% end %>
-    <%= form_for @bewerbung, :url => bewerbung_confirm_path, method: 'put', :html => { :class => 'confirm_bewerbung', :id => 'confirm_bewerbung' } do |form| %>
+    <%= form_for @bewerbung, :url => bewerbung_bestaetigen_path, method: 'put', :html => { :class => 'bestaetigen_bewerbung', :id => 'bestaetigen_bewerbung' } do |form| %>
       <section id="bestaetigung">
         <%= render :partial => 'bewerbungen/steps', :locals => { :current => :bestaetigung } %>
         <div class="text">
@@ -291,7 +291,7 @@
           <dl>
             <dt>Persönliche Daten</dt>
             <dd><%= @bewerbung.name %></dd>
-            <dd><%= @bewerbung.geburtsdatum %></dd>
+            <dd><%=l @bewerbung.geburtsdatum %></dd>
           <% if @bewerbung.temp_lebenslauf? %>
             <dd><%= link_to "Lebenslauf: #{@bewerbung.temp_lebenslauf.original_filename}", @bewerbung.temp_lebenslauf.to_s, :target => '_blank' %></dd>
           <% end %>
@@ -322,7 +322,7 @@
           <% end %>
             <dt>Einzug</dt>
             <dd>
-              Du möchtest am liebsten am <%= @bewerbung.wunsch %> einziehen<%= ", frühestens jedoch zum #{@bewerbung.fruehestens}" unless @bewerbung.fruehestens.blank? %> <%= ", spätestens zum #{@bewerbung.spaetestens}" unless @bewerbung.spaetestens.blank? %>.
+              Du möchtest am liebsten am <%=l @bewerbung.wunsch %> einziehen<%= ", frühestens jedoch zum #{l @bewerbung.fruehestens}" unless @bewerbung.fruehestens.blank? %> <%= ", spätestens zum #{l @bewerbung.spaetestens}" unless @bewerbung.spaetestens.blank? %>.
             </dd>
             <dt>Über dich</dt>
             <dd id="about"><%= @bewerbung.informationen %></dd>
