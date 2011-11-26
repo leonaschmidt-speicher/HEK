@@ -1,7 +1,9 @@
 <article id="detailed">
   <div class="postit">
     <dl>
-      <dd id="foto"><%= image_tag @bewerbung.foto.url(:medium), :alt => nil %></dd>
+       <dd id="foto" style="<%= 'height:140px; width:140px;' unless @bewerbung.foto? %>">
+         <%= link_to (image_tag @bewerbung.foto.url(:medium), :alt => nil), @bewerbung.foto.url if @bewerbung.foto? %>
+       </dd>
     <% if @bewerbung.lebenslauf? %>
       <dd id="lebenslauf"><%= link_to 'Lebenslauf', @bewerbung.lebenslauf.url %></dd>
     <% end %>
@@ -26,7 +28,7 @@
   <header>
     <small>Bewerbung von</small>
     <h2><%= @bewerbung.name %></h2>
-    <big>zum Einzug am <%=l @bewerbung.wunsch %> für <%= @bewerbung.geplante_wohndauer %> Monate.</big>
+    <big>zum Einzug am <%=l @bewerbung.wunsch %><% unless @bewerbung.geplante_wohndauer.blank? %> für <%= @bewerbung.geplante_wohndauer %> Monate<% end %>.</big>
   </header>
   <dl>
 <% if false %>
@@ -104,6 +106,7 @@
   </section>
   <section id="vorstellung">
     <h3>Persönliche Vorstellung</h3>
+  <% if @bewerbung.komme_vorbei_am? || @bewerbung.sprechstunde_im_monat? || @bewerbung.vorstellungsgespraech_nicht_moeglich? || @bewerbung.organisatorische_mitteilungen? %>
   <% if @bewerbung.komme_vorbei_am? %>
     <p>Ich komme vorbei am <%=l @bewerbung.komme_vorbei_am %>.</p>
   <% end %>
@@ -116,6 +119,9 @@
   <% if @bewerbung.organisatorische_mitteilungen? %>
     <p><%= @bewerbung.organisatorische_mitteilungen %></p>
   <% end %>
+  <% else %>
+    <p>Der Bewerber hat keine Angaben zu einem Vorstellungsgespräch gemacht und auch keine organisatorischen Bemerkungen hinterlassen.</p>
+  <% end %>
   </section>
   <section id="motivation">
     <h3>Motivation</h3>
@@ -123,8 +129,16 @@
   </section>
   <section id="bewertungen">
     <h3>Bewertungen</h3>
-    <%= render :partial => 'bewertungen', :locals => { :bewerbung => @bewerbung } %>
-    <p><%= @bewerbung.bewertung %></p>
+    <% if @bewerbung.bewertung? %>
+      <dl>
+        <dt>Einzelbewertungen</dt>
+        <dd><%= render :partial => 'bewertungen', :locals => { :bewerbung => @bewerbung } %></dd>
+        <dt>Gesamtbewertung</dt>
+        <dd><%= @bewerbung.bewertung %></dd>
+      </dl>
+    <% else %>
+      <p>Es wurden noch keine Bewertungen abgegeben.</p>
+    <% end %>
   </section>
   <%= button_to 'wir haben zugesagt', zusagen_bewerbung_path(@bewerbung), :method => 'put', :form_class => 'zusagen' %>
   <%= button_to 'er/sie hat abgesagt', absagen_bewerbung_path(@bewerbung), :method => 'put', :confirm => 'Hat er/sie wirklich abgesagt?', :form_class => 'absagen' %>

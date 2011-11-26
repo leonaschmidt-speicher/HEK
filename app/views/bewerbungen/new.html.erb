@@ -38,8 +38,7 @@
           <ul>
             <li>
               <%= form.label :vorname %>
-              <%= form.text_field :vorname, :size => 24 %>
-<!-- autofocus here on first visit -->
+              <%= form.text_field :vorname, :size => 24, :autofocus => @bewerbung.errors.any? ? nil : 'autofocus'%>
             </li>
             <li>
               <%= form.label :nachname %>
@@ -49,10 +48,11 @@
           <ul>
             <li>
               <%= form.label :geburtsdatum %>
-              <%= date_select 'bewerbung', 'geburtsdatum', :default => 19.years.ago %>
+              <%= form.text_field :geburtsdatum, :type => 'date', :size => 24 %>
+              <span>Jahr-Monat-Tag (z.B. <%= 19.years.ago.to_date %>)</span>
             </li>
             <li>
-<!-- a nationality list would be nice for later sorting -->
+<% #a nationality list would be nice for later sorting %>
               <%= form.label :staatsangehoerigkeit %>
               <%= form.text_field :staatsangehoerigkeit, :size => 24 %>
             </li>
@@ -102,7 +102,7 @@
             </li>
           </ul>
           <p>
-<!-- a country list would be nice for later sorting -->
+<% #a country list would be nice for later sorting %>
             <%= form.label :land %>
             <%= form.text_field :land, :size => 24 %>
           </p>
@@ -153,7 +153,10 @@
           <ul>
             <li>
               <%= form.label :studienende %>
-              <%= form.date_select :studienende, :discard_day => true, :default => 3.years.from_now, :include_blank => true %>
+              <% Time::DATE_FORMATS[:month_and_year] = "%Y-%m" %>
+              <%= form.date_select :studienende, :discard_day => true, :start_year => Time.now.year, :include_blank => true %>
+              <!-- <%= form.text_field :studienende, :type => 'month' %>
+              <span>Jahr-Monat (z.B. <%= 3.years.from_now.to_formatted_s :month_and_year %>)</span> -->
             </li>
             <li>
               <%= form.label :angestrebter_abschluss %>
@@ -199,15 +202,18 @@
           <ul>
             <li>
               <%= form.label :fruehestens %>
-              <%= form.date_select :fruehestens, :default => 2.months.from_now, :include_blank => true %>
+              <%= form.text_field :fruehestens, :type => 'date' %>
+              <span>Jahr-Monat-Tag (z.B. <%= 2.months.from_now.to_date %>)</span>
             </li>
             <li>
               <%= form.label :wunsch %>
-              <%= form.date_select :wunsch, :default => 3.months.from_now%>
+              <%= form.text_field :wunsch, :type => 'date' %>
+              <span>Jahr-Monat-Tag (z.B. <%= 3.months.from_now.to_date %>)</span>
             </li>
             <li>
               <%= form.label :spaetestens %>
-              <%= form.date_select :spaetestens, :default => 4.months.from_now, :include_blank => true %>
+              <%= form.text_field :spaetestens, :type => 'date' %>
+              <span>Jahr-Monat-Tag (z.B. <%= 4.months.from_now.to_date %>)</span>
             </li>
           </ul>
           <p>
@@ -221,15 +227,19 @@
           <%= errors_for_methods Bewerbung::VORSTELLUNG %>
           <p>
             <%= form.label :komme_vorbei_am %>
-            <%= form.date_select :komme_vorbei_am, :default => 2.weeks.from_now, :include_blank => true %>
+            <%= form.text_field :komme_vorbei_am, :type => 'date' %>
+            <span>Jahr-Monat-Tag (z.B. <%= 2.weeks.from_now.to_date %>)</span>
           </p>
           <p>
             <%= form.label :sprechstunde_im_monat %>
-            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :default => 3.months.from_now, :include_blank => true %>
+            <%= form.date_select :sprechstunde_im_monat, :discard_day => true, :discard_year => true, :include_blank => true %>
+            <!-- <%= form.text_field :sprechstunde_im_monat, :type => 'month' %>
+            <span>Jahr-Monat (z.B. <%= 2.months.from_now.to_formatted_s :month_and_year %>)</span> -->
           </p>
           <p>
             <%= form.label :vorstellungsgespraech_nicht_moeglich %>
-            <%= form.time_select :vorstellungsgespraech_nicht_moeglich, :size => 24, :include_blank => true %>
+            <%= form.text_field :vorstellungsgespraech_nicht_moeglich, :size => 24, :type => 'time' %>
+            <span>Stunde:Minute (z.B. 19:00)</span>
           </p>
         </fieldset>
         <fieldset>
@@ -322,7 +332,7 @@
           <% end %>
             <dt>Einzug</dt>
             <dd>
-              Du möchtest am liebsten am <%=l @bewerbung.wunsch %> einziehen<%= ", frühestens jedoch zum #{l @bewerbung.fruehestens}" unless @bewerbung.fruehestens.blank? %> <%= ", spätestens zum #{l @bewerbung.spaetestens}" unless @bewerbung.spaetestens.blank? %>.
+              Du möchtest am liebsten am <%=l @bewerbung.wunsch %> einziehen<%= ", frühestens jedoch zum #{l @bewerbung.fruehestens}" unless @bewerbung.fruehestens.blank? %><%= ", spätestens zum #{l @bewerbung.spaetestens}" unless @bewerbung.spaetestens.blank? %>.
             </dd>
             <dt>Über dich</dt>
             <dd id="about"><%= @bewerbung.informationen %></dd>
@@ -340,9 +350,6 @@
 <% # missing error handling but for which errors %>
       <p>
         Und was passiert jetzt?
-      </p>
-      <p>
-        Du bekommst eine E-Mail-Bestätigung über deine Bewerbung von uns zugeschickt.
       </p>
       <p>
         Wir würden uns freuen, wenn du bald noch zu einem Kennenlerngespräch bei uns vorbeikommst. Such dir einen Termin zu den Sprechzeiten des <a href="/organisation/heimleiter" target="_blank">Heimleiters</a> aus und stell dich vor. Falls du nicht vorbei kommen kannst, kann es sein, dass wir dich anrufen um dich ein bisschen besser kennenzulernen.

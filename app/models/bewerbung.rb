@@ -44,6 +44,7 @@ class Bewerbung < ActiveRecord::Base
     :url => "/uploads/secure/:hash.:extension",
     :hash_secret => "712be566717dae4560fd7cfcf8214369",
     :hash_data => ":class/:attachment/:id/:style",
+    :default_url => '/images/missing_:style.png',
     :use_timestamp => false
   }
   has_attached_file :lebenslauf, {
