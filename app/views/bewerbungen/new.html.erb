@@ -155,7 +155,7 @@
               <%= form.label :studienende %>
               <% Time::DATE_FORMATS[:month_and_year] = "%Y-%m" %>
               <%= form.date_select :studienende, :discard_day => true, :start_year => Time.now.year, :include_blank => true %>
-              <!-- <%= form.text_field :studienende, :type => 'month' %>
+              <!-- <%= form.text_field :studienende, :type => 'month', :size => 24 %>
               <span>Jahr-Monat (z.B. <%= 3.years.from_now.to_formatted_s :month_and_year %>)</span> -->
             </li>
             <li>
@@ -202,17 +202,17 @@
           <ul>
             <li>
               <%= form.label :fruehestens %>
-              <%= form.text_field :fruehestens, :type => 'date' %>
+              <%= form.text_field :fruehestens, :type => 'date', :size => 24 %>
               <span>Jahr-Monat-Tag (z.B. <%= 2.months.from_now.to_date %>)</span>
             </li>
             <li>
               <%= form.label :wunsch %>
-              <%= form.text_field :wunsch, :type => 'date' %>
+              <%= form.text_field :wunsch, :type => 'date', :size => 24 %>
               <span>Jahr-Monat-Tag (z.B. <%= 3.months.from_now.to_date %>)</span>
             </li>
             <li>
               <%= form.label :spaetestens %>
-              <%= form.text_field :spaetestens, :type => 'date' %>
+              <%= form.text_field :spaetestens, :type => 'date', :size => 24 %>
               <span>Jahr-Monat-Tag (z.B. <%= 4.months.from_now.to_date %>)</span>
             </li>
           </ul>
@@ -227,7 +227,7 @@
           <%= errors_for_methods Bewerbung::VORSTELLUNG %>
           <p>
             <%= form.label :komme_vorbei_am %>
-            <%= form.text_field :komme_vorbei_am, :type => 'date' %>
+            <%= form.text_field :komme_vorbei_am, :type => 'date', :size => 24 %>
             <span>Jahr-Monat-Tag (z.B. <%= 2.weeks.from_now.to_date %>)</span>
           </p>
           <p>
@@ -238,7 +238,7 @@
           </p>
           <p>
             <%= form.label :vorstellungsgespraech_nicht_moeglich %>
-            <%= form.text_field :vorstellungsgespraech_nicht_moeglich, :size => 24, :type => 'time' %>
+            <%= form.text_field :vorstellungsgespraech_nicht_moeglich, :type => 'time', :size => 24 %>
             <span>Stunde:Minute (z.B. 19:00)</span>
           </p>
         </fieldset>
