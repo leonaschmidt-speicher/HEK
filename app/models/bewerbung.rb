@@ -56,20 +56,28 @@ class Bewerbung < ActiveRecord::Base
 
   validates :vorname,
             :nachname,
-            :geburtsdatum,
-            :strasse_und_nummer,
-            :plz,
-            :ort,
+            :presence => true
+  validates :geburtsdatum, :presence => true, :date => { :before => Proc.new { Time.now - 14.year } }
+  validates :strasse_und_nummer, :presence => true
+  validates :plz, :presence => true, :numericality => { :greater_than => 0, :less_or_equal_than => 99999, :only_integer => true }
+  validates :ort,
             :land,
             :email,
-            :wunsch,
-            :informationen,
             :presence => true
-
-  validates :plz, :numericality => { :greater_than => 0, :only_integer => true }
-  validates :firma_plz, :numericality => { :greater_than => 0, :only_integer => true }, :allow_blank => true
-  validates :anzahl_abgeschlossener_fachsemester, :numericality => { :greater_or_equal_than => 0, :only_integer => true }, :allow_blank => true
-  validates :geplante_wohndauer, :numericality => { :greater_than => 0, :only_integer => true }, :allow_blank => true
+  validates :firma_plz, :allow_blank => true, :numericality => { :greater_than => 0, :less_or_equal_than => 99999, :only_integer => true }
+  validates :anzahl_abgeschlossener_fachsemester, :allow_blank => true, :numericality => { :greater_or_equal_than => 0, :only_integer => true }
+  validates :geplante_wohndauer, :allow_blank => true, :numericality => { :greater_than => 0, :only_integer => true }
+  
+  validates :studienende, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
+  validates :fruehestens, :allow_blank => true, :date => { :before => :wunsch }
+# the following behaves strangely. an empty field gives a "not-a-date" error (when the date validator is called first)
+# or an "empty" error when you input an invalid date if the presence validator is called first.
+  validates :wunsch, :presence => true, :date => { :after => Proc.new { Time.now } }
+  validates :spaetestens, :date => { :after => :wunsch }, :allow_blank => true
+  validates :komme_vorbei_am, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
+# the following fails because the user only has to provide YYYY-MM (not the day)
+#  validates :sprechstunde_im_monat, :date => { :after => Proc.new { Time.now } }, :allow_blank => true
+  validates :informationen, :presence => true
 
   def name
     "#{vorname} #{nachname}"
