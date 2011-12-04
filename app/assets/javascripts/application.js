@@ -191,6 +191,7 @@ $(document).ready(function() {
       $("#berufsakademie").hide();
     }
     /*$("a[href~=" + window.location.hash + "]").click();*/
+    $(".bewertung").rating({showCancel: false});
   }
   if ($("#kontakt").length) {
     var latlng = new google.maps.LatLng(49.015705, 8.397074);
@@ -224,5 +225,24 @@ $(document).ready(function() {
       clearTimeout(timer);
     });
   }
-  $(".bewertung").rating({showCancel: false});
+  if ($("#heimselbstverwaltung").length) {
+    var scrollBy = function(view, offset) {
+      var ol = view.find("ol");
+      var to = parseInt(ol.css("right"), 10) + offset;
+      ol.animate({"right": to}, 300);
+      var next = view.find(".next");
+      if (to == 0) next.fadeOut(300);
+      else next.fadeIn(300);
+      var previous = view.find(".previous");
+      if (to == 460 - ol.width()) previous.fadeOut(300);
+      else previous.fadeIn(300);
+    };
+    $(".previous").click(function() {
+      scrollBy($(this).parent(), -460);
+    });
+    $(".next").click(function() {
+      scrollBy($(this).parent(), 460);
+    });
+    $(".previous").show();
+  }
 });

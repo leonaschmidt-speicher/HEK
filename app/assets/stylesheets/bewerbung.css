@@ -286,9 +286,9 @@
   background-color: #eee;
   z-index: -1;
 }
-#bewerbung #detailed #bewertungen .gesamtbewertung {
-    left: -80px;
-    position: relative;
+#bewerbung #detailed #bewertungen dd {
+  display: block;
+  margin-left: 150px;
 }
 
 /* rating stars */
