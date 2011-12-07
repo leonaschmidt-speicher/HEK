@@ -38,7 +38,7 @@
           <ul>
             <li>
               <%= form.label :vorname %>
-              <%= form.text_field :vorname, :size => 24, :autofocus => @bewerbung.errors.any? ? nil : 'autofocus'%>
+              <%= form.text_field :vorname, :size => 24, :autofocus => ('autofocus' unless @bewerbung.errors.any?) %>
             </li>
             <li>
               <%= form.label :nachname %>
