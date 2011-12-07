@@ -98,7 +98,7 @@
   </section>
   <section id="vorstellung">
     <h3>Persönliche Vorstellung</h3>
-  <% if @bewerbung.komme_vorbei_am? || @bewerbung.sprechstunde_im_monat? || @bewerbung.vorstellungsgespraech_nicht_moeglich? || @bewerbung.organisatorische_mitteilungen? %>
+<% if @bewerbung.komme_vorbei_am? || @bewerbung.sprechstunde_im_monat? || @bewerbung.vorstellungsgespraech_nicht_moeglich? || @bewerbung.organisatorische_mitteilungen? %>
   <% if @bewerbung.komme_vorbei_am? %>
     <p>Ich komme vorbei am <%=l @bewerbung.komme_vorbei_am %>.</p>
   <% end %>
@@ -111,9 +111,9 @@
   <% if @bewerbung.organisatorische_mitteilungen? %>
     <p><%= @bewerbung.organisatorische_mitteilungen %></p>
   <% end %>
-  <% else %>
+<% else %>
     <p>Der Bewerber hat keine Angaben zu einem Vorstellungsgespräch gemacht und auch keine organisatorischen Bemerkungen hinterlassen.</p>
-  <% end %>
+<% end %>
   </section>
   <section id="motivation">
     <h3>Motivation</h3>
@@ -133,8 +133,8 @@
     <% end %>
   </section>
   <nav>
-    <%= button_to 'wir haben zugesagt', zusagen_bewerbung_path(@bewerbung), :method => 'put', :form_class => 'zusagen' %>
-    <%= button_to 'er/sie hat abgesagt', absagen_bewerbung_path(@bewerbung), :method => 'put', :confirm => 'Hat er/sie wirklich abgesagt?', :form_class => 'absagen' %>
+    <%= button_to 'wir haben zugesagt', zusagen_bewerbung_path(@bewerbung), :method => 'put', :disabled => @bewerbung.zugesagt?, :form_class => 'zusagen' %>
+    <%= button_to 'er/sie hat abgesagt', absagen_bewerbung_path(@bewerbung), :method => 'put', :disabled => @bewerbung.abgesagt?, :confirm => 'Hat er/sie wirklich abgesagt?', :form_class => 'absagen' %>
     <%= link_to '« Zurück zur Übersicht', bewerbungen_path, :class => 'zurueck' %>
   </nav>
 </article>

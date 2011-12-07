@@ -67,7 +67,7 @@ class Bewerbung < ActiveRecord::Base
   validates :firma_plz, :allow_blank => true, :numericality => { :greater_than => 0, :less_or_equal_than => 99999, :only_integer => true }
   validates :anzahl_abgeschlossener_fachsemester, :allow_blank => true, :numericality => { :greater_or_equal_than => 0, :only_integer => true }
   validates :geplante_wohndauer, :allow_blank => true, :numericality => { :greater_than => 0, :only_integer => true }
-  
+
   validates :studienende, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
   validates :fruehestens, :allow_blank => true, :date => { :before => :wunsch }
 # the following behaves strangely. an empty field gives a "not-a-date" error (when the date validator is called first)
@@ -89,6 +89,10 @@ class Bewerbung < ActiveRecord::Base
 
   def telefon?
     festnetztelefon? or mobiltelefon?
+  end
+
+  def abgesagt?
+    zugesagt == false
   end
 
   def update_bewertung

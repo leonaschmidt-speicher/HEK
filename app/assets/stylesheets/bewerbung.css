@@ -259,6 +259,13 @@
 #bewerbung #detailed .absagen input:hover {
   border: 1px solid #b0281a;
 }
+#bewerbung #detailed input[disabled] {
+  background-color: #ccc;
+  cursor: default;
+}
+#bewerbung #detailed input[disabled]:hover {
+  border-color: transparent;
+}
 #bewerbung #detailed .zurueck {
   clear: both;
   display: block;
