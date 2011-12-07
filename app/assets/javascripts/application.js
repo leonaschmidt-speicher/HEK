@@ -231,11 +231,11 @@ $(document).ready(function() {
       var to = parseInt(ol.css("right"), 10) + offset;
       ol.animate({"right": to}, 300);
       var next = view.find(".next");
-      if (to == 0) next.fadeOut(300);
-      else next.fadeIn(300);
+      if (to == 0) next.addClass("disabled");
+      else next.removeClass("disabled");
       var previous = view.find(".previous");
-      if (to == 460 - ol.width()) previous.fadeOut(300);
-      else previous.fadeIn(300);
+      if (to == 460 - ol.width()) previous.addClass("disabled");
+      else previous.removeClass("disabled");
     };
     $(".previous").click(function() {
       scrollBy($(this).parent(), -460);
@@ -244,5 +244,6 @@ $(document).ready(function() {
       scrollBy($(this).parent(), 460);
     });
     $(".previous").show();
+    $(".next").show();
   }
 });

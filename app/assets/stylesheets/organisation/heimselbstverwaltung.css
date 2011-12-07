@@ -72,3 +72,7 @@
 #heimselbstverwaltung .next {
   right: 0;
 }
+#heimselbstverwaltung .disabled {
+  color: #ccc;
+  cursor: default;
+}
