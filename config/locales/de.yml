@@ -219,7 +219,7 @@ de:
       not_saved:
         one:    "Speichern nicht möglich: ein Fehler."
         other:  "Speichern nicht möglich: %{count} Fehler."
-      not_a_date: "ist leer oder nicht im korrekten Format"
+      not_a_date: "ist kein gültiges Datum"
       after: "muss nach dem %{date} sein"
       after_or_equal_to: "muss nach dem oder genau am %{date} sein"
       before: "muss vor dem %{date} sein"

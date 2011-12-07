@@ -57,7 +57,7 @@ class Bewerbung < ActiveRecord::Base
   validates :vorname,
             :nachname,
             :presence => true
-  validates :geburtsdatum, :date => { :before => Proc.new { Time.now - 14.year } }
+  validates :geburtsdatum, :presence => true, :date => { :before => Proc.new { Time.now - 14.year } }
   validates :strasse_und_nummer, :presence => true
   validates :plz, :presence => true, :numericality => { :greater_than => 0, :less_or_equal_than => 99999, :only_integer => true }
   validates :ort,
@@ -69,10 +69,24 @@ class Bewerbung < ActiveRecord::Base
   validates :geplante_wohndauer, :allow_blank => true, :numericality => { :greater_than => 0, :only_integer => true }
   validates :studienende, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
   validates :fruehestens, :allow_blank => true, :date => { :before => :wunsch }
-  validates :wunsch, :date => { :after => Proc.new { Time.now } }
+  validates :wunsch, :presence => true, :date => { :after => Proc.new { Time.now } }
   validates :spaetestens, :allow_blank => true, :date => { :after => :wunsch }
   validates :komme_vorbei_am, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
   validates :informationen, :presence => true
+
+  # Nehme jegliche Attribute vom Typ Datum deren Präsenz validiert werden soll hier auf.
+  [:geburtsdatum, :wunsch].each do |attribute|
+    define_method "#{attribute}=" do |value|
+      super value
+      if instance_variable_get("@#{attribute}").nil?
+        instance_variable_set "@#{attribute}", value unless value.blank?
+      end
+    end
+    define_method attribute do
+      value = super()
+      value || instance_variable_get("@#{attribute}")
+    end
+  end
 
   def name
     "#{vorname} #{nachname}"
