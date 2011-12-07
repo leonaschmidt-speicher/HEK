@@ -25,30 +25,22 @@
     </dl>
     <img class="background" src="/images/postit.png" alt="Postit" />
   </div>
-  <header>
-    <small>Bewerbung von</small>
-    <h2><%= @bewerbung.name %></h2>
-    <big>zum Einzug am <%=l @bewerbung.wunsch %><% unless @bewerbung.geplante_wohndauer.blank? %> für <%= @bewerbung.geplante_wohndauer %> Monate<% end %>.</big>
-  </header>
+  <h2><%= @bewerbung.name %></h2>
   <dl>
-<% if false %>
-    <dt>Wunsch</dt>
-    <dd><%=l @bewerbung.wunsch %></dd>
-<% end %>
   <% if @bewerbung.fruehestens? and @bewerbung.fruehestens != @bewerbung.wunsch %>
     <dt>Frühestens</dt>
     <dd><%=l @bewerbung.fruehestens %></dd>
   <% end %>
+    <dt>Wunsch</dt>
+    <dd><%=l @bewerbung.wunsch %></dd>
   <% if @bewerbung.spaetestens? and @bewerbung.spaetestens != @bewerbung.wunsch %>
     <dt>Spätestens</dt>
     <dd><%=l @bewerbung.spaetestens %></dd>
   <% end %>
-<% if false %>
   <% if @bewerbung.geplante_wohndauer? %>
     <dt>Wohndauer</dt>
-    <dd><%= @bewerbung.geplante_wohndauer %></dd>
+    <dd><%= pluralize @bewerbung.geplante_wohndauer, 'Monat', 'Monate' %></dd>
   <% end %>
-<% end %>
   </dl>
   <dl>
   <% if @bewerbung.geschlecht? %>

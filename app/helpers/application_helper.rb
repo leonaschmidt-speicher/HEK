@@ -6,7 +6,11 @@ module ApplicationHelper
 
   def site_title
     # Alternativ könnte man den Titel auch in de.yml unter config/locales setzen.
-    (@site || @group).titleize + ' ♣ ' unless @group.nil?
+    if @group.nil?
+      'Studentenwohnheim '
+    else
+      (@site || @group).titleize + ' ♣ '
+    end
   end
 
   def controller? *controllers
