@@ -197,8 +197,8 @@
         <%= render :partial => 'bewerbungen/steps', :locals => { :current => :organisatorisches} %>
         <fieldset>
           <legend><%= form.label :fruehestens, 'Angaben zum Einzug' %></legend>
-          <%= errors_for_methods Bewerbung::ANGABEN_ZUM_EINZUG %>
           <%= form.label :fruehestens, 'Mietbeginn (jeweils der Monatserste)' %>
+          <%= errors_for_methods Bewerbung::ANGABEN_ZUM_EINZUG %>
           <ul>
             <li>
               <%= form.label :fruehestens %>

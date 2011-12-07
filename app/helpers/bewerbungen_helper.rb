@@ -10,7 +10,13 @@ module BewerbungenHelper
     if errors? methods
       html = '<ol class="errors">'
       methods.each do |method|
-        html << error_message_on(@bewerbung, method.to_sym, :html_tag =>'li', :prepend_text => t("helpers.label.bewerbung.#{method}", :default => method.to_s.humanize) + " ")
+        unless @bewerbung.errors[method].empty?
+          html << "<li><label for='bewerbung_#{method}'>"
+          html << t("helpers.label.bewerbung.#{method}", :default => method.to_s.gsub('.', '_').humanize)
+          html << ' '
+          html << @bewerbung.errors[method].first
+          html << '</label></li>'
+        end
       end
       html << '</ol>'
       html.html_safe
