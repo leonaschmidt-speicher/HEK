@@ -7,8 +7,8 @@
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural /^(bewerbung|bewertung)$/i, '\1en'
   inflect.singular /^(bewerbung|bewertung)en/i, '\1'
-#   inflect.irregular 'person', 'people'
-#   inflect.uncountable %w( fish sheep )
+#  inflect.irregular 'person', 'people'
+#  inflect.uncountable %w( fish sheep )
 end
 
 class String

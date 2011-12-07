@@ -62,7 +62,8 @@ de:
 
   time:
     formats:
-      default: "%A, %d. %B %Y, %H:%M Uhr"
+      #default: "%A, %d. %B %Y, %H:%M Uhr"
+      default: "%d.%m.%Y"
       short: "%d. %B, %H:%M Uhr"
       long: "%A, %d. %B %Y, %H:%M Uhr"
       time: "%H:%M"
@@ -218,7 +219,11 @@ de:
       not_saved:
         one:    "Speichern nicht möglich: ein Fehler."
         other:  "Speichern nicht möglich: %{count} Fehler."
-
+      not_a_date: "ist leer oder nicht im korrekten Format"
+      after: "muss nach dem %{date} sein"
+      after_or_equal_to: "muss nach dem oder genau am %{date} sein"
+      before: "muss vor dem %{date} sein"
+      before_or_equal_to: "muss vor dem oder genau am %{date} sein"
   activerecord:
     errors:
       template:
