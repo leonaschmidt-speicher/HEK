@@ -3,7 +3,9 @@ module ActiveModel
     class DateValidator
       def validate_each_with_presence record, attr_name, value
         unless value.nil?
-          value = (Time.zone.parse value rescue nil) if value.is_a? String
+          if value.is_a? String
+            value = DateTime.strptime(value, '%Y-%m-%d').to_time.in_time_zone rescue nil
+          end
           if value.nil?
             record.errors.add attr_name, :not_a_date, options
           else
