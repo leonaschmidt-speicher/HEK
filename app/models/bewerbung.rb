@@ -1,4 +1,6 @@
 class Bewerbung < ActiveRecord::Base
+  DATE_FORMAT = '%Y-%m-%d'
+
   PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto foto_content_type foto_file_size lebenslauf lebenslauf_content_type lebenslauf_file_size]
   ANSCHRIFT_DER_ELTERN = %w[strasse_und_nummer plz ort land]
   WEITERE_KONTAKTINFORMATIONEN = %w[email mobiltelefon festnetztelefon]
@@ -77,14 +79,16 @@ class Bewerbung < ActiveRecord::Base
   # Nehme jegliche Attribute vom Typ Datum deren Präsenz validiert werden soll hier auf.
   [:geburtsdatum, :wunsch].each do |attribute|
     define_method "#{attribute}=" do |value|
-      super value
-      if instance_variable_get("@#{attribute}").nil?
-        instance_variable_set "@#{attribute}", value unless value.blank?
+      write_attribute attribute, value
+      unless value.acts_like? :time
+        value = value.is_a?(String) ? DateTime.strptime(value, DATE_FORMAT).to_time : value.to_time rescue value
       end
+      value = value.in_time_zone rescue nil unless value.nil?
+      @attributes_cache[attribute.to_s] = value
     end
     define_method attribute do
       value = super()
-      value || instance_variable_get("@#{attribute}")
+      value || @attributes[attribute.to_s]
     end
   end
 

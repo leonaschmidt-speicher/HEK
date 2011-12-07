@@ -4,7 +4,7 @@ module ActiveModel
       def validate_each_with_presence record, attr_name, value
         unless value.nil?
           if value.is_a? String
-            value = DateTime.strptime(value, '%Y-%m-%d').to_time.in_time_zone rescue nil
+            value = DateTime.strptime(value, Bewerbung::DATE_FORMAT).to_time.in_time_zone rescue nil
           end
           if value.nil?
             record.errors.add attr_name, :not_a_date, options
