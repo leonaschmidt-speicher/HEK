@@ -67,15 +67,7 @@
           <td><%=l bewerbung.spaetestens unless bewerbung.spaetestens.nil? %></td>
           <td style="display: none"><%= bewerbung.staatsangehoerigkeit %></td>
           <td>
-        <% if params[:bewertungen] == 'alle' %>
-            <%= render :partial => 'bewertungen', :locals => { :bewerbung => bewerbung } %>
-        <% else %>
-            <select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>">
-            <% 6.times do |j| %>
-              <option value="<%= j %>" <%= 'selected' if bewerbung.bewertungen.for(@user) == j and not bewerbung.bewertungen.for(@user).blank? %>><%= j %></option>
-            <% end %>
-            </select>
-        <% end %>
+            <%= render :partial => (params[:bewertungen] == 'alle' ? 'bewertungen' : 'bewertung'), :locals => { :bewerbung => bewerbung } %>
           </td>
           <td><%= '✓' if bewerbung.zugesagt? %></td>
           <% # Um eine Folge 'm's unterzubringen wäre länge 57 genau richtig -- aber bei 'normalem' Text sind dies zu wenige Zeichen. %>

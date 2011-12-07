@@ -175,10 +175,12 @@
 #bewerbung #detailed dt {
   float: left;
   clear: left;
+  width: 220px;
+  text-align: right;
   font-size: 1.2em;
   text-transform: uppercase;
   color: #aaa;
-  margin-right: 0.5em;
+  margin-right: 20px;
 }
 #bewerbung #detailed dd {
   font-size: 1.6em;
@@ -193,15 +195,47 @@
   float: left;
   width: 480px;
 }
+#bewerbung #detailed #vorstellung p {
+  text-align: center;
+}
 #bewerbung #detailed #motivation {
   clear: both;
-  width: 960px;
+  width: 640px;
+  padding: 0 150px;
+  padding-top: 2.3em;
+  margin: 2.4em auto;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+#bewerbung #detailed #motivation p {
+  margin-bottom: 23px;
 }
 #bewerbung #detailed #motivation p {
   white-space: pre-wrap;
 }
+#bewerbung #detailed #bewertung {
+  width: 480px;
+  margin: 2.4em auto;
+  margin-bottom: 2.3em;
+  border-bottom: 1px solid #ccc;
+}
+#bewerbung #detailed #bewertung .ui-rating {
+  width: 80px;
+  height: 24px;
+  margin: 2.4em auto;
+  overflow: hidden;
+}
+#bewerbung #detailed #bewertung dd {
+  display: block;
+  margin-left: 240px;
+}
+#bewerbung #detailed nav {
+  width: 360px;
+  margin: 0 auto;
+}
 #bewerbung #detailed .zusagen {
   float: left;
+  margin-bottom: 2.4em;
 }
 #bewerbung #detailed .zusagen input, #bewerbung #detailed .absagen input {
   padding: 4px;
@@ -215,6 +249,10 @@
 #bewerbung #detailed .zusagen input:hover {
   border: 1px solid #2d6200;
 }
+#bewerbung #detailed .absagen {
+  float: right;
+  margin-bottom: 2.4em;
+}
 #bewerbung #detailed .absagen input {
   background-color: #d14836;
 }
@@ -222,9 +260,11 @@
   border: 1px solid #b0281a;
 }
 #bewerbung #detailed .zurueck {
+  clear: both;
   display: block;
-  margin: 24px 10px;
+  margin: 0 auto;
   font-size: 1.6em;
+  text-align: center;
 }
 #bewerbung #detailed .zurueck:hover {
   text-decoration: underline;
@@ -272,10 +312,6 @@
   border-top: 1px solid #ddd;
   background-color: #eee;
   z-index: -1;
-}
-#bewerbung #detailed #bewertungen dd {
-  display: block;
-  margin-left: 150px;
 }
 
 /* rating stars */

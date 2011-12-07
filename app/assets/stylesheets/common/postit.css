@@ -21,6 +21,8 @@
 .postit dt {
   float: none !important;
   clear: none !important;
+  width: auto !important;
+  text-align: left !important;
   font-size: 1.2em !important;
   text-transform: uppercase !important;
   color: #BEA336 !important;

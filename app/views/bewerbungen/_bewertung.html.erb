@@ -1,0 +1,5 @@
+<select class="bewertung" data-url="<%= bewerbung_bewertungen_url bewerbung %>">
+<% 6.times do |j| %>
+  <option value="<%= j %>" <%= 'selected' if bewerbung.bewertungen.for(@user) == j and not bewerbung.bewertungen.for(@user).blank? %>><%= j %></option>
+<% end %>
+</select>

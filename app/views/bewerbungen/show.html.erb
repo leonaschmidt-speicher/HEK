@@ -119,20 +119,22 @@
     <h3>Motivation</h3>
     <p><%= @bewerbung.informationen %></p>
   </section>
-  <section id="bewertungen">
-    <h3>Bewertungen</h3>
-    <% if @bewerbung.bewertung? %>
+  <section id="bewertung">
+    <h3>Bewertung</h3>
+    <% if @bewerbung.bewertungen.for(@user).blank? %>
+      <%= render :partial => 'bewertung', :locals => { :bewerbung => @bewerbung } %>
+    <% else %>
       <dl>
         <dt>Einzelbewertungen</dt>
         <dd><%= render :partial => 'bewertungen', :locals => { :bewerbung => @bewerbung } %></dd>
         <dt>Gesamtbewertung</dt>
         <dd><%= @bewerbung.bewertung %></dd>
       </dl>
-    <% else %>
-      <p>Es wurden noch keine Bewertungen abgegeben.</p>
     <% end %>
   </section>
-  <%= button_to 'wir haben zugesagt', zusagen_bewerbung_path(@bewerbung), :method => 'put', :form_class => 'zusagen' %>
-  <%= button_to 'er/sie hat abgesagt', absagen_bewerbung_path(@bewerbung), :method => 'put', :confirm => 'Hat er/sie wirklich abgesagt?', :form_class => 'absagen' %>
-  <%= link_to '« Zurück zur Übersicht', bewerbungen_path, :class => 'zurueck' %>
+  <nav>
+    <%= button_to 'wir haben zugesagt', zusagen_bewerbung_path(@bewerbung), :method => 'put', :form_class => 'zusagen' %>
+    <%= button_to 'er/sie hat abgesagt', absagen_bewerbung_path(@bewerbung), :method => 'put', :confirm => 'Hat er/sie wirklich abgesagt?', :form_class => 'absagen' %>
+    <%= link_to '« Zurück zur Übersicht', bewerbungen_path, :class => 'zurueck' %>
+  </nav>
 </article>
