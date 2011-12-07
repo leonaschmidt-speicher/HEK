@@ -161,7 +161,7 @@ $(document).ready(function() {
           var href = $(this).attr("href");
           $("#swap-view").animate({"margin-left": -index*960}, 300, function() {
             $(href + " :input:visible:enabled:first").focus();
-            $(href + " .error:input:visible:enabled:first").focus();
+            $(href + " .field_with_errors :input:visible:enabled:first").focus();
           });
           return false;
         });
@@ -173,7 +173,7 @@ $(document).ready(function() {
         $("article nav a[href=" + href + "]").click(function() {
           $("#swap-view").animate({"margin-left": -index*960}, 300, function() {
             $(href + " :input:visible:enabled:first").focus();
-            $(href + " .error:input:visible:enabled:first").focus();
+            $(href + " .field_with_errors :input:visible:enabled:first").focus();
           });
           return false;
         }).anchorAnimate();
