@@ -73,7 +73,7 @@
           <p class="file">
           <% if @bewerbung.temp_foto? %>
             <%= link_to image_tag(@bewerbung.temp_foto.url(:thumb), :alt => "Dein Foto: #{@bewerbung.temp_foto.original_filename}"), @bewerbung.temp_foto.to_s, :target => '_blank', :class => 'img' %>
-            <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.temp_foto.url()) %>
+            <%= hidden_field 'already_attached_foto', nil, :value => File.basename(@bewerbung.temp_foto.url) %>
           <% end %>
             <%= form.label :temp_foto %>
             <%= form.file_field :temp_foto %>
