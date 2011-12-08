@@ -1,14 +1,15 @@
 class Bewerbung < ActiveRecord::Base
-  DATE_FORMAT = '%Y-%m-%d'
-
   PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto foto_content_type foto_file_size lebenslauf lebenslauf_content_type lebenslauf_file_size]
   ANSCHRIFT_DER_ELTERN = %w[strasse_und_nummer plz ort land]
   WEITERE_KONTAKTINFORMATIONEN = %w[email mobiltelefon festnetztelefon]
   ANGABEN_ZUM_STUDIUM = %w[hochschule hauptfach anzahl_abgeschlossener_fachsemester studienende angestrebter_abschluss firma firma_plz firma_ort waehrend_der_praxisphasen_im_hek]
   ANGABEN_ZUM_EINZUG = %w[fruehestens wunsch spaetestens geplante_wohndauer]
-  VORSTELLUNG = %w[komme_vorbei_am sprechstunge_im_monat vorstellungsgespraech_nicht_moeglich]
+  VORSTELLUNG = %w[komme_vorbei_am sprechstunde_im_monat vorstellungsgespraech_nicht_moeglich]
   ORGANISATORISCHE_MITTEILUNGEN = %w[organisatorische_mitteilungen]
   INFORMATIONEN = %w[informationen]
+
+  # Nehme jegliche Attribute vom Typ Datum hier auf.
+  DATE_FORMATS = {:geburtsdatum => '%Y-%m-%d', :studienende => '%Y-%m', :fruehestens => '%Y-%m', :wunsch => '%Y-%m', :spaetestens => '%Y-%m', :komme_vorbei_am => '%Y-%m-%d', :sprechstunde_im_monat => '%Y-%m', :vorstellungsgespraech_nicht_moeglich => '%H:%M'}
 
   set_table_name 'bewerbungen'
 
@@ -56,10 +57,14 @@ class Bewerbung < ActiveRecord::Base
     :use_timestamp => false
   }
 
+  def date_format_for attribute
+    DATE_FORMATS[attribute.to_sym]
+  end
+
   validates :vorname,
             :nachname,
             :presence => true
-  validates :geburtsdatum, :presence => true, :date => { :before => Proc.new { Time.now - 14.year } }
+  validates :geburtsdatum, :presence => true, :date => { :before => Proc.new { Time.zone.today - 14.years } }
   validates :strasse_und_nummer, :presence => true
   validates :plz, :presence => true, :numericality => { :greater_than => 0, :less_or_equal_than => 99999, :only_integer => true }
   validates :ort,
@@ -69,26 +74,25 @@ class Bewerbung < ActiveRecord::Base
   validates :firma_plz, :allow_blank => true, :numericality => { :greater_than => 0, :less_or_equal_than => 99999, :only_integer => true }
   validates :anzahl_abgeschlossener_fachsemester, :allow_blank => true, :numericality => { :greater_or_equal_than => 0, :only_integer => true }
   validates :geplante_wohndauer, :allow_blank => true, :numericality => { :greater_than => 0, :only_integer => true }
-  validates :studienende, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
-  validates :fruehestens, :allow_blank => true, :date => { :before => :wunsch }
-  validates :wunsch, :presence => true, :date => { :after => Proc.new { Time.now } }
-  validates :spaetestens, :allow_blank => true, :date => { :after => :wunsch }
-  validates :komme_vorbei_am, :allow_blank => true, :date => { :after => Proc.new { Time.now } }
+  validates :studienende, :allow_blank => true, :date => { :after_or_equal_to => Proc.new { Time.zone.today.at_beginning_of_month } }
+  validates :fruehestens, :allow_blank => true, :date => { :before_or_equal_to => :wunsch }
+  validates :wunsch, :presence => true, :date => { :after_or_equal_to => Proc.new { Time.zone.today.at_beginning_of_month } }
+  validates :spaetestens, :allow_blank => true, :date => { :after_or_equal_to => :wunsch }
+  validates :komme_vorbei_am, :allow_blank => true, :date => { :after_or_equal_to => Proc.new { Time.zone.today } }
+  validates :sprechstunde_im_monat, :allow_blank => true, :date => { :after_or_equal_to => Proc.new { Time.zone.today.at_beginning_of_month } }
+  validates :vorstellungsgespraech_nicht_moeglich, :allow_blank => true, :date => {}
   validates :informationen, :presence => true
 
-  # Nehme jegliche Attribute vom Typ Datum deren Präsenz validiert werden soll hier auf.
-  [:geburtsdatum, :wunsch].each do |attribute|
-    define_method "#{attribute}=" do |value|
-      write_attribute attribute, value
-      unless value.acts_like? :time
-        value = value.is_a?(String) ? DateTime.strptime(value, DATE_FORMAT).to_time : value.to_time rescue value
+  # rails / activerecord / lib / active_record / attribute_methods / time_zone_conversion.rb
+  DATE_FORMATS.each do |attribute, format|
+    define_method "#{attribute}=" do |original_time|
+      time = original_time
+      unless time.acts_like? :time
+        time = time.is_a?(String) ? DateTime.strptime(time, format).to_time : value.to_time rescue time
       end
-      value = value.in_time_zone rescue nil unless value.nil?
-      @attributes_cache[attribute.to_s] = value
-    end
-    define_method attribute do
-      value = super()
-      value || @attributes[attribute.to_s]
+      time = time.in_time_zone rescue nil if time
+      write_attribute attribute, original_time
+      @attributes_cache[attribute.to_s] = time
     end
   end
 
