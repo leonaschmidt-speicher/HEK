@@ -62,7 +62,7 @@ de:
 
   time:
     formats:
-      default: "%d.%m.%Y"
+      default: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %B, %H:%M Uhr"
       long: "%A, %d. %B %Y, %H:%M Uhr"
       time: "%H:%M"
@@ -183,6 +183,7 @@ de:
           one:    "Konnte %{model} nicht speichern: ein Fehler."
           other:  "Konnte %{model} nicht speichern: %{count} Fehler."
         body: "Bitte überprüfen Sie die folgenden Felder:"
+
   helpers:
     select:
       prompt: "Bitte wählen"
@@ -223,6 +224,7 @@ de:
       after_or_equal_to: "muss nach dem oder genau am %{date} sein"
       before: "muss vor dem %{date} sein"
       before_or_equal_to: "muss vor dem oder genau am %{date} sein"
+
   activerecord:
     errors:
       template:
@@ -238,6 +240,27 @@ de:
 
       full_messages:
         format: "%{attribute} %{message}"
+
+      models:
+        bewerbung:
+          attributes:
+            geburtsdatum:
+              before: "muss vor dem %{date} sein oder bist du jünger als 14 Jahre?"
+            studienende:
+              after_or_equal_to: "muss in der Zukunft liegen oder hast du dein Studium bereits abgeschlossen?"
+            fruehestens:
+              before_or_equal_to: "darf nicht nach deinem Wunschtermin liegen"
+            wunsch:
+              after_or_equal_to: "muss in der Zukunft liegen"
+            spaetestens:
+              after_or_equal_to: "darf nicht vor deinem Wunschtermin liegen"
+            komme_vorbei_am:
+              after_or_equal_to: "muss in der Zukunft liegen"
+            sprechstunde_im_monat:
+              after_or_equal_to: "muss in der Zukunft liegen"
+            vorstellungsgespraech_nicht_moeglich:
+              not_a_date: "ist keine gültige Zeit"
+
   helpers:
     label:
       bewerbung:

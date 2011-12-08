@@ -33,7 +33,7 @@
         </div>
         <%= render :partial => 'bewerbungen/steps', :locals => { :current => :persoenliches}  %>
         <fieldset>
-          <legend><%= form.label :vorname, 'Persönliche Angaben' %></legend>
+          <legend><label for="bewerbung_vorname">Persönliche Angaben</label></legend>
           <%= errors_for_methods Bewerbung::PERSOENLICHE_ANGABEN %>
           <ul>
             <li>
@@ -85,7 +85,7 @@
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= form.label :strasse_und_nummer, 'Anschrift der Eltern' %></legend>
+          <legend><label for="bewerbung_strasse_und_nummer">Anschrift der Eltern</label></legend>
           <%= errors_for_methods Bewerbung::ANSCHRIFT_DER_ELTERN %>
           <p>
               <%= form.label :strasse_und_nummer %>
@@ -108,7 +108,7 @@
           </p>
         </fieldset>
         <fieldset>
-          <legend><%= form.label :email, 'Weitere Kontaktinformationen' %></legend>
+          <legend><label for="bewerbung_email">Weitere Kontaktinformationen</label></legend>
           <%= errors_for_methods Bewerbung::WEITERE_KONTAKTINFORMATIONEN %>
           <p>
              <%= form.label :email %>

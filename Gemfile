@@ -20,7 +20,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'date_validator'
+# gem 'date_validator'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
