@@ -12,8 +12,6 @@ module BewerbungenHelper
       methods.each do |method|
         unless @bewerbung.errors[method].empty?
           html << "<li><label for='bewerbung_#{method}'>"
-          html << t("helpers.label.bewerbung.#{method}", :default => method.to_s.gsub('.', '_').humanize)
-          html << ' '
           html << @bewerbung.errors[method].first
           html << '</label></li>'
         end

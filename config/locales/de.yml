@@ -193,76 +193,7 @@ de:
       update: '%{model} aktualisieren'
       submit: '%{model} speichern'
 
-  errors:
-    format: "%{attribute} %{message}"
-
-    messages: &errors_messages
-      inclusion: "ist kein gültiger Wert"
-      exclusion: "ist nicht verfügbar"
-      invalid: "ist nicht gültig"
-      confirmation: "stimmt nicht mit der Bestätigung überein"
-      accepted: "muss akzeptiert werden"
-      empty: "muss ausgefüllt werden"
-      blank: "muss ausgefüllt werden"
-      too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
-      too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
-      wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
-      not_a_number: "ist keine Zahl"
-      greater_than: "muss größer als %{count} sein"
-      greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
-      equal_to: "muss genau %{count} sein"
-      less_than: "muss kleiner als %{count} sein"
-      less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
-      odd: "muss ungerade sein"
-      even: "muss gerade sein"
-      not_an_integer: "muss ganzzahlig sein"
-      not_saved:
-        one:    "Speichern nicht möglich: ein Fehler."
-        other:  "Speichern nicht möglich: %{count} Fehler."
-      not_a_date: "ist kein gültiges Datum"
-      after: "muss nach dem %{date} sein"
-      after_or_equal_to: "muss nach dem oder genau am %{date} sein"
-      before: "muss vor dem %{date} sein"
-      before_or_equal_to: "muss vor dem oder genau am %{date} sein"
-
-  activerecord:
-    errors:
-      template:
-        header:
-          one:    "Konnte %{model} nicht speichern: ein Fehler."
-          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
-        body: "Bitte überprüfen Sie die folgenden Felder:"
-
-      messages:
-        taken: "ist bereits vergeben"
-        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
-        <<: *errors_messages
-
-      full_messages:
-        format: "%{attribute} %{message}"
-
-      models:
-        bewerbung:
-          attributes:
-            geburtsdatum:
-              before: "muss vor dem %{date} sein oder bist du jünger als 14 Jahre?"
-            studienende:
-              after_or_equal_to: "muss in der Zukunft liegen oder hast du dein Studium bereits abgeschlossen?"
-            fruehestens:
-              before_or_equal_to: "darf nicht nach deinem Wunschtermin liegen"
-            wunsch:
-              after_or_equal_to: "muss in der Zukunft liegen"
-            spaetestens:
-              after_or_equal_to: "darf nicht vor deinem Wunschtermin liegen"
-            komme_vorbei_am:
-              after_or_equal_to: "muss in der Zukunft liegen"
-            sprechstunde_im_monat:
-              after_or_equal_to: "muss in der Zukunft liegen"
-            vorstellungsgespraech_nicht_moeglich:
-              not_a_date: "ist keine gültige Zeit"
-
-  helpers:
-    label:
+    label: &attributes
       bewerbung:
         temp_foto: "Foto"
         temp_lebenslauf: "Lebenslauf"
@@ -282,3 +213,76 @@ de:
         vorstellungsgespraech_nicht_moeglich: "Ich kann nicht zum Vorstellungsgespräch kommen aber ich stehe für ein telefonisches Gespräch bereit. Am besten bin ich erreichbar um"
         organisatorische_mitteilungen: "Sonstige organisatorische Mitteilungen"
         motivation: "Weitere Informationen"
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "%{attribute} ist kein gültiger Wert"
+      exclusion: "%{attribute} ist nicht verfügbar"
+      invalid: "%{attribute} ist nicht gültig"
+      confirmation: "%{attribute} stimmt nicht mit der Bestätigung überein"
+      accepted: "%{attribute} muss akzeptiert werden"
+      empty: "%{attribute} muss ausgefüllt werden"
+      blank: "%{attribute} muss ausgefüllt werden"
+      too_long: "%{attribute} ist zu lang (nicht mehr als %{count} Zeichen)"
+      too_short: "%{attribute} ist zu kurz (nicht weniger als %{count} Zeichen)"
+      wrong_length: "%{attribute} hat die falsche Länge (muss genau %{count} Zeichen haben)"
+      not_a_number: "%{attribute} ist keine Zahl"
+      greater_than: "%{attribute} muss größer als %{count} sein"
+      greater_than_or_equal_to: "%{attribute} muss größer oder gleich %{count} sein"
+      equal_to: "%{attribute} muss genau %{count} sein"
+      less_than: "%{attribute} muss kleiner als %{count} sein"
+      less_than_or_equal_to: "%{attribute} muss kleiner oder gleich %{count} sein"
+      odd: "%{attribute} muss ungerade sein"
+      even: "%{attribute} muss gerade sein"
+      not_an_integer: "%{attribute} muss ganzzahlig sein"
+      not_saved:
+        one:    "Speichern nicht möglich: ein Fehler."
+        other:  "Speichern nicht möglich: %{count} Fehler."
+      not_a_date: "%{attribute} ist kein gültiges Datum"
+      after: "%{attribute} muss nach dem %{date} sein"
+      after_or_equal_to: "%{attribute} muss nach dem oder genau am %{date} sein"
+      before: "%{attribute} muss vor dem %{date} sein"
+      before_or_equal_to: "%{attribute} muss vor dem oder genau am %{date} sein"
+
+  activerecord:
+    attributes:
+      <<: *attributes
+
+    errors:
+      template:
+        header:
+          one: "Konnte %{model} nicht speichern: ein Fehler."
+          other: "Konnte %{model} nicht speichern: %{count} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+
+      messages:
+        taken: "%{attribute} ist bereits vergeben"
+        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"
+
+      models:
+        bewerbung:
+          attributes:
+            geburtsdatum:
+              before: "%{attribute} muss vor dem %{date} sein oder bist du jünger als 14 Jahre?"
+            studienende:
+              after_or_equal_to: "%{attribute} muss in der Zukunft liegen oder hast du dein Studium bereits abgeschlossen?"
+            fruehestens:
+              before_or_equal_to: "Frühestes Einzugsdatum darf nicht nach deinem Wunschtermin liegen"
+            wunsch:
+              after_or_equal_to: "Wunschtermin muss in der Zukunft liegen"
+            spaetestens:
+              after_or_equal_to: "Spätestes Einzugsdatum darf nicht vor deinem Wunschtermin liegen"
+            komme_vorbei_am:
+              after_or_equal_to: "Besuchsdatum muss in der Zukunft liegen"
+            sprechstunde_im_monat:
+              after_or_equal_to: "Sprechstundenmonat muss in der Zukunft liegen"
+            vorstellungsgespraech_nicht_moeglich:
+              not_a_date: "Vorstellungsgesprächszeit ist keine gültige Zeit"
+            motivation:
+              blank: "Motivationsschreiben darf nicht leer sein"
