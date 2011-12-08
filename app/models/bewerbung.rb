@@ -6,7 +6,7 @@ class Bewerbung < ActiveRecord::Base
   ANGABEN_ZUM_EINZUG = %w[fruehestens wunsch spaetestens geplante_wohndauer]
   VORSTELLUNG = %w[komme_vorbei_am sprechstunde_im_monat vorstellungsgespraech_nicht_moeglich]
   ORGANISATORISCHE_MITTEILUNGEN = %w[organisatorische_mitteilungen]
-  INFORMATIONEN = %w[informationen]
+  MOTIVATION = %w[motivation]
 
   set_table_name 'bewerbungen'
 
@@ -74,7 +74,7 @@ class Bewerbung < ActiveRecord::Base
   validates :komme_vorbei_am, :allow_blank => true, :date => { :format => '%Y-%m-%d', :after_or_equal_to => Proc.new { Time.zone.today } }
   validates :sprechstunde_im_monat, :allow_blank => true, :date => { :format => '%Y-%m', :after_or_equal_to => Proc.new { Time.zone.today.at_beginning_of_month } }
   validates :vorstellungsgespraech_nicht_moeglich, :allow_blank => true, :time => { :format => '%H:%M' }
-  validates :informationen, :presence => true
+  validates :motivation, :presence => true
 
   def name
     "#{vorname} #{nachname}"

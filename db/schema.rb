@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111106212935) do
+ActiveRecord::Schema.define(:version => 20111208140059) do
 
   create_table "bewerbungen", :force => true do |t|
     t.string   "vorname"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20111106212935) do
     t.date     "sprechstunde_im_monat"
     t.time     "vorstellungsgespraech_nicht_moeglich"
     t.text     "organisatorische_mitteilungen"
-    t.text     "informationen"
+    t.text     "motivation"
     t.string   "foto_file_name"
     t.string   "foto_content_type"
     t.integer  "foto_file_size"

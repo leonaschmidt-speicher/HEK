@@ -33,8 +33,8 @@ module BewerbungenHelper
       Bewerbung::PERSOENLICHE_ANGABEN + Bewerbung::ANSCHRIFT_DER_ELTERN + Bewerbung::WEITERE_KONTAKTINFORMATIONEN + Bewerbung::ANGABEN_ZUM_STUDIUM
     when :organisatorisches
       Bewerbung::ANGABEN_ZUM_EINZUG + Bewerbung::VORSTELLUNG + Bewerbung::ORGANISATORISCHE_MITTEILUNGEN
-    when :informationen
-      Bewerbung::INFORMATIONEN
+    when :motivation
+      Bewerbung::MOTIVATION
     end
   end
 

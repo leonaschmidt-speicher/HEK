@@ -25,6 +25,6 @@ bewerbungen = Bewerbung.create(
   spaetestens: '2013-01-01',
   geplante_wohndauer: 20,
   sprechstunde_im_monat: '2011-12',
-  informationen: 'Nachdem ich nun schon einige Jahre im Bundestag aktiv war denke ich, es ist an der Zeit neue Wege zu beschreiten und neue Dinge kennen zu lernen.',
+  motivation: 'Nachdem ich nun schon einige Jahre im Bundestag aktiv war denke ich, es ist an der Zeit neue Wege zu beschreiten und neue Dinge kennen zu lernen.',
   bestaetigt: true
     )

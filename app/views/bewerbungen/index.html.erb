@@ -71,7 +71,7 @@
           </td>
           <td><%= '✓' if bewerbung.zugesagt? %></td>
           <% # Um eine Folge 'm's unterzubringen wäre länge 57 genau richtig -- aber bei 'normalem' Text sind dies zu wenige Zeichen. %>
-          <td class="motivation"><%= truncate bewerbung.informationen, :length => 104, :separator => ' ' %></td>
+          <td class="motivation"><%= truncate bewerbung.motivation, :length => 104, :separator => ' ' %></td>
         </tr>
       <% end %>
       </tbody>

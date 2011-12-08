@@ -251,10 +251,10 @@
       </section>
 
       <section id="motivation">
-        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :informationen} %>
+        <%= render :partial => 'bewerbungen/steps', :locals => { :current => :motivation} %>
         <fieldset>
-          <legend><%= form.label :informationen %></legend>
-          <%= errors_for_methods Bewerbung::INFORMATIONEN %>
+          <legend><%= form.label :motivation %></legend>
+          <%= errors_for_methods Bewerbung::MOTIVATION %>
           <div class="text">
             <p>
               Wir möchten uns ein Bild von Dir und Deiner Lebenssituation verschaffen. Schreibe einen kurzen und zusammenhängenden Text über Dich selbst. Wie Du diesen Punkt bearbeitest ist Dir überlassen; die folgenden Fragen sollen als Anregung und Hilfestellung verstanden werden.
@@ -269,7 +269,7 @@
               <li>Gibt es weitere Dinge, die wir über Dich wissen sollten?</li>
             </ul>
           </div>
-          <%= form.text_area :informationen, :rows => 30, :cols => 86 %>
+          <%= form.text_area :motivation, :rows => 30, :cols => 86 %>
         </fieldset>
         <nav>
           <a href="#organisatorisches">&laquo; Zurück zu Organisatorisches</a>
@@ -332,7 +332,7 @@
               Du möchtest am liebsten am <%=l @bewerbung.wunsch %> einziehen<%= ", frühestens jedoch zum #{l @bewerbung.fruehestens}" unless @bewerbung.fruehestens.blank? %><%= ", spätestens zum #{l @bewerbung.spaetestens}" unless @bewerbung.spaetestens.blank? %>.
             </dd>
             <dt>Über dich</dt>
-            <dd id="about"><%= @bewerbung.informationen %></dd>
+            <dd id="about"><%= @bewerbung.motivation %></dd>
           </dl>
         <% end %>
         </div>
