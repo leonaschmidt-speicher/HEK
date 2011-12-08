@@ -49,7 +49,7 @@
             <li>
               <%= form.label :geburtsdatum %>
               <%= form.text_field :geburtsdatum, :type => 'date', :size => 24 %>
-              <span>Jahr-Monat-Tag (z.B. <%= 19.years.ago.to_date %>)</span>
+              <span>Jahr-Monat-Tag (z.B. <%=l 19.years.ago, :format => @bewerbung.date_format_for(:geburtsdatum) %>)</span>
             </li>
             <li>
 <% #a nationality list would be nice for later sorting %>
