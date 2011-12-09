@@ -80,7 +80,7 @@
           </p>
           <p class="file">
             <%= form.label :temp_lebenslauf %>
-          <% if @bewerbung.temp_foto? %>
+          <% if @bewerbung.temp_lebenslauf? %>
             <%= link_to "cv.#{@bewerbung.temp_lebenslauf_file_name.split('.').last}", @bewerbung.temp_lebenslauf.to_s, :target => '_blank' %>
             <%= hidden_field 'already_attached_lebenslauf', nil, :value => File.basename(@bewerbung.temp_lebenslauf.url) if @bewerbung.temp_lebenslauf? %>
           <% end %>
