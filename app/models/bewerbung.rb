@@ -10,7 +10,7 @@ class Bewerbung < ActiveRecord::Base
 
   set_table_name 'bewerbungen'
 
-  scope :nicht_zugesagt, where(:zugesgt => [false, nil])
+  scope :nicht_zugesagt, where(:zugesagt => [false, nil])
   scope :nicht_abgesagt, where(:bestaetigt => true).where(:zugesagt => [true, nil])
   scope :nicht_bestaetigt, where(:bestaetigt => false)
 
