@@ -60,10 +60,10 @@
           <ul>
             <li>
               <%= form.label :geschlecht %>
-              <%= form.select :geschlecht, options_for_select(['', 'männlich', 'weiblich']), :size => 1, :style => 'width: 11.75em' %>
+              <%= form.select :geschlecht, options_for_select(['', 'männlich', 'weiblich'], @bewerbung.geschlecht), :size => 1, :style => 'width: 11.75em' %>
             <li>
               <%= form.label :familienstand %>
-              <%= form.select :familienstand, options_for_select(['', 'ledig', 'verheiratet']), :size => 1, :style => 'width: 11.75em' %>
+              <%= form.select :familienstand, options_for_select(['', 'ledig', 'verheiratet'], @bewerbung.familienstand), :size => 1, :style => 'width: 11.75em' %>
             </li>
           </ul>
           <p>
@@ -139,7 +139,7 @@
                                                                ['Hochschule für Gestaltung (HfG)', 'HfG'],
                                                                ['Hochschule für Musik (HfM)', 'HfM'],
                                                                ['Karlshochschule Karlsruhe', 'Karlshochschule'],
-                                                               'Andere']), :size => 1, :style => "width: 11.75em" %>
+                                                               'Andere'], @bewerbung.hochschule), :size => 1, :style => "width: 11.75em" %>
             </li>
             <li>
               <%= form.label :hauptfach %>
@@ -148,7 +148,7 @@
           </ul>
           <p>
             <%= form.label :anzahl_abgeschlossener_fachsemester %>
-            <%= form.number_field :anzahl_abgeschlossener_fachsemester, :value => 0, :step => 1, :min => 0, :size => 24 %>
+            <%= form.number_field :anzahl_abgeschlossener_fachsemester, :step => 1, :min => 0, :size => 24 %>
           </p>
           <ul>
             <li>
@@ -158,7 +158,7 @@
             </li>
             <li>
               <%= form.label :angestrebter_abschluss %>
-              <%= form.select :angestrebter_abschluss, options_for_select(%w[Bachelor Master Diplom Magister Staatsexamen Anderer]), :size => 1, :style => 'width: 11.75em' %>
+              <%= form.select :angestrebter_abschluss, options_for_select(['Bachelor', 'Master', 'Diplom', 'Magister', 'Staatsexamen', 'Anderer'], @bewerbung.angestrebter_abschluss), :size => 1, :style => 'width: 11.75em' %>
             </li>
           </ul>
           <div id="berufsakademie">

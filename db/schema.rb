@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111208140059) do
+ActiveRecord::Schema.define(:version => 20111209185041) do
 
   create_table "bewerbungen", :force => true do |t|
     t.string   "vorname"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20111208140059) do
     t.string   "festnetztelefon"
     t.string   "hochschule"
     t.string   "hauptfach"
-    t.integer  "anzahl_abgeschlossener_fachsemester"
+    t.integer  "anzahl_abgeschlossener_fachsemester",  :default => 0
     t.date     "studienende"
     t.string   "angestrebter_abschluss"
     t.string   "firma"

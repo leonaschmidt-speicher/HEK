@@ -91,8 +91,8 @@
       <dt>Firma</dt>
       <dd><%= @bewerbung.firma %></dd>
       <dd><%= @bewerbung.firma_plz %> <%= @bewerbung.firma_ort %></dd>
-      <dt>Während der Praxisphasen im HEK?</dt>
-      <dd><%= @bewerbung.waehrend_der_praxisphasen_im_hek %></dd>
+      <dt>Während Praxisphasen im HEK?</dt>
+      <dd><%= {nil => 'vielleicht', true => 'ja', false => 'nein'}[@bewerbung.waehrend_der_praxisphasen_im_hek] %></dd>
     </dl>
   <% end %>
   </section>

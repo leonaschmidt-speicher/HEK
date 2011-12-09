@@ -27,15 +27,13 @@ module ActiveModel
                 time = time.in_time_zone rescue nil if time
                 write_attribute attribute, original_time
                 @attributes_cache[attribute.to_s] = time
+                send "#{attribute}_will_change!" unless instance_variable_get("@#{attribute}") == time
+                instance_variable_set "@#{attribute}", time
               end
 
+              # Damit Daten nach abschicken eines gültigen Formulars sauber angezeigt werden ...
               define_method "#{attribute}_before_type_cast" do
-                value = send attribute
-                if value.nil? or value.is_a? String
-                  @attributes[attribute.to_s]
-                else
-                  I18n.localize value, :format => format
-                end
+                I18n.localize send(attribute), :format => format rescue super()
               end
             end
           end

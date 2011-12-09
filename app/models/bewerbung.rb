@@ -10,6 +10,7 @@ class Bewerbung < ActiveRecord::Base
 
   set_table_name 'bewerbungen'
 
+  scope :nicht_zugesagt, where(:zugesgt => [false, nil])
   scope :nicht_abgesagt, where(:bestaetigt => true).where(:zugesagt => [true, nil])
   scope :nicht_bestaetigt, where(:bestaetigt => false)
 
@@ -75,6 +76,10 @@ class Bewerbung < ActiveRecord::Base
   validates :sprechstunde_im_monat, :allow_blank => true, :date => { :format => '%Y-%m', :after_or_equal_to => Proc.new { Time.zone.today.at_beginning_of_month } }
   validates :vorstellungsgespraech_nicht_moeglich, :allow_blank => true, :time => { :format => '%H:%M' }
   validates :motivation, :presence => true
+
+  after_initialize do
+    anzahl_abgeschlossener_fachsemester ||= 0
+  end
 
   def name
     "#{vorname} #{nachname}"

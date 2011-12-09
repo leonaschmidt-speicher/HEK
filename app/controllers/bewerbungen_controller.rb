@@ -20,11 +20,11 @@ class BewerbungenController < ApplicationController
   end
 
   def new
-    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id]
+    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id] rescue Bewerbung.new
   end
 
   def create
-    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id]
+    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id] rescue Bewerbung.new
     @bewerbung.attributes = params[:bewerbung]
 
     @bewerbung.recover :temp_foto, params[:already_attached_foto]
@@ -59,6 +59,9 @@ class BewerbungenController < ApplicationController
     session[:name] = @bewerbung.name
 
     redirect_to :action => 'new', :anchor => 'ablauf'
+  rescue
+    session[:bewerbung_id] = nil
+    redirect_to :action => 'new'
   end
 
   def zusagen
