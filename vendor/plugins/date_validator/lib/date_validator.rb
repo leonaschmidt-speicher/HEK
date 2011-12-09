@@ -28,6 +28,15 @@ module ActiveModel
                 write_attribute attribute, original_time
                 @attributes_cache[attribute.to_s] = time
               end
+
+              define_method "#{attribute}_before_type_cast" do
+                value = send attribute
+                if value.nil? or value.is_a? String
+                  @attributes[attribute.to_s]
+                else
+                  I18n.localize value, :format => format
+                end
+              end
             end
           end
         end
@@ -104,6 +113,17 @@ module ActiveModel
 
       def date_format_for attribute
         self.class.class_eval { @date_formats[attribute.to_sym] if defined? @date_formats }
+      end
+
+      def read_attribute_before_type_cast attribute
+        value = super attribute
+        Rails.logger.debug "#{attribute}: #{value}"
+        if value.is_a? Time
+          format = date_format_for attribute
+          I18n.localize value, :format => format unless format.nil?
+        else
+          value
+        end
       end
     end
   end
