@@ -19,8 +19,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: utf8
+  database: hekweb
+  username: hekweb
+  password: +40Zls
+  host: localhost
   pool: 5
   timeout: 5000
 
@@ -29,6 +33,6 @@ hekdb:
   #encoding: utf8
   database: hekdb
   username: hekdb-read
-  password: #...
+  password: f4Jk3hP
   host: hekdb
   pool: 5
