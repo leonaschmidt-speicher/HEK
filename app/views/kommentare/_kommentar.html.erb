@@ -1,0 +1,5 @@
+<%= content_tag_for :li, kommentar do %>
+  <%= simple_format kommentar.text.strip %>
+  <cite>— <%= kommentar.benutzer %></cite>
+  <%= link_to 'löschen', "/bewerbungen/#{@bewerbung.id}/kommentare/#{kommentar.id}", :method => :delete, :class => 'destroy', :remote => true, :confirm => 'Kommentar wirklich löschen?' if kommentar.benutzer == @user %>
+<% end %>

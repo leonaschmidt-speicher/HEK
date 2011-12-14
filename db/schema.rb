@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209185041) do
+ActiveRecord::Schema.define(:version => 20111214125908) do
 
   create_table "bewerbungen", :force => true do |t|
     t.string   "vorname"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(:version => 20111209185041) do
   create_table "bewertungen", :force => true do |t|
     t.string   "benutzer"
     t.integer  "wert"
+    t.integer  "bewerbung_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kommentare", :force => true do |t|
+    t.text     "text"
+    t.string   "benutzer"
     t.integer  "bewerbung_id"
     t.datetime "created_at"
     t.datetime "updated_at"

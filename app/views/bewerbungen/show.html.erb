@@ -119,6 +119,15 @@
     <h3>Motivation</h3>
     <p><%= @bewerbung.motivation %></p>
   </section>
+  <section id="kommentare">
+    <h3>Kommentare</h3>
+  <% unless @bewerbung.kommentare.empty? %>
+    <ol>
+      <%= render :partial => @bewerbung.kommentare %>
+    </ol>
+  <% end %>
+    <%= render :partial => 'kommentare/form' %>
+  </section>
   <section id="bewertung">
     <h3>Bewertung</h3>
     <% if @bewerbung.bewertungen.for(@user).blank? %>
