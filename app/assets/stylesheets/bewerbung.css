@@ -152,22 +152,21 @@
 
 #bewerbung #detailed .postit {
   width: 412px;
+  overflow: hidden;
+}
+#bewerbung #detailed #dateien {
+  float: right;
+  width: 140px;
+  text-align: center;
 }
 #bewerbung #detailed #foto {
-  position: absolute;
-  right: 24px;
+  float: right;
   border: 2px solid #222;
+  margin-bottom: 1.2em;
 }
 #bewerbung #detailed #foto img {
   display: block;
   width: 140px;
-}
-#bewerbung #detailed #lebenslauf {
-  position: absolute;
-  right: 24px;
-  top: 192px;
-  width: 140px;
-  text-align: center;
 }
 #bewerbung #detailed dl {
   margin: 2.4em 1em;
