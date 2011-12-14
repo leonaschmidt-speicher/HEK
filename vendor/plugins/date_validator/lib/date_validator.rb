@@ -24,6 +24,7 @@ module ActiveModel
                 unless time.acts_like? :time
                   time = time.is_a?(String) ? DateTime.strptime(time, format).to_time : value.to_time rescue time
                 end
+                #time = ActiveSupport::TimeWithZone.new nil, Time.zone, time rescue nil if time
                 time = time.in_time_zone rescue nil if time
                 write_attribute attribute, original_time
                 @attributes_cache[attribute.to_s] = time
@@ -44,6 +45,13 @@ module ActiveModel
         options.slice(*CHECKS.keys).each do |option, value|
           next if is_time?(value) || value.is_a?(Proc) || value.is_a?(Symbol) || (defined?(ActiveSupport::TimeWithZone) and value.is_a? ActiveSupport::TimeWithZone)
           raise ArgumentError, ":#{option} must be a time, a date, a time_with_zone, a symbol or a proc"
+        end
+      end
+
+      def validate record
+        attributes.each do |attribute|
+          value = record.read_attribute_for_validation attribute
+          validate_each record, attribute, value
         end
       end
 
@@ -115,7 +123,6 @@ module ActiveModel
 
       def read_attribute_before_type_cast attribute
         value = super attribute
-        Rails.logger.debug "#{attribute}: #{value}"
         if value.is_a? Time
           format = date_format_for attribute
           I18n.localize value, :format => format unless format.nil?
