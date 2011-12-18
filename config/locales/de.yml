@@ -270,19 +270,26 @@ de:
           attributes:
             geburtsdatum:
               before: "%{attribute} muss vor dem %{date} sein oder bist du jünger als 14 Jahre?"
+              not_a_date: "%{attribute} ist kein gültiges Datum. Hast du es im Format Jahr-Monat-Tag eingegeben?"
             studienende:
               after_or_equal_to: "%{attribute} muss in der Zukunft liegen oder hast du dein Studium bereits abgeschlossen?"
+              not_a_date: "%{attribute} ist kein gültiges Datum. Hast du es im Format Jahr-Monat eingegeben?"
             fruehestens:
               before_or_equal_to: "Frühestes Einzugsdatum darf nicht nach deinem Wunschtermin liegen"
+              not_a_date: "Frühestes Einzugsdatum ist kein gültiges Datum. Hast du es im Format Jahr-Monat eingegeben?"
             wunsch:
               after_or_equal_to: "Wunschtermin muss in der Zukunft liegen"
+              not_a_date: "Wunschtermin ist kein gültiges Datum. Hast du es im Format Jahr-Monat eingegeben?"
             spaetestens:
               after_or_equal_to: "Spätestes Einzugsdatum darf nicht vor deinem Wunschtermin liegen"
+              not_a_date: "Spätestes Einzugsdatum ist kein gültiges Datum. Hast du es im Format Jahr-Monat eingegeben?"
             komme_vorbei_am:
               after_or_equal_to: "Besuchsdatum muss in der Zukunft liegen"
+              not_a_date: "Besuchsdatum ist kein gültiges Datum. Hast du es im Format Jahr-Monat-Tag eingegeben?"
             sprechstunde_im_monat:
               after_or_equal_to: "Sprechstundenmonat muss in der Zukunft liegen"
+              not_a_date: "Sprechstundenmonat ist kein gültiges Datum. Hast du es im Format Jahr-Monat eingegeben?"
             vorstellungsgespraech_nicht_moeglich:
-              not_a_date: "Vorstellungsgesprächszeit ist keine gültige Zeit"
+              not_a_date: "Vorstellungsgesprächszeit ist keine gültige Zeit. Hast du sie im Format Stunde:Minute eingegeben?"
             motivation:
               blank: "Motivationsschreiben darf nicht leer sein"
