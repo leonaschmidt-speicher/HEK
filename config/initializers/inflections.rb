@@ -6,7 +6,9 @@
 # (all these examples are active by default):
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural /^(bewerbung|bewertung)$/i, '\1en'
+  inflect.plural /^(kommentar)$/i, '\1e'
   inflect.singular /^(bewerbung|bewertung)en/i, '\1'
+  inflect.singular /^(kommentar)e/i, '\1'
 #  inflect.irregular 'person', 'people'
 #  inflect.uncountable %w( fish sheep )
 end

@@ -1,12 +1,14 @@
 <article id="detailed">
   <div class="postit">
     <dl>
-       <dd id="foto" style="<%= 'height:140px; width:140px;' unless @bewerbung.foto? %>">
-         <%= link_to (image_tag @bewerbung.foto.url(:medium), :alt => nil), @bewerbung.foto.url if @bewerbung.foto? %>
-       </dd>
-    <% if @bewerbung.lebenslauf? %>
-      <dd id="lebenslauf"><%= link_to 'Lebenslauf', @bewerbung.lebenslauf.url %></dd>
-    <% end %>
+      <dd id="dateien">
+      <% if @bewerbung.foto? %>
+        <%= link_to (image_tag @bewerbung.foto.url(:medium), :alt => nil), @bewerbung.foto.url, :id => 'foto' %>
+      <% elsif @bewerbung.lebenslauf? # Fehlendes Foto sieht nur komisch aus, wenn danach der Lebenslauf-Link kommt. %>
+        <div id="foto" style="width: 140px; height: 140px"></div>
+      <% end %>
+        <%= link_to 'Lebenslauf', @bewerbung.lebenslauf.url, :id => 'lebenslauf' if @bewerbung.lebenslauf? %>
+      </dd>
       <dt>E-Mail</dt>
       <dd><%= mail_to @bewerbung.email, @bewerbung.email.reverse %></dd>
       <dt>Anschrift</dt>
@@ -118,6 +120,13 @@
   <section id="motivation">
     <h3>Motivation</h3>
     <p><%= @bewerbung.motivation %></p>
+  </section>
+  <section id="kommentare">
+    <h3>Kommentare</h3>
+    <ol>
+      <%= render :partial => @bewerbung.kommentare %>
+    </ol>
+    <%= render :partial => 'kommentare/form' %>
   </section>
   <section id="bewertung">
     <h3>Bewertung</h3>

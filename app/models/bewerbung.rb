@@ -21,6 +21,8 @@ class Bewerbung < ActiveRecord::Base
     end
   end
 
+  has_many :kommentare, :dependent => :destroy
+
   has_attached_file :temp_foto, {
     :styles => { :medium => "140x140>", :thumb => "100x100#" },
     :url => "/uploads/:hash.:extension",
