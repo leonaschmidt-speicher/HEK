@@ -19,8 +19,8 @@ atom_feed :language => 'de-DE' do |feed|
   feed.updated @bewerbungen.first.updated_at unless @bewerbungen.empty?
 
   @bewerbungen.each do |bewerbung|
-    feed.entry bewerbung do |entry|
-      entry.url bewerbung_url(bewerbung)
+    feed.entry bewerbung, :url => "http://www.hek.uni-karlsruhe.de/bewerbungen/#{bewerbung.id}" do |entry|
+      entry.url "http://www.hek.uni-karlsruhe.de/bewerbungen/#{bewerbung.id}" #bewerbung_url(bewerbung)
       entry.title bewerbung.name
       entry.content textify(bewerbung)
       entry.updated bewerbung.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ")
