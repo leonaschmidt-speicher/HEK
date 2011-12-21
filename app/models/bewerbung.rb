@@ -1,5 +1,6 @@
+# encoding: utf-8
 class Bewerbung < ActiveRecord::Base
-  PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion foto foto_content_type foto_file_size lebenslauf lebenslauf_content_type lebenslauf_file_size]
+  PERSOENLICHE_ANGABEN = %w[vorname nachname geburtsdatum staatsangehoerigkeit geschlecht familienstand religion temp_foto foto temp_foto_content_type foto_content_type temp_foto_file_size foto_file_size temp_lebenslauf lebenslauf temp_lebenslauf_content_type lebenslauf_content_type temp_lebenslauf_file_size lebenslauf_file_size]
   ANSCHRIFT_DER_ELTERN = %w[strasse_und_nummer plz ort land]
   WEITERE_KONTAKTINFORMATIONEN = %w[email mobiltelefon festnetztelefon]
   ANGABEN_ZUM_STUDIUM = %w[hochschule hauptfach anzahl_abgeschlossener_fachsemester studienende angestrebter_abschluss firma firma_plz firma_ort waehrend_der_praxisphasen_im_hek]
@@ -30,18 +31,6 @@ class Bewerbung < ActiveRecord::Base
     :hash_data => ":class/:attachment/:style",
     :use_timestamp => false
   }
-  validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png', 'image/gif']
-  validates_attachment_size :foto, :less_than => 4.megabytes
-
-  has_attached_file :temp_lebenslauf, {
-    :url => "/uploads/:hash.:extension",
-    :hash_secret => "6a3d3eebbf7356f1420e4359d3r",
-    :hash_data => ":class/:attachment/:style",
-    :use_timestamp => false
-  }
-  validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf', 'application/postscript', 'application/rtf', 'application/msword', 'application/vnd.oasis.opendocument.text']
-  validates_attachment_size :lebenslauf, :less_than => 6.megabytes
-
   has_attached_file :foto, {
     :styles => { :medium => "140x140>", :thumb => "48x48#" },
     :url => "/uploads/secure/:hash.:extension",
@@ -50,12 +39,27 @@ class Bewerbung < ActiveRecord::Base
     :default_url => '/images/missing_:style.png',
     :use_timestamp => false
   }
+  has_attached_file :temp_lebenslauf, {
+    :url => "/uploads/:hash.:extension",
+    :hash_secret => "6a3d3eebbf7356f1420e4359d3r",
+    :hash_data => ":class/:attachment/:style",
+    :use_timestamp => false
+  }
   has_attached_file :lebenslauf, {
     :url => "/uploads/secure/:hash.:extension",
     :hash_secret => "6a3d3eebbf7356f1420e4359d3r",
     :hash_data => ":class/:attachment/:id/:style",
     :use_timestamp => false
   }
+  validates_attachment_content_type :temp_foto, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => 'Foto ist nicht vom Typ JPEG, PNG oder GIF'
+  validates_attachment_content_type :foto, :content_type => ['image/jpeg', 'image/png', 'image/gif'], :message => 'Foto ist nicht vom Typ JPEG, PNG oder GIF'
+  validates_attachment_size :temp_foto, :less_than => 4.megabytes, :message => 'Foto ist größer als 4 Megabyte'
+  validates_attachment_size :foto, :less_than => 4.megabytes, :message => 'Foto ist größer als 4 Megabyte'
+
+  validates_attachment_content_type :temp_lebenslauf, :content_type => ['application/pdf', 'application/postscript', 'application/rtf', 'application/msword', 'application/vnd.oasis.opendocument.text'], :message => 'Lebenslauf ist nicht vom Typ PDF, PostScript, RTF, Doc oder ODT'
+  validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf', 'application/postscript', 'application/rtf', 'application/msword', 'application/vnd.oasis.opendocument.text'], :message => 'Lebenslauf ist nicht vom Typ PDF, PostScript, RTF, Doc oder ODT'
+  validates_attachment_size :temp_lebenslauf, :less_than => 6.megabytes, :message => 'Lebenslauf ist größer als 6 Megabyte'
+  validates_attachment_size :lebenslauf, :less_than => 6.megabytes, :message => 'Lebenslauf ist größer als 6 Megabyte'
 
   validates :vorname,
             :nachname,
