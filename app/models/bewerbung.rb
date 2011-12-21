@@ -56,8 +56,8 @@ class Bewerbung < ActiveRecord::Base
   validates_attachment_size :temp_foto, :less_than => 4.megabytes, :message => 'Foto ist größer als 4 Megabyte'
   validates_attachment_size :foto, :less_than => 4.megabytes, :message => 'Foto ist größer als 4 Megabyte'
 
-  validates_attachment_content_type :temp_lebenslauf, :content_type => ['application/pdf', 'application/postscript', 'application/rtf', 'application/msword', 'application/vnd.oasis.opendocument.text'], :message => 'Lebenslauf ist nicht vom Typ PDF, PostScript, RTF, Doc oder ODT'
-  validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf', 'application/postscript', 'application/rtf', 'application/msword', 'application/vnd.oasis.opendocument.text'], :message => 'Lebenslauf ist nicht vom Typ PDF, PostScript, RTF, Doc oder ODT'
+  validates_attachment_content_type :temp_lebenslauf, :content_type => ['application/pdf', 'application/x-pdf', 'application/postscript', 'application/rtf', 'text/rtf', 'text/richtext', 'application/msword', 'application/vnd.oasis.opendocument.text'], :message => 'Lebenslauf ist nicht vom Typ PDF, PostScript, RTF, Doc oder ODT'
+  validates_attachment_content_type :lebenslauf, :content_type => ['application/pdf', 'application/x-pdf', 'application/postscript', 'application/rtf', 'text/rtf', 'text/richtext', 'application/msword', 'application/vnd.oasis.opendocument.text'], :message => 'Lebenslauf ist nicht vom Typ PDF, PostScript, RTF, Doc oder ODT'
   validates_attachment_size :temp_lebenslauf, :less_than => 6.megabytes, :message => 'Lebenslauf ist größer als 6 Megabyte'
   validates_attachment_size :lebenslauf, :less_than => 6.megabytes, :message => 'Lebenslauf ist größer als 6 Megabyte'
 
