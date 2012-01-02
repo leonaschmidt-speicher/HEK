@@ -5,7 +5,7 @@
       <% if @bewerbung.foto? %>
         <%= link_to (image_tag @bewerbung.foto.url(:medium), :alt => nil), @bewerbung.foto.url, :id => 'foto' %>
       <% elsif @bewerbung.lebenslauf? # Fehlendes Foto sieht nur komisch aus, wenn danach der Lebenslauf-Link kommt. %>
-        <div id="foto" style="width: 140px; height: 140px"></div>
+        <div id="foto" style="width: 3cm; height: 3cm"></div>
       <% end %>
         <%= link_to 'Lebenslauf', @bewerbung.lebenslauf.url, :id => 'lebenslauf' if @bewerbung.lebenslauf? %>
       </dd>
