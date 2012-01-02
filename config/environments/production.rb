@@ -58,5 +58,14 @@ Hek::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  Paperclip.options[:command_path] = "/usr/bin/"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => 'smtp.hek.uni-karlsruhe.de', :port => 25 }
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[HEK Exception] ",
+    :sender_address => %{ "HEK Exception" <exception@hek.uni-karlsruhe.de> },
+    :exception_recipients => %w{ simon.wacker@gmail.com },
+    :ignore_exceptions => []
+
+  Paperclip.options[:command_path] = '/usr/bin/'
 end

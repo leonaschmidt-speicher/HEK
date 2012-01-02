@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'dynamic_form'
 gem 'paperclip'
 gem 'pg'
+gem 'exception_notification'
 
 # Gems used only for assets and not required
 # in production environments by default.
