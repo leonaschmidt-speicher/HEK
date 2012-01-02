@@ -64,8 +64,7 @@ Hek::Application.configure do
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[HEK Exception] ",
     :sender_address => %{ "HEK Exception" <exception@hek.uni-karlsruhe.de> },
-    :exception_recipients => %w{ simon.wacker@gmail.com },
-    :ignore_exceptions => []
+    :exception_recipients => %w{ simon.wacker@gmail.com }
 
   Paperclip.options[:command_path] = '/usr/bin/'
 end
