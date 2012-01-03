@@ -17,6 +17,8 @@ Hek::Application.routes.draw do
   match ':group(/:site)' => 'generic#show'
   root :to => 'generic#show'
 
+  match '*path', :to => 'generic#not_found'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
