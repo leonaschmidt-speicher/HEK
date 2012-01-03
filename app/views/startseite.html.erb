@@ -1,4 +1,4 @@
-<article>
+<article id="ueberblick">
   <h1>Studentenwohnheim Hermann-Ehlers-Kolleg</h1>
   <section id="evangelisches">
     <a href="/wohnheim">
@@ -33,4 +33,71 @@
       </p>
     </a>
   </section>
+</article>
+<article id="bevorstehendes">
+  <section>
+    <h3>Baumaßnahmen</h3>
+    <p>
+      Dieses Jahr wird die gesamte Heizungsanlage im Hermann-Ehlers-Kolleg saniert. Unter anderem werden die Heizkörper in den Zimmern der Bewohner ausgetauscht. Wir versuchen euch über bevorstehende Maßnahmen auf dem Laufenden zu halten.
+    </p>
+    <ol>
+      <li>
+        <strong>In den Fluren</strong> von <em>Sonntag, 20. Januar</em> bis <em>Mittwoch, 10. Februar</em>.
+      </li>
+      <li>
+        <strong>In den Zimmern</strong> von <em>Dienstag, 17. März</em> bis <em>Freitag, 20. April</em>.
+      </li>
+      <li>
+        <strong>Im Keller</strong> am <em>Montag, 13. Februar</em> ab <span>9<sup>30</sup> Uhr</span>.
+      </li>
+      <li>
+        <strong>Internetausfall</strong> am <em>Sonntag, 15. Februar</em> ab <span>18<sup>00</sup> Uhr</span>.
+      </li>
+    </ol>
+  </section>
+  <section>
+    <h3>Termine</h3>
+    <ol>
+      <li class="vergangen">
+        <strong>Neueingezogenenabend</strong> am <em>Do, 20. Oktober</em> ab <span>19<sup>00</sup> Uhr</span>.
+      </li>
+      <li class="vergangen">
+        <strong>Fahrradversteigerung</strong> am <em>Donnerstag, 3. November</em> ab <span>18<sup>00</sup> Uhr</span>.
+      </li>
+      <li class="vergangen">
+        <strong>Konvent</strong> am <em>Dienstag, 15. November</em> ab <span>19<sup>30</sup> Uhr</span>.
+      </li>
+      <li class="vergangen">
+        <strong>Heimfest</strong> am <em>Freitag, 2. Dezember</em> ab <span>20<sup>00</sup> Uhr</span>.
+      </li>
+      <li>
+        <strong>Stammtisch</strong> am <em>Sonntag, 15. Januar</em> ab <span>20<sup>00</sup> Uhr</span>.
+      </li>
+      <li>
+        <strong>Heimvollversammlung</strong> am <em>Dienstag, 17. Januar</em> ab <span>19<sup>30</sup> Uhr</span>.
+      </li>
+      <li>
+        <strong>Konvent</strong> am <em>Montag, 13. Februar</em> ab <span>19<sup>30</sup> Uhr</span>.
+      </li>
+      <li>
+        <strong>Kuratoriumssitzung</strong> am <em>Mittwoch, 15. Februar</em> ab <span>18<sup>00</sup> Uhr</span>.
+      </li>
+    </ol>
+  </section>
+</article>
+<article id="bilder">
+<% {'maifest' => 'http://www.hek.uni-karlsruhe.de/bilder/feste/Maifest2010/',
+    'heimfest' => 'http://www.hek.uni-karlsruhe.de/bilder/feste/album51/Bilder-von-Simon/',
+    'parkplatzfest' => 'http://www.hek.uni-karlsruhe.de/bilder/feste/Parkplatzfest%202010/'}.each do |id, url| %>
+  <section id="<%= id %>">
+    <h3><%= id.humanize %></h3>
+    <ul>
+    <% Nokogiri::HTML(open(url)).css('#images .imagethumb a').first(12).each do |link| %>
+      <li>
+        <%= link_to image_tag("http://www.hek.uni-karlsruhe.de#{link.at_css('img').attr('src')}", :alt => nil), "http://www.hek.uni-karlsruhe.de#{link.attr('href')}" %>
+      </li>
+    <% end %>
+    </ul>
+  </section>
+<% end %>
 </article>

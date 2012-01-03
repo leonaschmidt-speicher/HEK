@@ -8,21 +8,106 @@
   clear: both;
   margin: 2.4em 0;
 }
+#startseite #bevorstehendes {
+  margin-bottom: 2.3em;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+#startseite #bevorstehendes section {
+  padding-top: 2.3em;
+  border-top: 1px solid #ccc;
+}
 #startseite section {
   float: left;
-  width: 300px;
   margin: 0 1em;
 }
-#startseite section a:hover h2, #startseite section a:hover p {
+#startseite #ueberblick section {
+  width: 300px;
+}
+#startseite #bevorstehendes section {
+  width: 460px;
+}
+#startseite #bilder section {
+  width: 320px;
+  margin: 0;
+}
+#startseite #bilder #maifest {
+  margin-left: -1px;
+}
+#startseite #bilder #heimfest {
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+#startseite #bilder #parkplatzfest {
+  margin-right: -1px;
+}
+#startseite #ueberblick a:hover h2, #startseite #ueberblick a:hover p {
   text-decoration: underline;
 }
-#startseite section h2 {
+#startseite #ueberblick h2 {
   white-space: nowrap;
 }
-#startseite section h2 img {
+#startseite #ueberblick h2 img {
   display: block;
   margin: 0 auto;
 }
-#startseite section p {
+#startseite #ueberblick p {
   text-align: center;
+}
+#startseite #bevorstehendes p {
+  margin-bottom: 48px;
+}
+#startseite #bevorstehendes ol {
+  list-style: none;
+  margin: 2.4em 0;
+}
+#startseite #bevorstehendes li {
+  display: block;
+  height: 24px;
+  margin: 12px 0;
+  font-size: 1.2em;
+  font-style: italic;
+}
+#startseite #bevorstehendes .vergangen {
+  color: #ccc;
+  /*text-decoration: line-through;*/
+}
+#startseite #bevorstehendes strong, #startseite #bevorstehendes em, #startseite #bevorstehendes span {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+}
+#startseite #bevorstehendes strong {
+  padding: 2px 4px;
+  color: #eee;
+  background-color: #222;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+#startseite #bevorstehendes .vergangen strong {
+  color: #fff;
+  background-color: #ccc;
+}
+#startseite #bevorstehendes sup {
+  position: relative;
+  top: -0.25em;
+  font-size: 0.75em;
+  border-bottom: 1px solid;
+}
+#startseite #bilder ul {
+  list-style: none;
+  margin: 2.4em 0;
+  margin-bottom: -2.4em;
+  overflow: hidden;
+}
+#startseite #bilder li {
+  float: left;
+  display: block;
+  margin: 0 1em 2em 1em;
+}
+#startseite #bilder img {
+  display: block;
+  width: 60px;
+  height: 60px;
 }
