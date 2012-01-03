@@ -4,11 +4,16 @@ class GenericController < ApplicationController
     @site = params[:site]
     render "#{@group || 'startseite'}/#{@site}"
   rescue ActionView::MissingTemplate
-    render :text => ':)' #:status => :not_found
+    not_found
   end
 
   # ZenPhoto benötigt Navigation.
   def navigation
     render :partial => 'layouts/navigation'
+  end
+
+  def not_found
+    @group = 'nicht-gefunden'
+    render '/nicht-gefunden', :status => :not_found
   end
 end

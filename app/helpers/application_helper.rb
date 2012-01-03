@@ -8,6 +8,8 @@ module ApplicationHelper
     # Alternativ könnte man den Titel auch in de.yml unter config/locales setzen.
     if @group.nil?
       'Studentenwohnheim '
+    elsif @group == 'nicht-gefunden'
+      'Seite nicht gefunden ♣ '
     else
       (@site || @group).titleize + ' ♣ '
     end
