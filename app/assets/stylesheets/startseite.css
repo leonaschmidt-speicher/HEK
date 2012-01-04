@@ -54,9 +54,6 @@
 #startseite #ueberblick p {
   text-align: center;
 }
-#startseite #bevorstehendes p {
-  margin-bottom: 48px;
-}
 #startseite #bevorstehendes ol {
   list-style: none;
   margin: 2.4em 0;
@@ -94,6 +91,9 @@
   top: -0.25em;
   font-size: 0.75em;
   border-bottom: 1px solid;
+}
+#startseite #bevorstehendes p em {
+  font-style: italic;
 }
 #startseite #bilder ul {
   list-style: none;
