@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class GenericController < ApplicationController
   def show
     @group = params[:group]

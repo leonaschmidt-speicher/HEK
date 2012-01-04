@@ -10,6 +10,7 @@ gem 'dynamic_form'
 gem 'paperclip'
 gem 'pg'
 gem 'exception_notification'
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
