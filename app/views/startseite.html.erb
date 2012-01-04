@@ -62,16 +62,16 @@
       <li class="vergangen">
         <strong>Heimfest</strong> am <em>Freitag, 2. Dezember</em> ab <span>20<sup>00</sup> Uhr</span>.
       </li>
-      <li>
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('15/01/2012', '%d/%m/%Y').end_of_day %>>
         <strong>Stammtisch</strong> am <em>Sonntag, 15. Januar</em> ab <span>20<sup>00</sup> Uhr</span>.
       </li>
-      <li>
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('17/01/2012', '%d/%m/%Y').end_of_day %>>
         <strong>Heimvollversammlung</strong> am <em>Dienstag, 17. Januar</em> ab <span>19<sup>30</sup> Uhr</span>.
       </li>
-      <li>
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('13/02/2012', '%d/%m/%Y').end_of_day %>>
         <strong>Konvent</strong> am <em>Montag, 13. Februar</em> ab <span>19<sup>30</sup> Uhr</span>.
       </li>
-      <li>
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('15/02/2012', '%d/%m/%Y').end_of_day %>>
         <strong>Kuratoriumssitzung</strong> am <em>Mittwoch, 15. Februar</em> ab <span>18<sup>00</sup> Uhr</span>.
       </li>
     </ol>
