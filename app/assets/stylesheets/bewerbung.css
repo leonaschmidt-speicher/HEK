@@ -309,8 +309,8 @@
 #bewerbung .bewertungen {
   position: relative;
   margin: 0px;
+  width: 80px;
   height: 24px;
-  white-space: nowrap;
 }
 #bewerbung .bewertungen li {
   float: left;
@@ -352,7 +352,7 @@
 
 /* rating stars */
 .ui-rating {
-  white-space: nowrap;
+  width: 80px;
 }
 .ui-rating .ui-rating-star, .ui-rating .ui-rating-cancel{
     width:16px;
