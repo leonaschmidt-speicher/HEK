@@ -219,31 +219,31 @@
   margin-bottom: 2.3em;
   border-bottom: 1px solid #ccc;
 }
-#detailed #kommentare ol {
+#bewerbung #detailed #kommentare ol {
   list-style: none;
   margin: 0;
   margin-top: 2.4em;
 }
-#detailed #kommentare li {
+#bewerbung #detailed #kommentare li {
   margin: 0 1em;
   margin-bottom: 2.4em;
 }
-#detailed #kommentare p {
+#bewerbung #detailed #kommentare p {
   margin: 0.75em 0;
   margin-bottom: 0;
 }
-#detailed #kommentare cite {
+#bewerbung #detailed #kommentare cite {
   font-size: 1.2em;
   font-style: italic;
 }
-#detailed #kommentare .destroy {
+#bewerbung #detailed #kommentare .destroy {
   font-size: 1.2em;
   color: #d14836;
 }
-#detailed #kommentare .destroy:hover {
+#bewerbung #detailed #kommentare .destroy:hover {
   text-decoration: underline;
 }
-#detailed #kommentare form {
+#bewerbung #detailed #kommentare form {
   margin-bottom: 2.4em;
   text-align: right;
 }
@@ -251,7 +251,6 @@
   width: 80px;
   height: 24px;
   margin: 2.4em auto;
-  white-space: nowrap;
   overflow: hidden;
 }
 #bewerbung #detailed #bewertung dd {
@@ -352,6 +351,9 @@
 }
 
 /* rating stars */
+.ui-rating {
+  white-space: nowrap;
+}
 .ui-rating .ui-rating-star, .ui-rating .ui-rating-cancel{
     width:16px;
     height:16px;
