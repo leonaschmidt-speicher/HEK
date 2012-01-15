@@ -251,6 +251,7 @@
   width: 80px;
   height: 24px;
   margin: 2.4em auto;
+  white-space: nowrap;
   overflow: hidden;
 }
 #bewerbung #detailed #bewertung dd {
@@ -310,6 +311,7 @@
   position: relative;
   margin: 0px;
   height: 24px;
+  white-space: nowrap;
 }
 #bewerbung .bewertungen li {
   float: left;
