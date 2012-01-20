@@ -14,6 +14,7 @@ class Bewerbung < ActiveRecord::Base
   scope :nicht_zugesagt, where(:zugesagt => [false, nil])
   scope :nicht_abgesagt, where(:bestaetigt => true).where(:zugesagt => [true, nil])
   scope :nicht_bestaetigt, where(:bestaetigt => false)
+  scope :aktuell, lambda { where('spaetestens > :today or (spaetestens is null and wunsch > :today)', :today => Time.zone.today) }
 
   has_many :bewertungen, :dependent => :destroy do
     def for benutzer
