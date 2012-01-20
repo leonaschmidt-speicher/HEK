@@ -10,7 +10,7 @@
         <%= link_to 'Lebenslauf', @bewerbung.lebenslauf.url, :id => 'lebenslauf' if @bewerbung.lebenslauf? %>
       </dd>
       <dt>E-Mail</dt>
-      <dd><%= mail_to @bewerbung.email, @bewerbung.email.reverse %></dd>
+      <dd><%= mail_to @bewerbung.email, @bewerbung.email %></dd>
       <dt>Anschrift</dt>
       <dd><%= @bewerbung.strasse_und_nummer %></dd>
       <dd><%= @bewerbung.plz %> <%= @bewerbung.ort %></dd>

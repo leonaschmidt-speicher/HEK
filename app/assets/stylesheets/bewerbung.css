@@ -185,6 +185,10 @@
   font-size: 1.6em;
   margin-left: 240px;
 }
+#bewerbung #detailed a[href^="mailto:"] {
+  unicode-bidi: normal;
+  direction: ltr;
+}
 #bewerbung #detailed p {
   margin: 24px 10px;
 }

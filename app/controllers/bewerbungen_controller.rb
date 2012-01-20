@@ -3,7 +3,7 @@ class BewerbungenController < ApplicationController
   before_filter :set_group
 
   def index
-    @bewerbungen = Bewerbung.nicht_abgesagt.includes(:bewertungen).order params[:sort_by], 'created_at desc'
+    @bewerbungen = Bewerbung.nicht_abgesagt.aktuell.includes(:bewertungen).order params[:sort_by], 'created_at desc'
     @bewerbungen.where! :geschlecht => params[:geschlecht] unless params[:geschlecht].blank?
     @bewerbungen.where! 'wunsch = :einzugsdatum or (fruehestens <= :einzugsdatum and :einzugsdatum <= spaetestens)', :einzugsdatum => Time.zone.parse(params[:einzugsdatum]).strftime('%Y-%m-%d') unless params[:einzugsdatum].blank?
     @bewerbungen.where! "#{'not' if params[:staatsangehoerigkeit] == 'nicht-deutsch'} staatsangehoerigkeit like 'deutsch%'" unless params[:staatsangehoerigkeit].blank?
