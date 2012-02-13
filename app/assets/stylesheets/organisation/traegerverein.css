@@ -1,37 +1,34 @@
-#traegerverein #main {
-  background: url(/images/traegerverein/kreuz.png) no-repeat center center;
+#traegerverein #kreuz {
+  background: url(/images/traegerverein/kreuz.png) no-repeat center 20px;
 }
-*+html #traegerverein #main {
-  background-position: center 20px;
-}
-#traegerverein article {
+#traegerverein #kreuz {
   overflow: hidden;
 }
-#traegerverein article div {
+#traegerverein #kreuz div {
   float: left;
   margin-top: 2.4em;
   margin-right: 58px;
 }
-#traegerverein article div p {
+#traegerverein #kreuz div p {
   margin-right: 20px;
   padding-top: 0;
 }
-#traegerverein h2 {
+#traegerverein #kreuz h2 {
   margin-top: 0;
 }
 #traegerverein #kuratorium h2 {
   padding-top: 1em;
 }
-#traegerverein p {
+#traegerverein #kreuz p {
   float: left;
   width: 300px;
   margin: 1.5em 10px;
   padding-top: 3em;
 }
-*+html #traegerverein p {
+*+html #traegerverein #kreuz p {
   padding-top: 4.5em;
 }
-#traegerverein p.middle {
+#traegerverein #kreuz p.middle {
   margin-left: 0;
   margin-right: 0;
   padding-left: 20px;
@@ -43,7 +40,7 @@
 #traegerverein #kuratorium p.middle {
   padding-top: 4.5em;
 }
-#traegerverein p.last {
+#traegerverein #kreuz p.last {
   margin-left: 0;
   padding-left: 10px;
   width: 220px;
@@ -53,4 +50,30 @@
 }
 #traegerverein #kuratorium p.last {
   padding-top: 4.5em;
+}
+#traegerverein #mitglieder {
+  border-top: 1px solid #ccc;
+}
+#traegerverein #mitglieder small {
+  font-size: 1.2em;
+}
+#traegerverein #mitglieder h3 {
+  text-align: left;
+}
+#traegerverein #mitglieder li {
+  margin: 2.4em 1em;
+  margin-bottom: 4.8em;
+  list-style: none;
+  overflow: hidden;
+}
+#traegerverein #mitglieder img {
+  display: block;
+  float: left;
+  margin-right: 100px;
+}
+#traegerverein #mitglieder p {
+  margin-left: 400px;
+}
+#traegerverein #mitglieder p.last {
+  margin-bottom: 0;
 }
