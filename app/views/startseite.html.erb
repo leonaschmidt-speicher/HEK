@@ -41,7 +41,7 @@
       Dieses Jahr wird die gesamte Heizungsanlage im Hermann-Ehlers-Kolleg saniert. Unter anderem werden die Heizkörper in den Zimmern der Bewohner ausgetauscht.
     </p>
     <p>
-      Die Sanierungsarbeiten beginnen voraussichtlich <em>Ende April</em> und werden etwa <em>6 Wochen</em> dauern. Genaueres ist derzeit leider nicht bekannt.
+      Die Sanierungsarbeiten beginnen voraussichtlich <em>Anfang Mai</em> und werden etwa <em>3 Monate</em> dauern. Genaueres ist derzeit leider nicht bekannt.
     </p>
     <p>
       Wir versuchen euch hier über bevorstehende Maßnahmen auf dem Laufenden zu halten.
@@ -51,28 +51,25 @@
     <h3>Termine</h3>
     <ol>
       <li class="vergangen">
-        <strong>Neueingezogenenabend</strong> am <em>Do, 20. Oktober</em> ab <span>19<sup>00</sup> Uhr</span>.
+        <strong>Neueingezogenenabend</strong> am <em>Donnerstag, 26. April</em> ab <span>19<sup>30</sup> Uhr</span>.
       </li>
-      <li class="vergangen">
-        <strong>Fahrradversteigerung</strong> am <em>Donnerstag, 3. November</em> ab <span>18<sup>00</sup> Uhr</span>.
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('08/05/2012', '%d/%m/%Y').end_of_day %>>
+        <strong>Konvent</strong> am <em>Dienstag, 08. Mai</em> ab <span>19<sup>30</sup> Uhr</span>.
       </li>
-      <li class="vergangen">
-        <strong>Konvent</strong> am <em>Dienstag, 15. November</em> ab <span>19<sup>30</sup> Uhr</span>.
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('03/06/2012', '%d/%m/%Y').end_of_day %>>
+        <strong>Stammtisch</strong> am <em>Sonntag, 03. Juni</em> ab <span>19<sup>00</sup> Uhr</span>.
       </li>
-      <li class="vergangen">
-        <strong>Heimfest</strong> am <em>Freitag, 2. Dezember</em> ab <span>20<sup>00</sup> Uhr</span>.
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('04/06/2012', '%d/%m/%Y').end_of_day %>>
+        <strong>Heimvollversammlung</strong> am <em>Montag, 04. Juni</em> ab <span>19<sup>30</sup> Uhr</span>.
       </li>
-      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('15/01/2012', '%d/%m/%Y').end_of_day %>>
-        <strong>Stammtisch</strong> am <em>Sonntag, 15. Januar</em> ab <span>20<sup>00</sup> Uhr</span>.
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('13/06/2012', '%d/%m/%Y').end_of_day %>>
+        <strong>Kuratoriumssitzung</strong> am <em>Mittwoch, 13. Juni</em> ab <span>18<sup>00</sup> Uhr</span>.
       </li>
-      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('17/01/2012', '%d/%m/%Y').end_of_day %>>
-        <strong>Heimvollversammlung</strong> am <em>Dienstag, 17. Januar</em> ab <span>19<sup>30</sup> Uhr</span>.
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('29/06/2012', '%d/%m/%Y').end_of_day %>>
+        <strong>Parkplatzfest</strong> am <em>Freitag, 29. Juni</em></span>.
       </li>
-      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('13/02/2012', '%d/%m/%Y').end_of_day %>>
-        <strong>Konvent</strong> am <em>Montag, 13. Februar</em> ab <span>19<sup>30</sup> Uhr</span>.
-      </li>
-      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('15/02/2012', '%d/%m/%Y').end_of_day %>>
-        <strong>Kuratoriumssitzung</strong> am <em>Mittwoch, 15. Februar</em> ab <span>18<sup>00</sup> Uhr</span>.
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('10/07/2012', '%d/%m/%Y').end_of_day %>>
+        <strong>Konvent</strong> am <em>Dienstag, 10. Juli</em> ab <span>19<sup>30</sup> Uhr</span>.
       </li>
     </ol>
   </section>
