@@ -1,7 +1,7 @@
 <div class="postit">
   <dl>
     <dd>21 Tutoriate</dd>
-    <dd>42 Tutoren</dd>
+    <dd><%= Tutor.anzahl %> Tutoren</dd>
   </dl>
   <img class="background" src="/images/postit.png" alt="Postit" />
 </div>
@@ -22,10 +22,10 @@
         <figcaption>Fahrrad</figcaption>
       </figure>
     </a>
-    <a href="#garten-und-umwelt">
+    <a href="#garten">
       <figure>
-        <img src="/images/tutoriate/garten-und-umwelt.png" alt="" />
-        <figcaption>Garten <abbr title="und">&amp;</abbr> Umwelt</figcaption>
+        <img src="/images/tutoriate/garten.png" alt="" />
+        <figcaption>Garten</figcaption>
       </figure>
     </a>
     <a href="#hausmeistervertretung">
@@ -144,10 +144,9 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Multi-Kulti' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'multikulti@hek.uni-karlsruhe.de', 'multikulti@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <dl>
+          <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Multi-Kulti')} %>
+        </dl>
         <dt>Telefon</dt>
         <dd>0721 / 8695 - 1239</dd>
       </dl>
@@ -165,8 +164,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Fahrrad' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Fahrrad')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -175,17 +173,14 @@
     </p>
     <a class="back-to-top" href="#main">Zurück nach oben ↑</a>
   </section>
-  <section id="garten-und-umwelt">
+  <section id="garten">
     <figure>
-      <img src="/images/tutoriate/garten-und-umwelt.png" alt="" />
-      <h2>Garten <abbr title="und">&amp;</abbr> Umwelt</h2>
+      <img src="/images/tutoriate/garten.png" alt="" />
+      <h2>Garten</h2>
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Garten und Umwelt' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'garten@hek.uni-karlsruhe.de', 'garten@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Garten')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -201,8 +196,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Hausmeistervertretung' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Hausmeistervertretung')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -218,10 +212,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKbar' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'hekbar@hek.uni-karlsruhe.de', 'hekbar@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKbar')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -237,10 +228,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutor</dt>
-        <%= tutoren 'HEKcar' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'carsharing@hek.uni-karlsruhe.de', 'carsharing@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKcar')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -275,8 +263,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutor</dt>
-        <%= tutoren 'HEKgrill' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKgrill')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -292,8 +279,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutor</dt>
-        <%= tutoren 'HEKmedien' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKmedien')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -309,10 +295,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKphone' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'telefon@hek.uni-karlsruhe.de', 'telefon@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKphone')} %>
         <dt>Telefon</dt>
         <dd>0721 / 8695 - 1234</dd>
       </dl>
@@ -330,10 +313,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKtronik' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'hektronik@hek.uni-karlsruhe.de', 'hektronik@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKtronik')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -349,10 +329,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKweb' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'hekweb@hek.uni-karlsruhe.de', 'hekweb@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKweb')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -368,10 +345,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKnet' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'heknet@hek.uni-karlsruhe.de', 'heknet@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKnet')} %>
         <dt>Telefon</dt>
         <dd>0721 / 8695 - 1236</dd>
       </dl>
@@ -389,10 +363,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKcopy' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'kopierer@hek.uni-karlsruhe.de', 'kopierer@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKcopy')} %>
         <dt>Postfach</dt>
         <dd>0721 / 8695 - 1237</dd>
       </dl>
@@ -410,8 +381,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Generationen' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Generationen')} %>
         <dt>Website</dt>
         <dd><a href="http://generationen.studenten-wohnheim.de">generationen.studenten-wohnheim.de</a></dd>
       </dl>
@@ -429,10 +399,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Kultur' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'kultur@hek.uni-karlsruhe.de', 'kultur@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Kultur')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -448,10 +415,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Postmaster' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'postmaster@hek.uni-karlsruhe.de', 'postmaster@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Postmaster')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -467,10 +431,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKsport' %>
-        <dt>E-Mail</dt>
-        <dd><%= mail_to 'sport@hek.uni-karlsruhe.de', 'sport@hek.uni-karlsruhe.de'.reverse, :encode => 'hex' %></dd>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKsport')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -489,8 +450,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Billiard' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Billiard')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
@@ -506,8 +466,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'Waschmaschine' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('Waschmaschine')} %>
         <dt>Telefon</dt>
         <dd>0721 / 8695 - 1233</dd>
       </dl>
@@ -525,8 +484,7 @@
     </figure>
     <div class="postit">
       <dl>
-        <dt>Tutoren</dt>
-        <%= tutoren 'HEKt-shirt' %>
+        <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKt-shirt')} %>
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>

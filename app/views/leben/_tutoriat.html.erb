@@ -1,0 +1,8 @@
+<dt>Tutoren</dt>
+<% tutoriat.tutoren.each do |tutor| %>
+<dd><%= tutor.vorname.strip %> (<%= tutor.zimmernummer.try :strip %>)</dd>
+<% end %>
+<% if tutoriat.email? %>
+<dt>E-Mail</dt>
+<dd><%= mail_to tutoriat.email, tutoriat.email.reverse, :encode => 'hex' %></dd>
+<% end %>
