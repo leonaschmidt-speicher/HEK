@@ -22,10 +22,4 @@ module ApplicationHelper
   def action? *actions
     actions.include? params[:action].to_sym
   end
-
-  def tutoren tutoriat
-    Tutor.where(:tutoriat => tutoriat).order(:zimmernummer).map do |tutor|
-      "<dd>#{tutor.vorname.strip} (#{tutor.zimmernummer.try :strip})</dd>"
-    end.join("\n").html_safe
-  end
 end
