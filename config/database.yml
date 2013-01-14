@@ -29,6 +29,6 @@ hekdb:
   #encoding: utf8
   database: hekdb
   username: hekdb-read
-  password: #...
+  password: f4Jk3hP
   host: hekdb
   pool: 5
