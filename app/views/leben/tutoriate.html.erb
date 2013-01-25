@@ -343,7 +343,7 @@
       <img src="/images/tutoriate/heknet.png" alt="" />
       <h2>HEKnet</h2>
     </figure>
-    <div class="postit">
+	<div class="postit">
       <dl>
         <%= render :partial => 'leben/tutoriat', :locals => {:tutoriat => Tutoriat.new('HEKnet')} %>
         <dt>Telefon</dt>
@@ -351,19 +351,14 @@
       </dl>
       <img class="background" src="/images/postit.png" alt="Postit" />
     </div>
-    <p>
+    <img src="/images/tutoriate/ipv6.png" alt="IPv6" id="ipv6"/>
+	<p>
       HEKnet betreut die Netzwerk-, Fernseh- und Rundfunkanschlüsse im HEK. Wir unterhalten die dazu nötige Infrastruktur, richten bei den Bewohnern Netzwerkzugänge ein und helfen bei Problemen. Daneben sind wir für die Datenbank des HEK zuständig, halten die Webserver am Laufen, stellen Speicherplatz für Tutoriate zur Verfügung und einiges mehr.
 	</p>
 	<p>
-	Für jeden Bewohner bieten wir
+	Für jeden Bewohner bieten wir einen kabelgebundenen Internetzugang in den Zimmern und im Saal sowie WLAN in den Gemeinschaftsräumen. Neben dem Zugang über IPv4 wird jedem Bewohner ein global eindeutiges IPv6 /64-Subnetz zugewiesen.
 	</p>
-	<ul>
-		<li><FONT SIZE=3>ein vollständig geroutetes eigenes IPv4-Subnetz mit wahlweise 5 oder 13 IPv4-Adressen</FONT></li>
-		<li><FONT SIZE=3>einen nativen IPv6-Zugang mit global eindeutigem /64-Subnetz</FONT></li>
-		<li><FONT SIZE=3>Zugang über 1GB/s-LAN auf den Zimmern und im Saal</FONT></li>
-		<li><FONT SIZE=3>Zugang über 802.11n-WLAN (300MBit/s) in den Gemeinschaftsräumen</FONT></li>
-	</ul>
-    <a class="back-to-top" href="#main">Zurück nach oben ↑</a>
+	<a class="back-to-top" href="#main">Zurück nach oben ↑</a>
   </section>
   <section id="hekcopy">
     <figure>

@@ -47,6 +47,11 @@
   width: 220px;
   height: 135px;
 }
+#tutoriate #heknet #ipv6 {
+  float: left;
+  clear: left;
+  margin-top: 25px;
+}
 #tutoriate #main section p {
   margin-top: 0;
   margin-left: 250px;
