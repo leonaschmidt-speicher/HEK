@@ -50,10 +50,7 @@ ls<article id="ueberblick">
   <section>
     <h3>Termine</h3>
     <ol>
-      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('05/02/2013', '%d/%m/%Y').end_of_day %>>
-        <strong>Konvent</strong> am <em>Dienstag, 05. Februar</em> ab <span>19<sup>30</sup> Uhr</span>.
-      </li>
-	  	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('17/02/2013', '%d/%m/%Y').end_of_day %>>
+	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('17/02/2013', '%d/%m/%Y').end_of_day %>>
         <strong>Netzwerkumbau</strong> ab <em>Samstag, 9. Februar</em>
       </li>
       <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('27/02/2013', '%d/%m/%Y').end_of_day %>>
