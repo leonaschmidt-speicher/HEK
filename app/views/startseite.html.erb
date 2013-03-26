@@ -36,10 +36,10 @@
 </article>
 <article id="bevorstehendes">
   <section>
-    <h3>Umbauarbeiten verlängert!</h3>
+    <h3>Umbauarbeiten im Serverraum</h3>
     <p>
-      Auf Grund von Umbauarbeiten gibt es bis auf Weiteres kein Telefon bzw. Internet im HEK. <br />
-      Die Hausmeister sind ersatzweise unter 0721 / 20127-65 zu erreichen.
+      Die Umbauarbeiten sind abgeschlossen <br />
+      Telefon und Internet funktionieren wieder wie gewohnt.
     </p>
 
     <h3>Baumaßnahmen</h3>
@@ -49,12 +49,24 @@
   </section>
   <section>
     <h3>Termine</h3>
-    <ol>
-	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('03/03/2013', '%d/%m/%Y').end_of_day %>>
-        <strong>Netzwerkumbau</strong> ab <em>Samstag, 9. Februar</em>
+    <ol>	  
+	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('25/04/2013', '%d/%m/%Y').end_of_day %>>
+        <strong>Neueingezogenenabend</strong> ab <em>Donnerstag, 25. April</em>
       </li>
       <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('11/05/2013', '%d/%m/%Y').end_of_day %>>
         <strong>Maifest</strong> am <em>Samstag, 11. Mai</em> ab <span>15<sup>00</sup> Uhr</span>.
+	  </li>
+	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('14/05/2013', '%d/%m/%Y').end_of_day %>>
+        <strong>1. Konvent</strong> ab <em>Dienstag, 14. Mai</em>
+      </li>
+	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('02/06/2013', '%d/%m/%Y').end_of_day %>>
+        <strong>Stammtisch</strong> ab <em>Sonntag, 2. Juni</em>
+      </li>
+	  	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('04/06/2013', '%d/%m/%Y').end_of_day %>>
+        <strong>Heimvollversammlung</strong> ab <em>Dienstag, 4. Juni</em>
+      </li>
+	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('15/07/2013', '%d/%m/%Y').end_of_day %>>
+        <strong>2. Konvent</strong> ab <em>Montag, 15. Juli</em>
       </li>
     </ol>
   </section>
