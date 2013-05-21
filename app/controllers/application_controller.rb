@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  USERS = { 'zilly' => 'hekHL!611', 'joerg' => 'happi!', 'pauline' => 'ab28y!', 'adam' => 'hY=mUr', 'annika' => 'D4+lRp'}
+  USERS = { 'zilly' => 'hekHL!611', 'joerg' => 'happi!', 'thekla' => 'u/h*u25', 'adam' => 'hY=mUr', 'annika' => 'D4+lRp'}
 
   protect_from_forgery
 
