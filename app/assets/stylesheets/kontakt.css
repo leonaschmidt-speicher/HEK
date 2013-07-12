@@ -114,13 +114,15 @@
   z-index: 1;
 }
 #kontakt #sie {
-  top: 300px;
-  left: 240px;
+  top: 280px;
+  left: 153px;
+  transform:rotate(3deg);
 }
 #kontakt #er {
-  top: 312px;
-  left: 400px;
+  top: 250px;
+  left: 330px;
   z-index: 2;
+  transform:rotate(5deg);
 }
 *+html #kontakt #sie {
   top: 328px;

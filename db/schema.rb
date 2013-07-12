@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20111214125908) do
     t.string   "festnetztelefon"
     t.string   "hochschule"
     t.string   "hauptfach"
-    t.integer  "anzahl_abgeschlossener_fachsemester",  :default => 0
+    t.integer  "anzahl_abgeschlossener_fachsemester",           :default => 0
     t.date     "studienende"
     t.string   "angestrebter_abschluss"
     t.string   "firma"
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20111214125908) do
     t.string   "lebenslauf_file_name"
     t.string   "lebenslauf_content_type"
     t.integer  "lebenslauf_file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                    
+    t.datetime "updated_at",                                    
     t.string   "geschlecht"
-    t.boolean  "bestaetigt",                           :default => false
+    t.boolean  "bestaetigt",                                    :default => false
     t.string   "temp_foto_file_name"
     t.string   "temp_foto_content_type"
     t.string   "temp_lebenslauf_file_name"
@@ -62,30 +62,30 @@ ActiveRecord::Schema.define(:version => 20111214125908) do
     t.integer  "temp_foto_file_size"
     t.integer  "temp_lebenslauf_file_size"
     t.boolean  "zugesagt"
-    t.decimal  "bewertung",                            :default => 0.0
+    t.decimal  "bewertung",                                     :default => 0.0 
   end
 
   create_table "bewertungen", :force => true do |t|
     t.string   "benutzer"
     t.integer  "wert"
     t.integer  "bewerbung_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "kommentare", :force => true do |t|
     t.text     "text"
     t.string   "benutzer"
     t.integer  "bewerbung_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
