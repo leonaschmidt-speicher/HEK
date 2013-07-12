@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20111214125908) do
     t.string   "festnetztelefon"
     t.string   "hochschule"
     t.string   "hauptfach"
-    t.integer  "anzahl_abgeschlossener_fachsemester",               :default => 0
+    t.integer  "anzahl_abgeschlossener_fachsemester",           :default => 0
     t.date     "studienende"
     t.string   "angestrebter_abschluss"
     t.string   "firma"
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20111214125908) do
     t.string   "lebenslauf_file_name"
     t.string   "lebenslauf_content_type"
     t.integer  "lebenslauf_file_size"
-    t.datetime "created_at",                                                           :null => false
-    t.datetime "updated_at",                                                           :null => false
+    t.datetime "created_at",                                    
+    t.datetime "updated_at",                                    
     t.string   "geschlecht"
-    t.boolean  "bestaetigt",                                        :default => false
+    t.boolean  "bestaetigt",                                    :default => false
     t.string   "temp_foto_file_name"
     t.string   "temp_foto_content_type"
     t.string   "temp_lebenslauf_file_name"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20111214125908) do
     t.integer  "temp_foto_file_size"
     t.integer  "temp_lebenslauf_file_size"
     t.boolean  "zugesagt"
-    t.integer  "bewertung",                            :limit => 5, :default => 0
+    t.decimal  "bewertung",                                     :default => 0.0 
   end
 
   create_table "bewertungen", :force => true do |t|
