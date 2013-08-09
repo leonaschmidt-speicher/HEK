@@ -1,0 +1,12 @@
+#bewohner h2 {
+  margin: 1em 0;
+}
+#bewohner article ul {
+  text-align: center;
+}
+#bewohner article ul ul {
+  margin-bottom: 2.4em;
+}
+#bewohner article li li {
+  font-size: 1.6em;
+}

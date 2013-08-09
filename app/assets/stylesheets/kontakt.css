@@ -122,7 +122,10 @@
   top: 250px;
   left: 330px;
   z-index: 2;
-  transform:rotate(5deg);
+  -moz-transform:rotate(5deg);
+  -webkit-transform:rotate(5deg);
+  -o-transform:rotate(5deg)
+  -ms-transform:rotate(5deg);
 }
 *+html #kontakt #sie {
   top: 328px;
