@@ -1,5 +1,8 @@
 #tutoriate #main p {
   margin: 1.5em 10px;
+  text-align: justify;
+  margin-bottom: 54px;
+  margin-top: 54px;
 }
 #tutoriate article nav {
   border-bottom: 1px solid #ccc;
@@ -21,6 +24,20 @@
   margin: 0 auto;
   width: 117px;
   height: 72px;
+}
+#tutoriate_collumn_middle{ 
+	float: left;
+	width: 42.9%;
+}
+#tutoriate_mainnav{
+	float:left;
+	width: 28.55%;
+	margin-top: 12px;
+}
+#tutoriate_column_right{
+	float: left;
+	width: 28.55%;
+	margin-top: 12px;
 }
 #tutoriate article nav figcaption {
   font-size: 1.6em;
@@ -56,6 +73,7 @@
   margin-top: 0;
   margin-left: 250px;
   width: 380px;
+  text-align: justify;
 }
 #tutoriate section .postit {
   margin-top: 0;
