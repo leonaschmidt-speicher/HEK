@@ -1,4 +1,5 @@
 class Bewohner < ActiveRecord::Base
-  establish_connection("hekdb_#{ENV['RAILS_ENV']}")
-  set_table_name 'bewohnerliste_intern'
+#  establish_connection("hekdb_#{ENV['RAILS_ENV']}")
+  establish_connection( 'hekdb_production' )
+  self.table_name = 'bewohnerliste_intern'
 end

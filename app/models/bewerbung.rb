@@ -9,7 +9,7 @@ class Bewerbung < ActiveRecord::Base
   ORGANISATORISCHE_MITTEILUNGEN = %w[organisatorische_mitteilungen]
   MOTIVATION = %w[motivation]
 
-  set_table_name 'bewerbungen'
+  self.table_name = 'bewerbungen'
 
   scope :nicht_zugesagt, where(:zugesagt => [false, nil])
   scope :nicht_abgesagt, where(:bestaetigt => true).where(:zugesagt => [true, nil])

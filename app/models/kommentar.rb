@@ -1,5 +1,5 @@
 class Kommentar < ActiveRecord::Base
-  set_table_name 'kommentare'
+  self.table_name = 'kommentare'
 
   belongs_to :bewerbung
 end
