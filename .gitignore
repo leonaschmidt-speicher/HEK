@@ -1,8 +1,12 @@
+app/controllers/.#application_controller.rb
 .bundle
 db/development.sqlite3
 db/production.sqlite3
 db/test.sqlite3
 log/*.log
+public/assets
+public/uploads
 tmp/
+vendor/
 .sass-cache/
 *~

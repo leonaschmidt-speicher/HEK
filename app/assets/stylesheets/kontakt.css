@@ -124,7 +124,7 @@
   z-index: 2;
   -moz-transform:rotate(5deg);
   -webkit-transform:rotate(5deg);
-  -o-transform:rotate(5deg)
+  -o-transform:rotate(5deg);
   -ms-transform:rotate(5deg);
 }
 *+html #kontakt #sie {
