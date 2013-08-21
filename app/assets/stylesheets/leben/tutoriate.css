@@ -26,18 +26,18 @@
   height: 72px;
 }
 #tutoriate_column_left{
-	float:left;
-	width: 28.55%;
-	margin-top: 12px;
+float:left;
+width: 28.55%;
+margin-top: 12px;
 }
-#tutoriate_column_middle{ 
-	float: left;
-	width: 42.9%;
+#tutoriate_column_middle{
+float: left;
+width: 42.9%;
 }
 #tutoriate_column_right{
-	float: left;
-	width: 28.55%;
-	margin-top: 12px;
+float: left;
+width: 28.55%;
+margin-top: 12px;
 }
 #tutoriate article nav figcaption {
   font-size: 1.6em;
