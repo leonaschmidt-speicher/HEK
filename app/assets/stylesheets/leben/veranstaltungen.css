@@ -11,7 +11,7 @@
 #veranstaltungen #parkplatzfest, #veranstaltungen #weck {
   border-right: none;
 }
-#veranstaltungen #bar, #veranstaltungen #sport, #veranstaltungen #weck {
+#veranstaltungen #bar, #veranstaltungen #umbau, #veranstaltungen #weck {
   height: 48em;
 }
 #veranstaltungen .logo {
@@ -46,6 +46,7 @@
 #veranstaltungen p {
   margin-left: 10px;
   margin-right: 10px;
+  text-align: justify;
 }
 #veranstaltungen #main ul {
   list-style: none;

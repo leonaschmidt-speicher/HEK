@@ -1,5 +1,6 @@
 #heimselbstverwaltung p {
   margin: 1.5em 10px;
+  text-align: justify;
 }
 #heimselbstverwaltung figure {
   text-align: center;
@@ -16,7 +17,7 @@
   width: 480px;
 }
 #heimselbstverwaltung #etagenversammlung {
-  margin-bottom: 4.8em;
+  margin-bottom: 0em;
 }
 #heimselbstverwaltung #etagensprecher, #heimselbstverwaltung #heimsprecher, #heimselbstverwaltung #kuratorium {
   clear: both;
