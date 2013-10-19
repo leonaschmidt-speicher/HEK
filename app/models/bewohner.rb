@@ -1,6 +1,6 @@
 class Bewohner < ActiveRecord::Base
-#  establish_connection("hekdb_#{ENV['RAILS_ENV']}")
-  establish_connection( 'hekdb_production' )
-#  establish_connection("hekdb_#{Rails.env}")
+  #select the correct db depending on the running environment
+  establish_connection("hekdb_#{Rails.env}")
+  #select the right table in the chosen db
   self.table_name = 'bewohnerliste_intern'
 end
