@@ -47,12 +47,33 @@
   </section>
   <section>
     <h3>Termine</h3>
-    <ol>	  
-	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('20/10/2013', '%d/%m/%Y').end_of_day %>>
-        <strong> vorlesungsfreie Zeit am KIT</strong> bis <em>Montag, 21.Oktober</em>
-      </li>	  
-	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('30/09/2013', '%d/%m/%Y').end_of_day %>>
-        <strong> vorlesungsfreie Zeit an der FH</strong> bis <em>Dienstag, 1.Oktober</em>
+    <ol>	   
+	  <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('31/10/2013', '%d/%m/%Y').end_of_day %>>
+        <strong> Neueingezogenen Abend</strong> <em>Donnerstag, 31. Oktober</em>
+      </li>
+    <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('08/11/2013', '%d/%m/%Y').end_of_day %>>
+        <strong> HEK-Geburtstagsfest</strong> <em>Freitag, 08. November</em>
+      </li>
+    <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('22/11/2013', '%d/%m/%Y').end_of_day %>>
+        <strong> HEK-Ball</strong> <em>Freitag, 22. November</em>
+      </li>
+    <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('25/11/2013', '%d/%m/%Y').end_of_day %>>
+        <strong> 1. Konvent</strong> <em>Montag, 25. November</em>
+      </li>
+    <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('06/12/2013', '%d/%m/%Y').end_of_day %>>
+        <strong> Tour de HEK</strong> <em>Dienstag, 1. Oktober</em>
+      </li>
+    <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('14/01/2014', '%d/%m/%Y').end_of_day %>>
+        <strong> Stammtisch</strong> <em>Dienstag, 14. Januar</em>
+      </li>
+    <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('16/01/2014', '%d/%m/%Y').end_of_day %>>
+        <strong> Heimvollversammlung</strong> <em>Donnerstag, 16. Januar</em>
+      </li>
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('23/01/2014', '%d/%m/%Y').end_of_day %>>
+        <strong> HEK-Dinner</strong> <em>Donnerstag, 23. Januar</em>
+      </li>
+      <li<%= ' class="vergangen"'.html_safe if Time.now > Time.strptime('06/02/2014', '%d/%m/%Y').end_of_day %>>
+        <strong> 2. Konvent</strong> <em>Donnerstag, 06. Februar</em>
       </li>
     
     </ol>
