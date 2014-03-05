@@ -1,28 +1,24 @@
 <ol class="steps">
   <li <%= 'class="current"'.html_safe if current == :persoenliches %>>
-    <a <%= 'class="errors"'.html_safe if step_has_errors? :persoenliches %> href="#persoenliches">
-      <h2>Persönliches</h2>
+    <% unless current == :bestaetigung %><a <%= 'class="errors"'.html_safe if step_has_errors? :persoenliches %> href="#persoenliches"><% end %>
+      <big>Persönliches</big>
       <small>Wie heiße ich?</small>
-    </a>
+    <% unless current == :bestaetigung %></a><% end %>
   </li>
   <li <%= 'class="current"'.html_safe if current == :organisatorisches %>>
-   <a <%= 'class="errors"'.html_safe if step_has_errors? :organisatorisches %> href="#organisatorisches">
+   <% unless current == :bestaetigung %><a <%= 'class="errors"'.html_safe if step_has_errors? :organisatorisches %> href="#organisatorisches"><% end %>
       <big>Organisatorisches</big>
       <small>Wann ziehe ich ein?</small>
-    </a>
+    <% unless current == :bestaetigung %></a><% end %>
   </li>
   <li <%= 'class="current"'.html_safe if current == :motivation %>>
-    <a <%= 'class="errors"'.html_safe if step_has_errors? :motivation %> href="#motivation">
+    <% unless current == :bestaetigung %><a <%= 'class="errors"'.html_safe if step_has_errors? :motivation %> href="#motivation"><% end %>
       <big>Motivation</big>
       <small>Warum mich?</small>
-    </a>
+    <% unless current == :bestaetigung %></a><% end %>
   </li>
   <li <%= 'class="current"'.html_safe if current == :bestaetigung %>>
     <big>Bestätigung</big>
-    <small>Alles korrekt?</small>
-  </li>
-  <li <%= 'class="current"'.html_safe if current == :ablauf %>>
-    <big>Ablauf</big>
     <small>Was jetzt?</small>
   </li>
 </ol>
