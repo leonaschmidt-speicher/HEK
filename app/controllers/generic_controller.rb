@@ -16,6 +16,11 @@ class GenericController < ApplicationController
 
   def not_found
     @group = 'nicht-gefunden'
-    render '/nicht-gefunden', :status => :not_found
+    @site = nil
+
+    respond_to do |format|
+      format.html { render '/nicht-gefunden', :status => :not_found }
+      format.all  { render :nothing => true, :status => :not_found }
+    end
   end
 end
