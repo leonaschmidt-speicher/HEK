@@ -54,30 +54,7 @@
 #bewerbung .steps small {
   font-size: 1.2em;
 }
-#bewerbung #bestaetigung dl {
-  margin-top: 2.4em;
-}
-#bewerbung #bestaetigung dt {
-  font-size: 1.6em;
-  margin-top: 1.5em;
-  color: #aaa;
-}
-#bewerbung #bestaetigung dd {
-  font-size: 1.6em;
-}
-#bewerbung #bestaetigung .foto {
-  float: right;
-  display: block;
-  margin-top: 2.4em;
-}
-#bewerbung #bestaetigung .foto img {
-  display: block;
-  width: 140px;
-}
-#bewerbung #bestaetigung #about {
-  white-space: pre-wrap;
-}
-#bewerbung #ablauf p {
+#bewerbung #bestaetigung p {
   width: 38.75em;
   margin: 1.5em 10px;
 }

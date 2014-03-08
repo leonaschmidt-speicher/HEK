@@ -20,19 +20,30 @@ class BewerbungenController < ApplicationController
   end
 
   def new
-    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id] rescue Bewerbung.new
+    @bewerbung = Bewerbung.bestaetigt.new rescue Bewerbung.new
   end
 
   def create
-    @bewerbung = Bewerbung.nicht_bestaetigt.find_or_initialize_by_id session[:bewerbung_id] rescue Bewerbung.new
+    @bewerbung = Bewerbung.bestaetigt.new rescue Bewerbung.new
     @bewerbung.attributes = params[:bewerbung]
 
     @bewerbung.recover :temp_foto, params[:already_attached_foto]
     @bewerbung.recover :temp_lebenslauf, params[:already_attached_lebenslauf]
 
     if @bewerbung.save
-      session[:bewerbung_id] = @bewerbung.id
-      redirect_to :action => 'new', :anchor => 'bestaetigung'
+      # now that we know that everything was filled in correctly, we move the attachments to a secure place and delete the others
+      @bewerbung.foto = @bewerbung.temp_foto
+      @bewerbung.temp_foto.clear
+      @bewerbung.lebenslauf = @bewerbung.temp_lebenslauf
+      @bewerbung.temp_lebenslauf.clear
+
+      if @bewerbung.save
+        session[:name] = @bewerbung.name
+        render 'bestaetigung'
+      else
+        # this branch should never be taken
+        render 'new'
+      end
     else
       # validation errors would prevent the uploaded files to be saved. save them manually
       @bewerbung.save_attached_files
@@ -41,28 +52,6 @@ class BewerbungenController < ApplicationController
   end
 
   alias_method :update, :create
-
-  def bestaetigen
-    @bewerbung = Bewerbung.nicht_bestaetigt.find session[:bewerbung_id]
-    @bewerbung.bestaetigt = true
-
-    # move attachments to a secure place
-    @bewerbung.foto = @bewerbung.temp_foto
-    @bewerbung.temp_foto.clear
-    @bewerbung.lebenslauf = @bewerbung.temp_lebenslauf
-    @bewerbung.temp_lebenslauf.clear
-
-    @bewerbung.save
-
-    # prevent user from submitting his application twice but call him by his name.
-    session[:bewerbung_id] = nil
-    session[:name] = @bewerbung.name
-
-    redirect_to :action => 'new', :anchor => 'ablauf'
-  rescue
-    session[:bewerbung_id] = nil
-    redirect_to :action => 'new'
-  end
 
   def zusagen
     @bewerbung = Bewerbung.find params[:id]
